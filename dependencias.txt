@@ -1,0 +1,5 @@
+#Librería python 3 y postgresql
+sudo apt-get install python3-dev libpq-dev
+
+# en caso de necesitar eventos
+sudo apt-get install libevent-dev
