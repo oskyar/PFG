@@ -1,0 +1,69 @@
+.section__circle-container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mdl-layout__drawer .section__circle-container > .section__circle-container__circle {
+    width: auto;
+    height: 100px;
+    border-radius: 100px;
+    margin-top: 10px;
+}
+
+.text-session {
+    color: white;
+    text-align: center;
+    font-size: 900;
+}
+
+.ms-center{
+    margin:0 auto;
+}
+
+.header-layout-float {
+    width: 100%;
+    padding-bottom: 15px;
+    padding-top: 10px;
+}
+
+.header-layout-float a {
+    color: #fff;
+}
+
+.drawer-separator {
+    height: 1px;
+    background-color: #dcdcdc;
+    margin: 8px 0;
+}
+
+.image-circle {
+    background-image: url(../img/form-register.jpg);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.text-lateral {
+
+    text-align: center;
+    padding-top: 5px;
+}
+
+.form-register.mdl-card {
+    width: 512px;
+}
+
+.form-register > .mdl-card__title {
+    color: #000;
+    font-weight: bolder;
+    height: 176px;
+    background: url('../img/form-register.jpg') center / cover;
+}
+
+.form-register > .mdl-card__menu {
+    color: #fff;
+}
+
+.form-register > .mdl-card__supporting-text {
+    text-align: center;
+}
+
