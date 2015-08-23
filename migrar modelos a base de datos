@@ -1,0 +1,10 @@
+1. una vez se crea el modelo en models.py de la APP
+    ./manage.py makemigrations <nombre app>
+
+2. Creamos las sentencias SQL con este comando. El nombre de la migracion se encuentra dentro de la APP&migrations 000*.py
+    ./manage.py sqlmigrate <modelo> <nombre migracion>
+    ./manage.py sqlmigrate accounts 0001_initial
+
+
+3. Hacemos la migracion, y esto crea la tabla junto con los campos definidos en python
+    ./manage.py migrate

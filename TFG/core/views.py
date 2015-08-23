@@ -27,8 +27,7 @@ def index(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                context['is_logged'] = True;
-                context['username']
+
                 return render(request, 'index.html', context)
             else:
                 form_login = LoginUser()
