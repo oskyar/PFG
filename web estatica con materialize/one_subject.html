@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ponte a prueba</title>
+    <!--<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+    <!-- Styles -->
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/myStyle.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <meta charset="utf-8"/>
+
+
+</head>
+<body>
+<header>
+    <nav>
+        <div class="nav-wrapper teal lighten-2">
+
+            <a href="index.html" class="brand-logo center">¿Cuánto sabes?</a>
+            <a href="#" data-activates="menu-lateral" class="button-collapse ">
+                <div class="chip">
+                    <img src="img/form-register.jpg" alt="Contact Person">
+                    Óscar Zafra
+                </div>
+            </a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="subject.html">Crear Asignatura</a></li>
+                <li><a href="collapsible.html">Exámenes</a></li>
+                <li><a href="mobile.html">Trending</a></li>
+            </ul>
+
+
+            <div class="side-nav fixed" id="menu-lateral">
+
+                <div class="row ">
+                    <div class="l12">
+                        <div class="profile teal lighten-1 center-align">
+                            <div class="circle">
+                                <input hidden type="text" value="75" class="dial"/>
+
+                                <img class="img" src="img/form-register.jpg">
+
+                                <div class="level">
+                                    <span class="text-score text-darken-5">1240/3000</span>
+
+                                    <div class="text-level"><span class="num-level text-center opacity-9">6</span></div>
+                                </div>
+                            </div>
+                            <div class="user valign">
+                                <span>Óscar Zafra Megías</span>
+
+                                <button class="waves-effect deep-orange btn" href="#!"
+                                        title="Cerrar sesión">Desconectar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="collapsible" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header"><a href="my_subjects.html"><i
+                                class="material-icons">folder_open</i> Mis asignaturas</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">filter_1</i> Mi clasificación
+                        </div>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Global">Global</div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Por asignatura
+                                    </div>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="achievements.html" class="collapsible-header"><i class="material-icons">stars</i>
+                            Mis logros
+                        </a>
+
+
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">settings</i> Configuración
+                        </div>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Perfil</div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Seguridad
+                                    </div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Mensajes
+                                    </div>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">person_outline</i> Perfil
+                        </div>
+                        <div class="collapsible-body">
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m9 l10">
+                <div class="section">
+                    <div class="card-panel teal lighten-3">
+                        <span class="white-text"><i class="material-icons left">info</i>Esta será la estructura de una asignatura en la que estés matriculado <i
+                                class="material-icons right close">close</i></span>
+                    </div>
+                </div>
+                <div id="subject" class="section scrollspy">
+                    <!--<p class="caption">Breve descripción de la asignatura</p>-->
+                    <h2 class="teal-text header">Sistemas de computadores</h2>
+
+                    <div class="col s12">
+                        <ul class="tabs">
+                            <li class="tab col s3"><a class="active tooltipped" data-position="top"
+                                                      data-delay="50"
+                                                      data-tooltip="Introducción a las plataformas con sistema de gamificación"
+                                                      href="#tab_platform">Tema 1 <i
+                                    class="material-icons green-text ">done</i></a></li>
+                            <li class="tab col s3 "><a class="tooltipped" data-position="top" data-delay="50"
+                                                       data-tooltip="Introducción a las plataformas con sistema de gamificación"
+                                                       href="#tab_gamification">Tema 2 <i
+                                    class="material-icons green-text ">done_all</i></a>
+                            </li>
+                            <li class="tab col s3"><a class="tooltipped " data-position="top"
+                                                      data-delay="50"
+                                                      data-tooltip="Introducción a las plataformas con sistema de gamificación"
+                                                      href="#tab_subject">Tema 3<i class="material-icons blue-text ">lock_open</i></a>
+                            </li>
+                            <li class="tab col s3 disabled"><a class="tooltipped " data-position="top"
+                                                               data-delay="50"
+                                                               data-tooltip="Introducción a las plataformas con sistema de gamificación"
+                                                               href="#tab_roles">Tema 4<i
+                                    class="material-icons red-text ">lock</i></a></li>
+                            <li class="tab col s3 disabled"><a class=" tooltipped " data-position="top" data-delay="50"
+                                                               data-tooltip="Introducción a las plataformas con sistema de gamificación"
+                                                               href="#tab_tests">Tema 5<i
+                                    class="material-icons red-text">lock</i></a></li>
+
+                        </ul>
+                    </div>
+                    <div id="tab_platform" class="col s12">
+
+                        <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <a class="collapsible-header green-text"><i class="material-icons left ">input</i>Introducción
+                                    <i class="material-icons green-text right">done</i></a>
+                            </li>
+                            <li>
+                                <a class="collapsible-header green-text"><i class="material-icons left ">input</i>Partes de
+                                    un sistema I <i class="material-icons green-text right">done</i></a>
+
+                            </li>
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">input</i>Partes de un
+                                    sistema II<i class="material-icons blue-text right">lock_open</i>
+                                </div>
+
+
+                            </li>
+                            <li>
+                                <a class="collapsible-header green-text"><i class="material-icons">input</i>Autoevaluación
+                                    <i class="material-icons green-text right">done</i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="tab_gamification" class="col s12">
+
+                        <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <a class="collapsible-header green-text"><i
+                                        class="material-icons left ">input</i>Parte
+                                    1
+                                    <i class="material-icons green-text right">done</i></a>
+
+                            </li>
+                            <li>
+                                <a class="collapsible-header green-text"><i class="material-icons">input</i>Parte
+                                    2
+                                    <i class="material-icons green-text right">done</i></a>
+
+                            </li>
+                            <li>
+                                <a class="collapsible-header green-text"><i class="material-icons">input</i>Test
+                                    <i class="material-icons green-text right">done</i></a>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="tab_subject" class="col s12">
+                        <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <a class="collapsible-header green-text"><i class="material-icons left ">input</i>Introducción
+                                    <i class="material-icons green-text right">done_all</i></a>
+
+                            </li>
+                            <li>
+                                <div class="collapsible-header "><i class="material-icons left ">input</i>Partes de
+                                    un
+                                    sistema I
+                                    <i class="material-icons blue-text right">lock_open</i></div>
+
+                            </li>
+                            <li>
+                                <a class="collapsible-header black-text"><i class="material-icons">input</i>Partes de un
+                                    sistema
+                                    II<i class="material-icons red-text right">lock</i>
+                                </a>
+
+                            </li>
+                            <li>
+                                <div class="collapsible-header "><i class="material-icons">input</i>Autoevaluación
+                                    <i class="material-icons blue-text right">lock_open</i></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="tab_roles" class="col s12">
+
+                    </div>
+                    <div id="tab_tests" class="col s12">
+
+                    </div>
+                </div>
+                <div class="divider"></div>
+
+                <div id="clasification" class="section scrollspy">
+                    <h2 class="teal-text header">Clasificación</h2>
+                    <table class="striped centered">
+                        <thead>
+                        <tr>
+                            <th data-field="number">Nº</th>
+                            <th data-field="id">Name</th>
+                            <th data-field="tests">Test realizados</th>
+                            <th data-field="price">% Acierto</th>
+                            <th data-field="score">Puntuación</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Alvin</td>
+                            <td>4</td>
+                            <td>90</td>
+                            <td>231</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Alan</td>
+                            <td>2</td>
+                            <td>85</td>
+                            <td>175</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Jonathan</td>
+                            <td>10</td>
+                            <td>78</td>
+                            <td>148</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col hide-on-small-only m3 l2">
+                <div class="table-of-contents">
+                    <h6>Tabla de contenidos</h6>
+                    <ul class="section">
+                        <li><a href="#subject">Asignatura</a></li>
+                        <li><a href="#clasification">Clasificación</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="page-footer teal lighten-2">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
+                    content.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2014 Copyright Text
+            <a class="white-text right" href="#!">More Links</a>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.knob.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/test_functions.js"></script>
+</body>
+</html>
