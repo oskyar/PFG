@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ponte a prueba</title>
+       <!-- Styles -->
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/myStyle.css">
+    <meta charset="utf-8"/>
+
+
+</head>
+<body>
+<header>
+    <nav>
+        <div class="nav-wrapper teal lighten-2">
+
+            <a href="index.html" class="brand-logo center">¿Cuánto sabes?</a>
+            <a href="#" data-activates="menu-lateral" class="button-collapse ">
+                <div class="chip">
+                    <img src="img/form-register.jpg" alt="Contact Person">
+                    Óscar Zafra
+                </div>
+            </a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="subject.html">Crear Asignatura</a></li>
+                <li><a href="collapsible.html">Exámenes</a></li>
+                <li><a href="mobile.html">Trending</a></li>
+            </ul>
+
+
+            <div class="side-nav fixed" id="menu-lateral">
+
+                <div class="row ">
+                    <div class="l12">
+                        <div class="profile teal lighten-1 center-align">
+                            <div class="circle">
+                                <input hidden type="text" value="75" class="dial"/>
+
+                                <img class="img" src="img/form-register.jpg">
+
+                                <div class="level">
+                                    <span class="text-score text-darken-5">1240/3000</span>
+
+                                    <div class="text-level"><span class="num-level text-center opacity-9">6</span></div>
+                                </div>
+                            </div>
+                            <div class="user valign">
+                                <span>Óscar Zafra Megías</span>
+
+                                <button class="waves-effect deep-orange btn" href="#!"
+                                        title="Cerrar sesión">Desconectar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="collapsible" data-collapsible="accordion">
+                    <li>
+                        <a class="collapsible-header" href="my_subjects.html"><i class="material-icons">folder_open</i>
+                            Mis asignaturas</a>
+
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">filter_1</i> Mi clasificación
+                        </div>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Global">Global</div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Por asignatura
+                                    </div>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="achievements.html" class="collapsible-header"><i class="material-icons">stars</i> Mis
+                            logros
+                        </a>
+
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">settings</i> Configuración
+                        </div>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Perfil</div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Seguridad
+                                    </div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Mensajes
+                                    </div>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">person_outline</i> Perfil
+                        </div>
+                        <div class="collapsible-body">
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="section">
+                    <div class="card-panel teal lighten-3">
+                        <span class="white-text"><i class="material-icons left">info</i>Navegue por el panel tabulado para saber un poco más sobre la plataforma <i
+                                class="material-icons right close">close</i></span>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col truncate"><a class="blue-text active" href="#tab_platform">Plataforma</a></li>
+                        <li class="tab col truncate"><a class="" href="#tab_gamification">Gamificación</a></li>
+                        <li class="tab col truncate"><a class="deep-orange-text" href="#tab_subject">Asignaturas</a></li>
+                        <li class="tab col truncate"><a class="deep-purple-text" href="#tab_roles">Roles</a></li>
+                        <li class="tab col truncate"><a class="green-text" href="#tab_tests">Exámenes</a></li>
+                    </ul>
+                </div>
+                <div id="tab_platform" class="col s12">
+
+                    <ul class="collapsible popout" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">description</i>Introducción</div>
+                            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">place</i>Primer plataforma de test
+                                con sistema gamificado
+                            </div>
+                            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">whatshot</i>Crea asignaturas y
+                                evalúa en unos sencillos pasos
+                            </div>
+                            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">whatshot</i>¡¡ Es gratis !!</div>
+                            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="tab_gamification" class="col s12">
+
+                    <ul class="collapsible popout" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">description</i>¿Qué es?</div>
+                            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">place</i>¿Para qué sirve?</div>
+                            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">whatshot</i>¿Cómo funciona?
+                            </div>
+                            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">whatshot</i>¿En qué me beneficia?
+                            </div>
+                            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="tab_subject" class="col s12">
+                    <div class="col s6">
+                        <div class="card hoverable">
+                            <div class="card-title deep-orange lighten-1 padding-10 center-align">
+                                <h5 class="">Crear asignatura</h5>
+                            </div>
+                            <div class="card-content padding-10">
+                                <ul>
+                                    <li> Sé el dueño de las preguntas</li>
+                                    <li> Realiza baterías de test personalizadas</li>
+                                    <li> Añade preguntas con la ponderación que quiera</li>
+                                    <li> Crea exámenes con preguntas aleatorias y que se corrijan al instante</li>
+                                    <li> ¡Ten el control de tus usuarios inscritos!</li>
+                                    <li> Escríbeles mensajes para contactar con ellos</li>
+                                </ul>
+                            </div>
+                            <div class="card-action">
+                                <a class="#">
+                                    Quiero crear una nueva asignatura
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="card hoverable">
+                            <div class="card-title deep-orange lighten-1 padding-10 center-align">
+                                <h5 class="">Matricularse en una asignatura</h5>
+                            </div>
+                            <div class="card-content padding-10">
+                                <ul>
+                                    <li> Sé el dueño de las preguntas</li>
+                                    <li> Realiza baterías de test personalizadas</li>
+                                    <li> Añade preguntas con la ponderación que quiera</li>
+                                    <li> Crea exámenes con preguntas aleatorias y que se corrijan al instante</li>
+                                    <li> ¡Ten el control de tus usuarios inscritos!</li>
+                                    <li> Escríbeles mensajes para contactar con ellos</li>
+                                </ul>
+                            </div>
+                            <div class="card-action">
+                                <a class="#">
+                                    ¡¡ Quiero matricularme en una asginatura !!
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab_roles" class="col s12">
+                    <div class="col s6">
+                        <div class="card hoverable">
+                            <div class="card-title deep-purple lighten-1 padding-10 center-align">
+                                <h5 class="">Profesor</h5>
+                            </div>
+                            <div class="card-content padding-10">
+                                <ul>
+                                    <li> Al crear una asginatura automáticamente obtendrás el rol de profesor</li>
+                                    <li> Tendrás acceso a la gestión de la asignatura que hayas creado</li>
+                                    <li> Podrás enviar invitaciones para que se inscriban en tu asignatura</li>
+                                    <li> Crea exámenes con preguntas aleatorias y que se corrijan al instante</li>
+                                    <li> ¡Ten el control de tus usuarios inscritos!</li>
+                                    <li> Escríbeles mensajes para contactar con ellos</li>
+                                </ul>
+                            </div>
+                            <div class="card-action">
+                                <a class="#">
+                                    Quiero crear una nueva asignatura
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="card hoverable">
+                            <div class="card-title deep-purple lighten-1 padding-10 center-align">
+                                <h5 class="">Alumno</h5>
+                            </div>
+                            <div class="card-content padding-10">
+                                <ul>
+                                    <li> Sé el dueño de las preguntas</li>
+                                    <li> Realiza baterías de test personalizadas</li>
+                                    <li> Añade preguntas con la ponderación que quiera</li>
+                                    <li> Crea exámenes con preguntas aleatorias y que se corrijan al instante</li>
+                                    <li> ¡Ten el control de tus usuarios inscritos!</li>
+                                    <li> Escríbeles mensajes para contactar con ellos</li>
+                                </ul>
+                            </div>
+                            <div class="card-action">
+                                <a class="#">
+                                    ¡¡ Quiero matricularme en una asginatura !!
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab_tests" class="col s12">
+                    <div class="col s4">
+                        <div class="card hoverable">
+                            <div class="card-title green lighten-1 padding-10 center-align">
+                                <h5 class="">Crea </h5>
+                            </div>
+                            <div class="card-content padding-10">
+                                <ul>
+                                    <li> Sé el dueño de las preguntas</li>
+                                    <li> Realiza baterías de test personalizadas</li>
+                                    <li> Añade preguntas con la ponderación que quiera</li>
+                                    <li> Crea exámenes con preguntas aleatorias y que se corrijan al instante</li>
+                                    <li> ¡Ten el control de tus usuarios inscritos!</li>
+                                    <li> Escríbeles mensajes para contactar con ellos</li>
+                                </ul>
+                            </div>
+                            <div class="card-action">
+                                <a class="#">
+                                    Quiero crear una nueva asignatura
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col s4">
+                        <div class="card hoverable">
+                            <div class="card-title green lighten-1 padding-10 center-align">
+                                <h5 class="">Evalúa </h5>
+                            </div>
+                            <div class="card-content padding-10">
+                                <ul>
+                                    <li> Sé el dueño de las preguntas</li>
+                                    <li> Realiza baterías de test personalizadas</li>
+                                    <li> Añade preguntas con la ponderación que quiera</li>
+                                    <li> Crea exámenes con preguntas aleatorias y que se corrijan al instante</li>
+                                    <li> ¡Ten el control de tus usuarios inscritos!</li>
+                                    <li> Escríbeles mensajes para contactar con ellos</li>
+                                </ul>
+                            </div>
+                            <div class="card-action">
+                                <a class="#">
+                                    Quiero crear una nueva asignatura
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col s4">
+                        <div class="card hoverable">
+                            <div class="card-title green lighten-1 padding-10 center-align">
+                                <h5 class="">Notifica </h5>
+                            </div>
+                            <div class="card-content padding-10">
+                                <ul>
+                                    <li> Sé el dueño de las preguntas</li>
+                                    <li> Realiza baterías de test personalizadas</li>
+                                    <li> Añade preguntas con la ponderación que quiera</li>
+                                    <li> Crea exámenes con preguntas aleatorias y que se corrijan al instante</li>
+                                    <li> ¡Ten el control de tus usuarios inscritos!</li>
+                                    <li> Escríbeles mensajes para contactar con ellos</li>
+                                </ul>
+                            </div>
+                            <div class="card-action">
+                                <a class="#">
+                                    Quiero crear una nueva asignatura
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- <div class="mdl-card__actions mdl-card--border">
+
+                         <!--<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                             Get Started
+                         </a>
+                     </div>
+
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">share</i>
+                        </button>
+                    </div>
+    -->
+
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="page-footer teal lighten-2">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
+                    content.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2014 Copyright Text
+            <a class="white-text right" href="#!">More Links</a>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.knob.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/test_functions.js"></script>
+</body>
+</html>
