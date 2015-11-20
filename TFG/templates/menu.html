@@ -1,0 +1,173 @@
+{% load static from staticfiles %}
+{% if user.is_authenticated %}
+    <nav>
+        <div class="nav-wrapper teal lighten-2">
+
+            <a href="/" class="brand-logo center">¿Cuánto sabes?</a>
+            <a href="#" data-activates="menu-lateral" class="button-collapse ">
+                <div class="chip">
+                    <img src="{% static "img/form-register.jpg" %}" alt="Contact Person">
+                    {{ user.username }}
+                </div>
+            </a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{% url 'create_subject' %}">Crear Asignatura</a></li>
+                <!--<li><a href="collapsible.html">Exámenes</a></li>
+                <li><a href="mobile.html">Trending</a></li>-->
+            </ul>
+
+
+            <div class="side-nav fixed" id="menu-lateral">
+
+                <div class="row ">
+                    <div class="l12">
+                        <div class="profile teal lighten-1 center-align">
+                            <div class="circle">
+                                <input hidden type="text" value="75" class="dial"/>
+
+                                <img class="img" src="img/form-register.jpg">
+
+                                <div class="level">
+                                    <span class="text-score text-darken-5">1240/3000</span>
+
+                                    <div class="text-level"><span class="num-level text-center opacity-9">6</span></div>
+                                </div>
+                            </div>
+                            <div class="user valign">
+                                <span>{{ user.username }}</span>
+
+                                <a href="{% url 'logout' %}" class="waves-effect deep-orange btn btn-logout"
+                                   title="Cerrar sesión">
+                                    Desconectar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="collapsible" data-collapsible="accordion">
+                    <li>
+                        <a class="collapsible-header" href="my_subjects.html"><i class="material-icons">folder_open</i>
+                            Mis asignaturas</a>
+
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">filter_1</i> Mi clasificación
+                        </div>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Global">Global</div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Por asignatura
+                                    </div>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="achievements.html" class="collapsible-header"><i class="material-icons">stars</i> Mis
+                            logros
+                        </a>
+
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">settings</i> Configuración
+                        </div>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Perfil</div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Seguridad
+                                    </div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Mensajes
+                                    </div>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">person_outline</i> Perfil
+                        </div>
+                        <div class="collapsible-body">
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+{% else %}
+    <nav>
+        <div class="nav-wrapper teal lighten-2">
+            <a href="/" class="brand-logo center">¿Cuánto sabes?</a>
+            <a class="waves-effect deep-orange btn btn-login"
+                    title="Iniciar sesión"  href="/user/login">
+                Iniciar sesión
+            </a>
+            <span> ó </span>
+            <a href="{% url 'registration_register' %}" class="waves-effect deep-orange btn btn-login"
+                    title="Iniciar sesión" >
+                Registrarme
+            </a>
+            <div class="side-nav hide" id="menu-lateral">
+            </div>
+        </div>
+        <!--  <ul class="right hide-on-med-and-down">
+              <li><a href="subject.html">Crear Asignatura</a></li>
+              <li><a href="collapsible.html">Exámenes</a></li>
+              <li><a href="mobile.html">Trending</a></li>
+          </ul>-->
+
+
+    </nav>
+
+    <!-- Modal Structure -->
+    <div id="modal_login" class="modal col s12">
+        <form name="form_login" class="col s12" method="POST">{% csrf_token %}
+            <div class="modal-content">
+                <h4>Iniciar sesión</h4>
+
+                <div class="row">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input name="username" id="icon_prefix" type="text" class="validate">
+                            <label for="icon_prefix">Usuario</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">fiber_pin</i>
+                            <input name="password" id="icon_telephone" type="password" class="validate">
+                            <label for="icon_telephone">Contraseña</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit"
+                        class=" modal-action waves-effect waves-light btn ">Entrar <i
+                        class="material-icons left">play_circle_outline</i></button>
+                <button class=" modal-action modal-close waves-effect waves-light btn btn-flat ">Salir <i
+                        class="material-icons left">power_settings_new</i></button>
+            </div>
+        </form>
+
+    </div>
+{% endif %}
