@@ -1,0 +1,72 @@
+{% extends 'index.html' %}
+
+{% block title %}Ponte a prueba (BODY){% endblock title %}
+<!-- Wide card with share menu button -->
+{% block content %}
+
+    <div class="mdl-grid ">
+        <div class="mdl-cell mdl-cell--12-col">
+            <div class="mdl-grid">
+
+                <div class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h1 class="mdl-card__title-text">¡Bienvenido a la nueva plataforma de Test interactiva y fácil de usar!</h1>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Mauris sagittis pellentesque lacus eleifend lacinia...
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Get Started
+                        </a>
+                    </div>
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">share</i>
+                        </button>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="mdl-grid ">
+                {% for i in rango %}
+                    <div class="mdl-cell mdl-cell--3-col">
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">Bienvenido a {{ i }}</h2>
+                            </div>
+                            <div class="mdl-card__supporting-text">
+                                Este tema trata sobre las características y propiedades que tiene un sistema de información
+                                con lenguaje de alto nivel como Python.
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                    ¡Matricularme!
+                                </a>
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                    <i class="material-icons">share</i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="snippet-captions">
+                <div class="snippet-caption-padding"></div>
+
+                <div class="snippet-caption">
+                    Fixed header and drawer
+                </div>
+                <div class="snippet-caption-padding"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

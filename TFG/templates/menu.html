@@ -1,0 +1,258 @@
+{% if user.is_authenticated %}
+    <nav>
+        <div class="nav-wrapper teal lighten-2">
+
+            <a href="index.html" class="brand-logo center">¿Cuánto sabes?</a>
+            <a href="#" data-activates="menu-lateral" class="button-collapse ">
+                <div class="chip">
+                    <img src="{{ STATIC_URL }}img/form-register.jpg" alt="Contact Person">
+                    Óscar Zafra
+                </div>
+            </a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="subject.html">Crear Asignatura</a></li>
+                <li><a href="collapsible.html">Exámenes</a></li>
+                <li><a href="mobile.html">Trending</a></li>
+            </ul>
+
+
+            <div class="side-nav fixed" id="menu-lateral">
+
+                <div class="row ">
+                    <div class="l12">
+                        <div class="profile teal lighten-1 center-align">
+                            <div class="circle">
+                                <input hidden type="text" value="75" class="dial"/>
+
+                                <img class="img" src="img/form-register.jpg">
+
+                                <div class="level">
+                                    <span class="text-score text-darken-5">1240/3000</span>
+
+                                    <div class="text-level"><span class="num-level text-center opacity-9">6</span></div>
+                                </div>
+                            </div>
+                            <div class="user valign">
+                                <span>Óscar Zafra Megías</span>
+
+                                <button class="waves-effect deep-orange btn" href="#!"
+                                        title="Cerrar sesión">Desconectar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="collapsible" data-collapsible="accordion">
+                    <li>
+                        <a class="collapsible-header" href="my_subjects.html"><i class="material-icons">folder_open</i>
+                            Mis asignaturas</a>
+
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">filter_1</i> Mi clasificación
+                        </div>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Global">Global</div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Por asignatura
+                                    </div>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="achievements.html" class="collapsible-header"><i class="material-icons">stars</i> Mis
+                            logros
+                        </a>
+
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">settings</i> Configuración
+                        </div>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Perfil</div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Seguridad
+                                    </div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Mensajes
+                                    </div>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">person_outline</i> Perfil
+                        </div>
+                        <div class="collapsible-body">
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+{% else %}
+    <nav>
+        <div class="nav-wrapper teal lighten-2">
+
+            <a href="index.html" class="brand-logo center">¿Cuánto sabes?</a>
+            <a href="#" data-activates="menu-lateral" class="button-collapse ">
+                <div class="chip">
+                    <img src="{{ STATIC_URL }}img/form-register.jpg" alt="Contact Person">
+                    Óscar Zafra
+                </div>
+            </a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="subject.html">Crear Asignatura</a></li>
+                <li><a href="collapsible.html">Exámenes</a></li>
+                <li><a href="mobile.html">Trending</a></li>
+            </ul>
+
+
+            <div class="side-nav fixed" id="menu-lateral">
+
+                <div class="row ">
+                    <div class="l12">
+                        <div class="profile teal lighten-1 center-align">
+                            <div class="circle">
+                                <input hidden type="text" value="75" class="dial"/>
+
+                                <img class="img" src="img/form-register.jpg">
+
+                                <div class="level">
+                                    <span class="text-score text-darken-5">1240/3000</span>
+
+                                    <div class="text-level"><span class="num-level text-center opacity-9">6</span></div>
+                                </div>
+                            </div>
+                            <div class="user valign">
+                                <span>Óscar Zafra Megías</span>
+
+                                <button class="waves-effect deep-orange btn" href="#!"
+                                        title="Cerrar sesión">Desconectar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="collapsible" data-collapsible="accordion">
+                    <li>
+                        <a class="collapsible-header" href="my_subjects.html"><i class="material-icons">folder_open</i>
+                            Mis asignaturas</a>
+
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">filter_1</i> Mi clasificación
+                        </div>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Global">Global</div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Por asignatura
+                                    </div>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="achievements.html" class="collapsible-header"><i class="material-icons">stars</i> Mis
+                            logros
+                        </a>
+
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">settings</i> Configuración
+                        </div>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Perfil</div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Seguridad
+                                    </div>
+                                </a></li>
+                                <li class="valign-wrapper"><a class="" href="#!"><i
+                                        class="deep-orange-text material-icons valign small">label_outline</i>
+
+                                    <div class="" title="Asignatura con nombre largo">Mensajes
+                                    </div>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small">person_outline</i> Perfil
+                        </div>
+                        <div class="collapsible-body">
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--<div class="mdl-cell--12-col header-layout-float mdl-color--blue-800 text-session">
+        <div class="section__circle-container mdl-cell mdl-cell--6-col">
+            <div class="section__circle-container__circle image-circle"></div>
+        </div>
+
+        <span class="text-session">¿Aún no te has registrado?</span>
+
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" href="/user/register">
+            <span class="mdl-layout-title text-lateral">¡ Registrarme !</span>
+        </a>
+    </div>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-upgraded ms-center mdl-cell--11-col "
+         data-upgraded=",MaterialTextfield">
+        <form name="forms" id="form_login" method="POST" action="" enctype="multipart/form-data">
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" name="username" type="text" id="inputUser"/>
+                <label class="mdl-textfield__label" for="">Usuario</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" name="password" type="password" id="inputPassword"/>
+                <label class="mdl-textfield__label" for="">Contraseña</label>
+            </div>
+        </form>
+    </div>
+
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" form="form_login">
+        <span class="mdl-layout-title text-lateral">Iniciar Sesión</span>
+    </button>-->
+{% endif %}
