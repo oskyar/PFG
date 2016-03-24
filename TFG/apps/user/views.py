@@ -37,26 +37,18 @@ class UserProfileView(RegistrationView):
         print("Entra en valid")
 
         # print("Form_valid")
-        response = super(UserProfileView, self).form_invalid(form)
+        response = super(UserProfileView, self).form_valid(form)
         if self.request.is_ajax():
             return JsonResponse(data)
         else:
             return response
 
     def form_invalid(self, form):
-
-        # print(self)
-        print("Formulario invalido")
         response = super(UserProfileView, self).form_invalid(form)
-        print(form)
         if self.request.is_ajax():
             return JsonResponse(form.errors, status=200)
         else:
             return response
-
-    def check_username(self, form):
-        print(UserProfile.objects.get_user_by_username(form.cleaned_data['username']))
-
 
 data = {
     'username': 'pepito',

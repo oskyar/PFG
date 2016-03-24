@@ -22,26 +22,20 @@ class UserProfileForm(RegistrationForm):
                           emails_dont_match=_("Los correos electrónicos no coinciden"),
                           dni_format_invalid=_("El DNI no tiene el formato correcto, introduzca 8 letras y una letra"))
 
-    username = forms.CharField(min_length=3, widget=forms.TextInput(attrs={'class': ''}), label="Nombre de usuario")
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'validate'}), label="Nombre")
-    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'validate'}), label="Apellidos")
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': ''}), label="Correo electrónico")
-    email2 = forms.EmailField(widget=forms.EmailInput(attrs={'class': ''}), label="Repita el correo electrónico")
+    username = forms.CharField(min_length=3, widget=forms.TextInput(attrs={'class': ''}), label=_("Nombre de usuario"))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'validate'}), label=_("Nombre"))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'validate'}), label=_("Apellidos"))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'validate'}), label=_("Contraseña"))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'validate'}),
+                                label=_("Repita la contraseña"))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': ''}), label=_("Correo electrónico"))
+    email2 = forms.EmailField(widget=forms.EmailInput(attrs={'class': ''}), label=_("Repita el correo electrónico"))
     dni = forms.CharField(min_length=9, max_length=9, required=False,
-                          widget=forms.TextInput(attrs={'class': 'validate'}), label="DNI")
+                          widget=forms.TextInput(attrs={'class': 'validate'}), label=_("DNI"))
 
-    photo = forms.ImageField()
-    created_on = forms.DateTimeField(initial=datetime.datetime.today())
-    modify_on = forms.DateTimeField(initial=datetime.datetime.today())
-
-    """def __init__(self,*args, **kwargs):
-        obj = super(UserProfileForm, self).__init__(*args, **kwargs)
-        print(forms.Field.)
-        self.username.min_length=3
-        self.username.required=True
-        self.username.label="Nombre de usuario"
-        self.username.widget_attrs({'class':'validate valid'})
-    """
+    photo = forms.ImageField(required=False)
+    created_on = forms.DateTimeField(required=False, initial=datetime.datetime.today())
+    modify_on = forms.DateTimeField(required=False, initial=datetime.datetime.today())
 
     class Meta:
         model = User
@@ -87,88 +81,13 @@ class UserProfileForm(RegistrationForm):
             if not re.match("(\d{8}\w{1})", dni):
                 raise forms.ValidationError(
                     self.error_messages['dni_format_invalid'],
-
                 )
         return dni
 
-
-"""
     def clean_password2(self):
-        ""Comprueba que password y password2 sean iguales.""
+        """Comprueba que password y password2 sean iguales."""
         password1 = self.cleaned_data['password1']
         password2 = self.cleaned_data['password2']
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError('Las contraseñas no coinciden.')
         return password2
-
-
-""
-class UserRegistrationForm(RegistrationForm):
-    error_messages = {
-        'password_mismatch': _("The two password fields didn't match."),
-    }
-
-    username = forms.CharField(
-        min_length=4,
-        widget=forms.TextInput(attrs={'class': 'mdl-textfield__input', 'id': 'usernameRegister'}),
-        label="*Usuario:")
-
-    email = forms.EmailField(
-        widget=forms.EmailInput(attrs={'class': 'mdl-textfield__input'}),
-        label="*Email:")
-
-    first_name = forms.CharField(
-        min_length=2,
-        widget=forms.TextInput(attrs={'class': 'mdl-textfield__input'}),
-        label="*Nombre:")
-
-    last_name = forms.CharField(
-        min_length=2,
-        widget=forms.TextInput(attrs={'class': 'mdl-textfield__input'}),
-        label="Segundo nombre:")
-
-    password1 = forms.CharField(
-        min_length=5,
-        widget=forms.PasswordInput(attrs={'class': 'mdl-textfield__input'}),
-        label="*Contraseña:")
-
-    password2 = forms.CharField(
-        min_length=5,
-        widget=forms.PasswordInput(attrs={'class': 'mdl-textfield__input'}),
-        label="*Repita contraseña:",
-        help_text=_("Enter the same password as above, for verification."))
-
-    class Meta:
-        model = User
-        fields = ("username", "first_name", "last_name", "email")
-
-        #
-        # photo = forms.ImageField(
-        #     required=False,
-        #     label="")
-
-    def clean_username(self):
-        #""Comprueba que no exista un username igual en la db""
-        username = self.cleaned_data['username']
-        if User.objects.filter(username=username):
-            raise forms.ValidationError('Nombre de usuario ya registrado.')
-        return username
-
-    def clean_email(self):
-        #""Comprueba que no exista un email igual en la db""
-        email = self.cleaned_data['email']
-        if User.objects.filter(email=email):
-            raise forms.ValidationError(
-                self.error_messages['password_mismatch'],
-                code='password_mismatch',
-            )
-        return email
-
-    def clean_password2(self):
-        #""Comprueba que password y password2 sean iguales.""
-        password1 = self.cleaned_data['password1']
-        password2 = self.cleaned_data['password2']
-        if password1 and password2 and password1 != password2:
-            raise forms.ValidationError('Las contraseñas no coinciden.')
-        return password2
-"""
