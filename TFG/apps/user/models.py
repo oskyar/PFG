@@ -1,10 +1,8 @@
 __author__ = 'oskyar'
 
-from django.db import models
-from django.conf import settings
-from django.contrib.auth.models import User
-from registration.models import RegistrationProfile
 from django.contrib import admin
+from django.contrib.auth.models import User
+from django.db import models
 
 
 class UserProfileManager(models.Manager):

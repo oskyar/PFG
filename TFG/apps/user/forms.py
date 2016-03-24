@@ -1,13 +1,9 @@
 __author__ = 'oskyar'
 
-from django.contrib.auth.views import password_change
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
 from registration.forms import RegistrationForm
-from registration.models import RegistrationProfile
 # from registration.models import UserModel
-from TFG.apps.user.models import UserProfile
 # Para traducir textos
 from django.utils.translation import ugettext_lazy as _
 import re
