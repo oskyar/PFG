@@ -4,7 +4,6 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 from registration.models import RegistrationProfile
-
 from django.contrib import admin
 
 
@@ -12,17 +11,19 @@ class UserProfileManager(models.Manager):
     def get_user_by_email(self, email):
         #user = User.objects.get(email=email)
         try:
-            return UserProfile.objects.get(user=User.objects.get(email=email))
-        except User.DoesNotExist:
+            return UserProfile.objects.get(user=User.objects.get(email=email).id)
+        except UserProfile.DoesNotExist:
             return None
 
     def get_user_by_username(self, username):
-        return UserProfile.objects.get(user=User.objects.get(username=username))
+        try:
+            return UserProfile.objects.get(user=User.objects.get(username=username).id)
+        except UserProfile.DoesNotExist:
+            return None
 
 
 
 class UserProfile(models.Model):
-    print("Entra en userProfile")
     user = models.OneToOneField(User)
     dni = models.CharField(max_length=9, blank=True, null=True)
     photo = models.ImageField(upload_to='profiles', blank=True, null=True)
