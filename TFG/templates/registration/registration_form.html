@@ -76,7 +76,7 @@
                             <i class="material-icons prefix">lock</i>
                             {{ form.password1 }}
                             <label for="{{ form.password1.id_for_label }}"
-                                   data-error="Error: {{ form.password1.errors|striptags }}"
+                                   data-error="{{ form.password1.errors|striptags }}"
                                    data-success="Contraseña correcta">{{ form.password1.label }}</label>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                             <i class="material-icons prefix">lock</i>
                             {{ form.password2 }}
                             <label for="{{ form.password2.id_for_label }}"
-                                   data-error="Error: {{ form.password2.errors|striptags }}"
+                                   data-error="{{ form.password2.errors|striptags }}"
                                    data-success="Contraseñas correctas">{{ form.password2.label }}</label>
                         </div>
                     </div>

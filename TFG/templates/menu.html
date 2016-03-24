@@ -1,4 +1,5 @@
 {% load static from staticfiles %}
+
 {% if user.is_authenticated %}
     <nav>
         <div class="nav-wrapper teal lighten-2">
@@ -26,7 +27,7 @@
                             <div class="circle">
                                 <input hidden type="text" value="75" class="dial"/>
 
-                                <img class="img" src="img/form-register.jpg">
+                                <img class="img" src="{{ request.session.photo }}">
 
                                 <div class="level">
                                     <span class="text-score text-darken-5">1240/3000</span>
@@ -35,7 +36,7 @@
                                 </div>
                             </div>
                             <div class="user valign">
-                                <span>{{ user.username }}</span>
+                                <span>{{ user.first_name }} {{ user.last_name }}</span>
 
                                 <a href="{% url 'logout' %}" class="waves-effect deep-orange btn btn-logout"
                                    title="Cerrar sesión">
