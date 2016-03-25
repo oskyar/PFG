@@ -25,7 +25,7 @@ MANAGERS = ADMINS
 
 # Database
 DATABASES = {
-    'heroku': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': 'ec2-54-163-228-188.compute-1.amazonaws.com',
         # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -36,22 +36,11 @@ DATABASES = {
         # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
         'PORT': '5432',  # Set to empty string for default.
     },
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'dbtfg',  # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': 'oskyar',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
-        'PORT': '5432',  # Set to empty string for default.
 
-    }
 }
 
-db_from_env = dj_database_url.config()
-DATABASES['heroku'].update(db_from_env)
+#db_from_env = dj_database_url.config()
+DATABASES['default'].update(dj_database_url.config())
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
