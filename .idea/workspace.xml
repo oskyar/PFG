@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fbc4851-ab7c-4edc-8066-f4769d61bf2f" name="Default" comment="Merge remote-tracking branch 'origin/trying-class' into trying-class&#10;&#10;# Conflicts:&#10;#&#9;TFG/apps/index/urls.py&#10;#&#9;TFG/apps/index/views.py&#10;#&#9;TFG/apps/subject/admin.py&#10;#&#9;TFG/apps/subject/forms.py&#10;#&#9;TFG/apps/subject/models.py&#10;#&#9;TFG/apps/subject/urls.py&#10;#&#9;TFG/apps/subject/views.py&#10;#&#9;TFG/apps/user/admin.py&#10;#&#9;TFG/apps/user/forms.py&#10;#&#9;TFG/apps/user/models.py&#10;#&#9;TFG/apps/user/urls.py&#10;#&#9;TFG/apps/user/views.py&#10;#&#9;TFG/static/css/materialize.css&#10;#&#9;TFG/static/css/materialize.min.css&#10;#&#9;TFG/static/css/myStyle.css&#10;#&#9;TFG/static/js/materialize.js&#10;#&#9;TFG/static/js/materialize.min.js&#10;#&#9;TFG/static/js/test_functions.js&#10;#&#9;TFG/templates/base.html&#10;#&#9;TFG/templates/index/index.html&#10;#&#9;TFG/templates/menu.html&#10;#&#9;TFG/urls.py&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/settings.py" afterPath="$PROJECT_DIR$/TFG/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <ignored path="test_TFG.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,10 +46,10 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFG/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
+            <state relative-caret-position="382">
+              <caret line="39" column="45" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
               <folding>
-                <element signature="e#18#73#0" expanded="true" />
+                <element signature="e#17#50#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -931,10 +928,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
+        <state relative-caret-position="382">
+          <caret line="39" column="45" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
           <folding>
-            <element signature="e#18#73#0" expanded="true" />
+            <element signature="e#17#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
