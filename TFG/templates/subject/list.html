@@ -5,44 +5,79 @@
 {% block content %}
 
     <div class="row col l12 m12 s12 subject-card">
-        <h3>Mis asignaturas</h3>
+        <h3>Creando una asignatura</h3>
 
         <div class="row">
-            {% for subject in subjects %}
-                <div class="col l4 m4 s6">
-                    <div class="card small subject-card">
-                        <div class="card-image">
-                            <a class="btn-floating btn waves-effect waves-light red container-floating-num tooltipped"
-                               data-position="top" data-delay="50" data-tooltip="Capacidad de alumnos"><span
-                                    class="num-limit" data-name="capacity">{{ subject.capacity }}</span></a>
-                            <a class="btn-floating btn waves-effect waves-light mdl-color--teal-100 container-floating-num tooltipped"
-                               data-position="top" data-delay="50" data-tooltip="Número de temas"><span
-                                    class="num-limit" data-name="num_topics">{{ subject.num_topics }}</span></a>
+            <div class="col l5 m5 hide-on-small-only">
+                <div class="card small subject-card">
+                    <div class="card-image">
+                        <a class="btn-floating btn waves-effect waves-light red container-floating-num tooltipped"
+                           data-position="top" data-delay="50" data-tooltip="Capacidad de alumnos"><span
+                                class="num-limit" data-name="capacity"> 0</span></a>
+                        <a class="btn-floating btn waves-effect waves-light mdl-color--teal-100 container-floating-num tooltipped"
+                           data-position="top" data-delay="50" data-tooltip="Número de temas"><span
+                                class="num-limit" data-name="num_topics"> 0</span></a>
 
-                            <div class="container-img">
-                                {% if subject.image %}
-                                    <img data-name="image_subject" src="{% static subject.image.url %}">
-                                {% else %}
-                                    <img data-name="image_subject" src="/media/profiles/home-peluches.png">
-                                {% endif %}
+                        <div class="container-img">
+                            <img data-name="image_subject" src="{% static 'img/transparent.jpg' %}">
 
-                            </div>
-                            <span class="card-title" data-name="subject_name">{{ subject.name }}</span>
                         </div>
-                        <div class="card-content min-height-card">
-                            <i class="material-icons red-text left">clear</i><span
-                                data-name="description">{{ subject.description }}</span>
-                            <div class="card-action">
-                                {% if subject.test_opt %}
-                                    <span data-name="text_opt"><i class="material-icons green-text left">done</i> Acceder al examen final directamente</span>
-                                {% else %}
-                                    <span data-name="text_opt"><i class="material-icons red-text left">clear</i> Acceder al examen final directamente</span>
-                                {% endif %}
+                        <span class="card-title" data-name="subject_name">Nombre de la asignatura</span>
+                    </div>
+                    <div class="card-content min-height-card">
+                        <i class="material-icons red-text left">clear</i><span data-name="description"> Descripción de la asignatura</span>
+                    </div>
+                    <div class="card-action">
+                        <span data-name="text_opt"><i class="material-icons red-text left">clear</i> Acceder al examen final directamente</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col l1 m1">&nbsp;</div>
+            <div class="col l6 m6 s12 ">
+                <form method="POST" enctype="multipart/form-data" action="">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s12 m8 l12">
+                            {{ form.name }}
+                            <label class="validate" data-error="{{ form.name.errors|striptags }}"
+                                   data-success="Nombre de asignatura correcto"
+                                   for="{{ form.name.auto_id }}">{{ form.name.label }}</label>
+                        </div>
+
+                        <div class="file-field input-field col s12 m12 l12">
+                            <div id="file-uploader" class="">
+                                <span>{{ form.image.label }}</span>
+                                {{ form.image }}
+                            </div>
+                        </div>
+                        <div class="input-field col s12 m4 l2">
+                            {{ form.capacity }}
+                            <label class="validate"
+                                   for="{{ form.capacity.auto_id }}">{{ form.capacity.label }}</label>
+                        </div>
+                        <div class="input-field col s12 m4 l2">
+                            <input id="id_num_topics" placeholder="0" type="number" maxlength="2"/>
+                            <label class="validate"
+                                   for="num_topics" name="num_topics">Nº de Temas</label>
+                        </div>
+                        <div class="input-field col s12 m12 l4 valign-wrapper">
+                            <div class="valign">
+                                {{ form.test_opt }}
+                                <label for="{{ form.test_opt.auto_id }}"> {{ form.test_opt.label }}</label>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                    <div class="input-field col s12 m12 l12">
+                        {{ form.description }}
+                        <label class="validate"
+                               for="{{ form.description.auto_id }}">{{ form.description.label }}</label>
+                    </div>
+                    <!--<button type="submit" class="btn waves-effect waves-light">Guardar y salir</button>-->
+                    <button type="submit" class="btn waves-effect waves-light">Crear Temas</button>
+                    <!--<button type="submit" class="btn waves-effect waves-light right">Crear y seguir con los temas
+                    </button>-->
+                </form>
+            </div>
         </div>
     </div>
 {% endblock content %}

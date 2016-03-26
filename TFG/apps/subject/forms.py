@@ -32,17 +32,6 @@ class CreateSubjectForm(forms.ModelForm):
                 self.error_messages['field_required'], code="required")
         return name
 
-    def clean_image(self):
-        image = self.cleaned_data['image']
-        print(image)
-
-    def clean_description(self):
-        description = self.cleaned_data['description']
-        if not description:
-            raise forms.ValidationError(
-                self.error_messages['field_required'], code="required")
-        return description
-
 
 class CreateTopicForm(forms.ModelForm):
     template_name = "create.html"
@@ -131,27 +120,7 @@ class CreateAnswerForm(forms.ModelForm):
 class BaseAnswerFormSet(BaseFormSet):
     def clean(self):
         print("Entra en BaseAnswer")
-        super(BaseAnswerFormSet, self).clean()
-        for form in self.forms:
-            print(form)
-
-        valid0 = False
-        valid1 = False
-        valid2 = False
-        valid3 = False
-        if form.data.get('id_form-0-valid'):
-            valid0 = True
-        if form.data.get('id_form-1-valid'):
-            valid1 = True
-        if form.data.get('id_form-2-valid'):
-            valid2 = True
-        if form.data.get('id_form-3-valid'):
-            valid3 = True
         pass
 
-    def is_valid(self):
-        print("Form valid")
 
-
-AnswerFormSet = formset_factory(CreateAnswerForm, extra=4, formset=BaseAnswerFormSet, can_order=True, validate_min=4,
-                                validate_max=4, min_num=4, max_num=4)
+AnswerFormSet = formset_factory(CreateAnswerForm, extra=4, formset=BaseAnswerFormSet)
