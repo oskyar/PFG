@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
-{% load i18n %}
 {% block title %}Ponte a prueba - Creando Preguntas{% endblock title %}
 <!-- Wide card with share menu button -->
 {% block content %}
@@ -16,9 +15,7 @@
                         {% csrf_token %}
                         <div class="row">
                             <div class="input-field col l3 m3 s12">
-
                                 {{ form.type }}
-
                                 {% comment %}
                                 <select id="{{ form.type.id_for_label }}" class="select_choice browser-default"
                                         name="{{ form.type.id_for_label }}">
@@ -39,40 +36,41 @@
                         </div>
 
                         <div class="row">
-                            {% for replies in inlines %}
-                                {{ replies.management_form }}
-                                {% for reply in replies.forms %}
 
-                                    <div class="replies-container">
-                                        <div class="input-field col l1 m1 s2">
-                                            <input class="valid_reply" id="{{ reply.valid.id_for_label }}"
-                                                   name="{{ reply.valid.id_for_label }}" type="radio"
-                                                   title="¿Es correcta la respuesta?"/>
-                                            <label for="{{ reply.valid.id_for_label }}"></label>
-                                        </div>
-                                        <div class="input-field col l9 m9 s7">
-                                            <input class="validate"
-                                                   id="{{ reply.reply.id_for_label }}"
-                                                   maxlength="{{ reply.reply.max_length }}"
-                                                   name="{{ reply.reply.id_for_label }}"
-                                                   type="text">
-                                            <label for="{{ reply.reply.id_for_label }}">{{ reply.reply.label }}</label>
-                                        </div>
-                                        <div class="input-field col l2 m2 s3">
-                                            <input class="validate"
-                                                   id="{{ reply.adjustment.id_for_label }}"
-                                                   name="{{ reply.adjustment.id_for_label }}" type="number"/>
-                                            <label for="{{ reply.adjustment.id_for_label }}">{{ reply.adjustment.label }}</label>
-                                        </div>
+                            {% comment %}
+                            {{ replies_form }}
+                            {% endcomment %}
+
+                            {{ replies_form.management_form }}
+
+                            {% for reply in replies_form %}
+                                <div class="replies-container">
+                                    <div class="input-field col l1 m1 s2">
+                                        <input class="valid" id="{{ reply.valid.id_for_label }}"
+                                               name="{{ reply.valid.id_for_label }}" type="radio"
+                                               title="¿Es correcta la respuesta?"/>
+                                        <label for="{{ reply.valid.id_for_label }}"></label>
                                     </div>
-                                {% endfor %}
+                                    <div class="input-field col l9 m9 s7">
+                                        <input class="validate"
+                                               id="{{ reply.reply.id_for_label }}"
+                                               maxlength="{{ reply.reply.max_length }}"
+                                               name="{{ reply.reply.id_for_label }}"
+                                               type="text">
+                                        <label for="{{ reply.reply.id_for_label }}">{{ reply.reply.label }}</label>
+                                    </div>
+                                    <div class="input-field col l2 m2 s3">
+                                        <input class="validate"
+                                               id="{{ reply.adjustment.id_for_label }}"
+                                               name="reply.adjustment.id_for_label" type="number"/>
+                                        <label for="{{ reply.adjustment.id_for_label }}_{{ forloop.counter0 }}">{{ reply.adjustment.label }}</label>
+                                    </div>
+                                </div>
                             {% endfor %}
-
 
                         </div>
 
-                        {% comment %}
-                        {% for element in form %}
+                        {% comment %}{% for element in form %}
 
                                 <div class="input-field col s12 m12 l12">
                                     {{ element.label_tag }}
@@ -82,47 +80,57 @@
                             {% endfor %}
                             {% endcomment %}
 
-                        <button type="submit" id="submit_question" class="btn waves-effect waves-light">Crear otra
-                            pregunta
-                        </button>
+                        <button type="submit" class="btn waves-effect waves-light">Crear otra pregunta</button>
                     </form>
                 </div>
             </div>
             <div class="row">
-                <div class="list-answers col l12 m12 s12 ">
+                <div class="list_topics col l12 m12 s12 ">
                     <h4>Preguntas</h4>
                     <ul class="collapsible" data-collapsible="accordion">
-                        {% for question in questions %}
-                            <li id="question_{{ question.id }}">
-                                <div class="collapsible-header">
-                                    <i class="material-icons">filter_drama</i>
-                                    {{ question.statement }}
-                                    <div id="{{ question.id }}"
-                                         data-url="{% url 'delete_question' pk_subject=question.topic.subject.id pk_topic=question.topic.id pk_question=question.id %}"
-                                         class="icon-edit delete_question waves-block waves-effect waves-button-input right waves-circle ">
-                                        <i class="material-icons red-text">delete</i>
-                                    </div>
-                                    <div class="icon-edit edit_button waves-block waves-effect waves-button-input right waves-circle ">
-                                        <i class="material-icons blue-grey-text">edit</i>
-                                        {% comment %}<a href="{% url 'delete_question' question.topic.subject.id question.topic.id question.id %}"></a>
-                                                {% endcomment %}
-                                    </div>
-                                </div>
-                                <div class="collapsible-body">
-                                    <ol>
-                                        {% for answer in question.answers %}
-                                            {% if answer.valid %}
-                                                <li class="valid"
-                                                    title="{% trans 'Respuesta correcta' %}">{{ answer.reply }}</li>
-                                            {% else %}
-                                                <li>{{ answer.reply }}</li>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </ol>
-                                </div>
-                            </li>
-                        {% endfor %}
 
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>¿Por qué esto es
+                                un
+                                paso muy grande para el PFG?
+                            </div>
+                            <div class="collapsible-body">
+                                <ol>
+                                    <li>Porque si</li>
+                                    <li>Porque no</li>
+                                    <li>Todas son correctas</li>
+                                    <li>Ninguna es correcta</li>
+                                </ol>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>¿Por qué esto es
+                                un
+                                paso muy grande para el PFG?
+                            </div>
+                            <div class="collapsible-body">
+                                <ol>
+                                    <li>Porque si</li>
+                                    <li>Porque no</li>
+                                    <li>Todas son correctas</li>
+                                    <li>Ninguna es correcta</li>
+                                </ol>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>¿Por qué esto es
+                                un
+                                paso muy grande para el PFG?
+                            </div>
+                            <div class="collapsible-body">
+                                <ol>
+                                    <li>Porque si</li>
+                                    <li>Porque no</li>
+                                    <li>Todas son correctas</li>
+                                    <li>Ninguna es correcta</li>
+                                </ol>
+                            </div>
+                        </li>
                     </ul>
 
 
@@ -131,7 +139,7 @@
 
         </div>
 
-        <div class="list-topics col l4 m4 s12 ">
+        <div class="list_topics col l4 m4 s12 ">
             <h4>Temas</h4>
             <ol>
                 {% for topic in topics %}
