@@ -26,8 +26,11 @@
                         <div class="profile teal lighten-1 center-align">
                             <div class="circle">
                                 <input hidden type="text" value="75" class="dial"/>
-
-                                <img class="img" src="{{ request.session.photo }}">
+                                {% if request.session.photo != null %}
+                                    <img class="img" width="100%" src="{{ request.session.photo }}">
+                                {% else %}
+                                    <img class="img" src="/media/profiles/home-peluches.png">
+                                {% endif %}
 
                                 <div class="level">
                                     <span class="text-score text-darken-5">1240/3000</span>
@@ -104,11 +107,11 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons small">person_outline</i> Perfil
-                        </div>
-                        <div class="collapsible-body">
+                        <a class="collapsible-header" href='{% url 'edit_profile' user.username %}'><i
+                                class="material-icons">person_outline</i>
+                            Perfil</a>
 
-                        </div>
+
                     </li>
                 </ul>
             </div>
@@ -120,12 +123,12 @@
         <div class="nav-wrapper teal lighten-2">
             <a href="/" class="brand-logo center">¿Cuánto sabes?</a>
             <a class="waves-effect deep-orange btn btn-login"
-                    title="Iniciar sesión"  href="/user/login">
+               title="Iniciar sesión" href="/user/login">
                 Iniciar sesión
             </a>
             <span> ó </span>
             <a href="{% url 'registration_register' %}" class="waves-effect deep-orange btn btn-login"
-                    title="Iniciar sesión" >
+               title="Iniciar sesión">
                 Registrarme
             </a>
             <div class="side-nav hide" id="menu-lateral">

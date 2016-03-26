@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block title %}Ponte a prueba - Creando Preguntas{% endblock title %}
+<!-- Wide card with share menu button -->
+{% block content %}
+
+    <div class="row">
+        <div class=" col l8 m8 s12 subject-card">
+            <h3>Creando preguntas ({{ current_topic.name }})</h3>
+
+            <div class="row">
+
+                <div class="col l12 m12 s12 ">
+                    <form method="POST" enctype="multipart/form-data" action="">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="input-field col l3 m3 s12">
+                                {{ form.type }}
+                                {% comment %}
+                                <select id="{{ form.type.id_for_label }}" class="select_choice browser-default"
+                                        name="{{ form.type.id_for_label }}">
+                                    {% for choice in form.type.field.choices %}
+                                        <option value={{ choice.0 }}>{{ choice.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                                <label for="{{ form.type.id_for_label }}">{{ form.type.label }}</label>
+                                {% endcomment %}
+                            </div>
+
+                            <div class="input-field col l9 m9 s12">
+                                {{ form.statement }}
+                                <label for="{{ form.statement.id_for_label }}"
+                                       data-error="{{ form.statement.errors|striptags }}"
+                                       data-success="Enunciado correcto">{{ form.statement.label }}</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            {% comment %}
+                            {{ replies_form }}
+                            {% endcomment %}
+
+                            {{ replies_form.management_form }}
+
+                            {% for reply in replies_form %}
+                                <div class="replies-container">
+                                    <div class="input-field col l1 m1 s2">
+                                        <input class="valid" id="{{ reply.valid.id_for_label }}"
+                                               name="{{ reply.valid.id_for_label }}" type="radio"
+                                               title="¿Es correcta la respuesta?"/>
+                                        <label for="{{ reply.valid.id_for_label }}"></label>
+                                    </div>
+                                    <div class="input-field col l9 m9 s7">
+                                        <input class="validate"
+                                               id="{{ reply.reply.id_for_label }}"
+                                               maxlength="{{ reply.reply.max_length }}"
+                                               name="{{ reply.reply.id_for_label }}"
+                                               type="text">
+                                        <label for="{{ reply.reply.id_for_label }}">{{ reply.reply.label }}</label>
+                                    </div>
+                                    <div class="input-field col l2 m2 s3">
+                                        <input class="validate"
+                                               id="{{ reply.adjustment.id_for_label }}"
+                                               name="reply.adjustment.id_for_label" type="number"/>
+                                        <label for="{{ reply.adjustment.id_for_label }}_{{ forloop.counter0 }}">{{ reply.adjustment.label }}</label>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+                        {% comment %}{% for element in form %}
+
+                                <div class="input-field col s12 m12 l12">
+                                    {{ element.label_tag }}
+                                    {{ element }}
+                                    {{ element.errors }}
+                                </div>
+                            {% endfor %}
+                            {% endcomment %}
+
+                        <button type="submit" class="btn waves-effect waves-light">Crear otra pregunta</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="list_topics col l12 m12 s12 ">
+                    <h4>Preguntas</h4>
+                    <ul class="collapsible" data-collapsible="accordion">
+
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>¿Por qué esto es
+                                un
+                                paso muy grande para el PFG?
+                            </div>
+                            <div class="collapsible-body">
+                                <ol>
+                                    <li>Porque si</li>
+                                    <li>Porque no</li>
+                                    <li>Todas son correctas</li>
+                                    <li>Ninguna es correcta</li>
+                                </ol>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>¿Por qué esto es
+                                un
+                                paso muy grande para el PFG?
+                            </div>
+                            <div class="collapsible-body">
+                                <ol>
+                                    <li>Porque si</li>
+                                    <li>Porque no</li>
+                                    <li>Todas son correctas</li>
+                                    <li>Ninguna es correcta</li>
+                                </ol>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>¿Por qué esto es
+                                un
+                                paso muy grande para el PFG?
+                            </div>
+                            <div class="collapsible-body">
+                                <ol>
+                                    <li>Porque si</li>
+                                    <li>Porque no</li>
+                                    <li>Todas son correctas</li>
+                                    <li>Ninguna es correcta</li>
+                                </ol>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="list_topics col l4 m4 s12 ">
+            <h4>Temas</h4>
+            <ol>
+                {% for topic in topics %}
+                    <li>
+                        <a type="submit" href="{% url 'create_question' topic.subject.id topic.id %}"
+                           class="btn waves-effect waves-light">{{ topic.name }}
+                            largo</a>
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-
-{% block title %}Registro de usuario{% endblock title %}
+{% load i18n %}
+{% block title %}Actualizando perfil{% endblock title %}
 
 {% block content %}
     <div class="row">
@@ -9,9 +9,13 @@
 
             <h6>Los campos con * son obligatorios</h6>
 
-            <form method="post" name="form_register" id="form_register" action="" enctype="multipart/form-data">
+            <form method="post" name="update_register" id="update_register" action="" enctype="multipart/form-data">
                 {% csrf_token %}
-
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="card-panel white-text green darken-1"> {{ message }}</div>
+                    {% endfor %}
+                {% endif %}
                 <div class="row">
                     <div class="col l4 m4 s12">
                         <div class="input-field">
@@ -29,15 +33,6 @@
                             <label for="{{ form.email.id_for_label }}"
                                    data-error="{{ form.email.errors|striptags }}"
                                    data-success="Email disponible">{{ form.email.label }}</label>
-                        </div>
-                    </div>
-                    <div class="col l4 m4 s12">
-                        <div class="input-field">
-                            <i class="material-icons prefix">email</i>
-                            {{ form.email2 }}
-                            <label for="{{ form.email2.id_for_label }}"
-                                   data-error="{{ form.email2.errors|striptags }}"
-                                   data-success="Email iguales">{{ form.email2.label }}</label>
                         </div>
                     </div>
                 </div>
@@ -70,27 +65,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col l6 m6 s12">
-                        <div class="input-field">
-                            <i class="material-icons prefix">lock</i>
-                            {{ form.password1 }}
-                            <label for="{{ form.password1.id_for_label }}"
-                                   data-error="{{ form.password1.errors|striptags }}"
-                                   data-success="Contraseña correcta">{{ form.password1.label }}</label>
-                        </div>
-                    </div>
-                    <div class="col l6 m6 s12">
-                        <div class="input-field">
-                            <i class="material-icons prefix">lock</i>
-                            {{ form.password2 }}
-                            <label for="{{ form.password2.id_for_label }}"
-                                   data-error="{{ form.password2.errors|striptags }}"
-                                   data-success="Contraseñas correctas">{{ form.password2.label }}</label>
-                        </div>
-                    </div>
-                </div>
-
 
                 <div class="row">
                     <div class="col l12 m12 s12">
@@ -106,13 +80,15 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col l12 m12 s12">
+                        <button type="submit" form="update_register"
+                                class="btn waves-effect waves-light right">
+                            Actualizar datos
 
-                <button type="submit" form="form_register"
-                        class="btn waves-effect waves-light">
-                    ¡¡Registrarme!!
-
-                </button>
-
+                        </button>
+                    </div>
+                </div>
             </form>
 
 

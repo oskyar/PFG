@@ -11,7 +11,7 @@
     <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
     <!-- Styles -->
     <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link href="{% static 'ajaxuploader/css/fileuploader.css' %}" media="screen" rel="stylesheet" type="text/css"/>
     <link type="text/css" rel="stylesheet" href="{% static "css/materialize.min.css" %}" media="screen,projection"/>
@@ -49,7 +49,7 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            © 2014 Copyright Text
+            © 2016 Copyright Text
             <a class="white-text right" href="#!">More Links</a>
         </div>
     </div>
@@ -60,6 +60,7 @@
 <script type="text/javascript" src="{% static "js/materialize.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/test_functions.js" %}"></script>
 <script type="text/javascript" src="{% static "ajaxuploader/js/fileuploader.js" %}"></script>
+
 <script>
     var uploader = new qq.FileUploader({
         action: "{% url 'my_ajax_upload' %}",
@@ -74,6 +75,7 @@
                 if( $('.file-path').children().length > 1)
                     $('.file-path').children().first().remove();
                 $('[data-name="image_subject"]').attr('src', responseJSON.path);
+                $('#id_photo').val(responseJSON.path);
             } else {
                 alert("upload failed!");
             }

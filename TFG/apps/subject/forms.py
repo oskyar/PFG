@@ -1,13 +1,17 @@
 __author__ = 'oskyar'
 
 from django import forms  # ModelForm, CharField, BooleanField, Textarea,NumberInput,
+from django.forms import BaseFormSet
+from django.forms import formset_factory
 from django.utils.translation import ugettext_lazy as _
-from .models import Subject
-from django.contrib.auth.models import User
+from .models import Subject, Topic, Answer, Question
 
 
 class CreateSubjectForm(forms.ModelForm):
     template_name = "create.html"
+
+    error_messages = dict(field_required=_("Es obligatorio rellenar el campo"))
+
     name = forms.CharField(required=True, label="Nombre de la asignatura")
     description = forms.CharField(
         widget=forms.Textarea(attrs={'row': 1, 'class': 'materialize-textarea', 'length': '512'}), max_length=512,
@@ -17,5 +21,106 @@ class CreateSubjectForm(forms.ModelForm):
 
     class Meta:
         model = Subject
-        fields = '__all__'
-        exclude = ['category', 'teacher']
+        fields = ['name', 'description', 'capacity', 'test_opt', 'image']
+        exclude = ['category']
+
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        print(name)
+        if not name:
+            raise forms.ValidationError(
+                self.error_messages['field_required'], code="required")
+        return name
+
+
+class CreateTopicForm(forms.ModelForm):
+    template_name = "create.html"
+    error_messages = dict(
+        field_required=_("Es obligatorio rellenar el campo"),
+    )
+    name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'validate'}),
+                           label=_("Nombre del tema"))
+    cardinality = forms.IntegerField(label=_("Nº"))
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={'row': 1, 'class': 'materialize-textarea', 'length': '512'}), max_length=512,
+        label=_('Escriba una breve descripción (máximo 512 caracteres)'))
+
+    value = forms.IntegerField(required=True, label=_("Ponderación"),
+                               help_text=_(
+                                   "Este valor será definido automáticamente en caso de no asignarle uno, será la media de dividir 100 entre todos los temas creados."))
+
+    class Meta:
+        model = Topic
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'validate'}),
+            'cardinality': forms.TextInput(attrs={'class': 'validate'}),
+            'description': forms.TextInput(attrs={'class': 'validate'}),
+            'value': forms.TextInput(attrs={'class': 'validate'}),
+        }
+        fields = ['name', 'cardinality', 'description', 'value']
+
+
+class CreateQuestionForm(forms.ModelForm):
+    statement = forms.CharField(required=True, label=_("Enunciado de la pregunta"), max_length=150)
+    type = forms.ChoiceField(choices=Question.TYPES_CHOICES, initial=0, label=_("Tipo de pregunta"))
+
+    error_messages = dict(
+        field_required=_("Es obligatorio rellenar el campo"),
+    )
+
+    class Meta:
+        model = Question
+        widgets = {
+            'statement': forms.TextInput(attrs={'class': 'validate'}),
+        }
+        fields = ['statement', 'type']
+
+    def clean_type(self):
+        print("Entra en el puto type")
+        type = self.cleaned_data['type']
+        if not type:
+            raise forms.ValidationError(
+                self.error_messages['field_required'], code="required")
+        return type
+
+    def clean_statement(self):
+        statement = self.cleaned_data['statement']
+        if not statement:
+            raise forms.ValidationError(
+                self.error_messages['field_required'], code="required")
+        return statement
+
+
+class CreateAnswerForm(forms.ModelForm):
+    reply = forms.CharField(required=True, label=_("Respuesta"), max_length=300)
+    valid = forms.BooleanField(label=_("Haz check si es correcta la respuesta"), initial=False)
+    adjustment = forms.IntegerField(label=_("Valor (%)"), max_value=100, min_value=0)
+
+    error_messages = dict(
+        field_required=_("Es obligatorio rellenar el campo"),
+    )
+
+    class Meta:
+        model = Answer
+        widgets = {
+            'reply': forms.TextInput(attrs={'class': 'validate'})
+        }
+        fields = ['reply', 'valid']
+        exclude = ['statistic', 'adjustment']
+        # fields =['reply', 'valid', 'adjustment']
+
+    def clean_reply(self):
+        print("Entra en el reply de Answer")
+        pass
+
+    def clean_valid(self):
+        pass
+
+
+class BaseAnswerFormSet(BaseFormSet):
+    def clean(self):
+        print("Entra en BaseAnswer")
+        pass
+
+
+AnswerFormSet = formset_factory(CreateAnswerForm, extra=4, formset=BaseAnswerFormSet)

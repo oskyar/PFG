@@ -1,7 +1,5 @@
 __author__ = 'oskyar'
 
-from django.contrib.auth.models import User
-from registration.models import RegistrationProfile
 from TFG.apps.user.models import UserProfile
 from django.db import models
 from django.utils.translation import ugettext as _
@@ -25,29 +23,32 @@ class Subject(models.Model):
 
 # Tema
 class Topic(models.Model):
-    # id = Id creada por defecto por django
     subject = models.ForeignKey(Subject)
     name = models.CharField(max_length=64)
     cardinality = models.IntegerField(blank=False, null=False)
     description = models.CharField(max_length=256)
     value = models.IntegerField(blank=True, null=False)
 
+    def __str__(self):
+        return self.name + " (" + self.subject.name + ")"
+
 
 # Preguntas
 class Question(models.Model):
     STANDARD = 0
-    TOF = 1
-    MULTIPLE = 2
+    MULTIPLE = 1
+    TOF = 2
     IMAGE = 3
     TYPES_CHOICES = (
-        (STANDARD, 'Una respuesta válida'),
-        (TOF, 'Verdadero o Falso'),
-        (MULTIPLE, 'Varias respuestas válidas'),
-        (IMAGE, 'El contexto de la pregunta es la imagen'),
+        (STANDARD, "Una respuesta válida"),
+        (MULTIPLE, "Varias respuestas válidas"),
+        #        (TOF, "Verdadero o Falso"),
+        # (IMAGE, "El contexto de la pregunta es la imagen"),
     )
 
     # id = Id generado por defecto por django
     topic = models.ForeignKey(Topic)
+
     statement = models.CharField(max_length=150)
     image = models.ImageField(upload_to='question', blank=True, null=True)
     type = models.IntegerField(choices=TYPES_CHOICES,
@@ -57,17 +58,22 @@ class Question(models.Model):
 # Estadísticas pregunta
 class StatisticAnswer(models.Model):
     # id = Id generado por defecto por django
+    answer = models.OneToOneField('subject.Answer')
     num_generate = models.IntegerField(default=0, null=False, blank=False)
     num_replies = models.IntegerField(default=0, null=False, blank=False)
     num_correct = models.IntegerField(default=0, null=False, blank=False)
 
 
-# Respuesta
+# Respuestas
 class Answer(models.Model):
     # id = Id generado por defecto por django
     question = models.ForeignKey(Question)
-    statistic = models.OneToOneField(to=StatisticAnswer)
     reply = models.CharField(max_length=300, blank=False, null=False)
-    valid = models.BooleanField(default=False, blank=False, null=False)
+    valid = models.BooleanField(default=False, blank=True, null=False)
     adjustment = models.IntegerField(blank=True, null=True)
 
+    def __str__(self):
+        return "%s - %s - %s" % (self.question.statement, self.reply, self.valid)
+
+    def __unicode__(self):
+        return "%s - %s - %s" % (self.question.statement, self.reply, self.valid)

@@ -9,22 +9,20 @@ class UserProfileManager(models.Manager):
     def get_user_by_email(self, email):
         #user = User.objects.get(email=email)
         try:
-            return UserProfile.objects.get(user=User.objects.get(email=email).id)
+            return self.get(user=User.objects.get(email=email).id)
         except UserProfile.DoesNotExist:
             return None
 
     def get_user_by_username(self, username):
         try:
-            return UserProfile.objects.get(user=User.objects.get(username=username).id)
+            return self.get(user=User.objects.get(username=username).id)
         except UserProfile.DoesNotExist:
             return None
 
-
-
 class UserProfile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, related_name='userProfile')
     dni = models.CharField(max_length=9, blank=True, null=True)
-    photo = models.ImageField(upload_to='profiles', blank=True, null=True)
+    photo = models.ImageField(upload_to='profiles/', blank=True, null=True)
     created_on = models.DateTimeField(blank=True, null=False)
     modify_on = models.DateTimeField(blank=True, null=False)
 
@@ -33,6 +31,8 @@ class UserProfile(models.Model):
     class Meta:
         verbose_name = "Perfil de usuario"
 
+    def set_password(self, raw_password):
+        self.user.set_password(raw_password)
 
     def __str__(self):
         return self.user.get_username()
