@@ -7,7 +7,7 @@ from django.middleware.csrf import get_token
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.views.generic import CreateView, FormView
+from django.views.generic import CreateView, FormView, ListView
 from .forms import CreateSubjectForm, CreateTopicForm, CreateQuestionForm, AnswerFormSet
 from .models import Subject, UserProfile, Topic, Answer
 
@@ -50,6 +50,16 @@ class CreateSubjectView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse_lazy("create_topic", kwargs={'pk': self.object.id})
 
+
+class ListSubjectView(LoginRequiredMixin, ListView):
+    template_name = 'subject/list.html'
+    context_object_name = 'subjects'
+
+    def get_queryset(self):
+        subjects = list(Subject.objects.filter(teacher=self.request.user.userProfile))
+        for subject in subjects:
+            subject.num_topics = len(subject.topics.all())
+        return subjects
 
 class CreateTopicView(LoginRequiredMixin, CreateView):
     template_name = 'topic/create.html'

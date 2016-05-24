@@ -8,7 +8,7 @@ from django.utils.translation import ugettext as _
 # Asignatura.
 class Subject(models.Model):
     # id = Id creada por defecto por django
-    teacher = models.ForeignKey(UserProfile)
+    teacher = models.ForeignKey(UserProfile, related_name='userProfile')
     name = models.CharField(max_length=128, blank=False, null=False, verbose_name=_("Nombre de la asignatura"))
     description = models.CharField(max_length=512, blank=False, null=False, verbose_name=_("Breve descripción, máximo 512 caracteres"))
     category = models.CharField(max_length=75, blank=False, null=False, verbose_name=_("Categoría"))
@@ -23,7 +23,7 @@ class Subject(models.Model):
 
 # Tema
 class Topic(models.Model):
-    subject = models.ForeignKey(Subject)
+    subject = models.ForeignKey(Subject, related_name='topics')
     name = models.CharField(max_length=64)
     cardinality = models.IntegerField(blank=False, null=False)
     description = models.CharField(max_length=256)
@@ -47,7 +47,7 @@ class Question(models.Model):
     )
 
     # id = Id generado por defecto por django
-    topic = models.ForeignKey(Topic)
+    topic = models.ForeignKey(Topic, related_name='topic')
 
     statement = models.CharField(max_length=150)
     image = models.ImageField(upload_to='question', blank=True, null=True)
