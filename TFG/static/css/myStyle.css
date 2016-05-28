@@ -214,12 +214,12 @@ li a div {
 }
 
 /**** Formulario Usuario *****/
-.small-medium{
+.small-medium {
     font-size: 3rem;
 }
 
-div.input-field label{
-    width:100%;
+div.input-field label {
+    width: 100%;
 }
 
 /***** Asignatura *******/
@@ -230,7 +230,7 @@ ul.tabs li.tab a i.material-icons {
     left: 10px;
 }
 
-#clasification{
+#clasification {
     margin-top: 30px;
 }
 
@@ -268,8 +268,8 @@ ul.tabs li.tab a i.material-icons {
     font-size: 1.4rem;
 }
 
-.subject-card .card-image a:first-child{
-    margin-right:50px;
+.subject-card .card-image a:first-child {
+    margin-right: 50px;
 }
 
 .min-height-card {
@@ -306,9 +306,10 @@ ul.tabs li.tab a i.material-icons {
     font-weight: 400;
 }
 
-img{
+img {
     cursor: move;
 }
+
 .container-img {
     width: 430px;
     height: 200px;
@@ -317,6 +318,105 @@ img{
 .container-img img {
     width: 100%; /* Set to auto to preserve aspect ratio */
     height: 100%
+}
+
+/******   Temas  *****/
+
+.list-topics ol {
+    display: block;
+
+    list-style: none;
+
+    overflow: hidden;
+    counter-reset: numList;
+}
+
+.list-topics ol li {
+    width: 176px;
+    margin-right: 44px;
+    float: left;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.list-topics ol li:before {
+    counter-increment: numList;
+    content: counter(numList);
+
+    float: left;
+    position: absolute;
+    left: -36px;
+
+    font: bold 12px sans-serif;
+    text-align: center;
+    color: #fff;
+    line-height: 36px;
+
+    width: 36px;
+    height: 36px;
+    background: #ff5722;
+
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+/******** PREGUNTAS **********/
+
+.list-answers ol {
+    display: block;
+    list-style: none;
+    overflow: hidden;
+    counter-reset: numList;
+    background-color: #f5fffd;
+}
+
+.list-answers ol li {
+    width: 100%;
+    margin-right: 44px;
+    float: left;
+    position: relative;
+    margin-bottom: 0px;
+    margin-left: 25px;
+    margin-top: 5px;
+    min-height: 40px;
+    line-height: 2.4;
+    padding-left: 15px;
+}
+
+.list-answers ol li:before {
+    counter-increment: numList;
+    content: counter(numList);
+
+    float: left;
+    position: absolute;
+    left: -36px;
+
+    font: bold 12px sans-serif;
+    text-align: center;
+    color: #fff;
+    line-height: 36px;
+
+    width: 36px;
+    height: 36px;
+    background: #ff5722;
+
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.list-answers ol li.valid:before {
+    background: #03ff00;
+}
+
+.list-answers div.icon-edit {
+    width: 45px;
+    height: 45px;
+
+}
+
+.list-answers div.icon-edit .material-icons {
+    width: 45px;
+    height: 45px;
 }
 
 /***********************/

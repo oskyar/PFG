@@ -20,7 +20,11 @@
                                     class="num-limit" data-name="num_topics">{{ subject.num_topics }}</span></a>
 
                             <div class="container-img">
-                                <img data-name="image_subject" src="{% static subject.image %}">
+                                {% if subject.image %}
+                                    <img data-name="image_subject" src="{% static subject.image.url %}">
+                                {% else %}
+                                    <img data-name="image_subject" src="/media/profiles/home-peluches.png">
+                                {% endif %}
 
                             </div>
                             <span class="card-title" data-name="subject_name">{{ subject.name }}</span>
@@ -30,9 +34,9 @@
                                 data-name="description">{{ subject.description }}</span>
                             <div class="card-action">
                                 {% if subject.test_opt %}
-                                    <span data-name="text_opt"><i class="material-icons red-text left">done</i> Acceder al examen final directamente</span>
+                                    <span data-name="text_opt"><i class="material-icons green-text left">done</i> Acceder al examen final directamente</span>
                                 {% else %}
-                                    <span data-name="text_opt"><i class="material-icons green-text left">clear</i> Acceder al examen final directamente</span>
+                                    <span data-name="text_opt"><i class="material-icons red-text left">clear</i> Acceder al examen final directamente</span>
                                 {% endif %}
                             </div>
                         </div>

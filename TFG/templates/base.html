@@ -63,6 +63,7 @@
 
 <script>
     var uploader = new qq.FileUploader({
+
         action: "{% url 'my_ajax_upload' %}",
         element: $('#file-uploader')[0],
         multiple: false,
@@ -115,6 +116,7 @@
         '</div>' +
         '</div>'
     });
+    console.log(uploader)
 </script>
 </body>
 </html>

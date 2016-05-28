@@ -2,6 +2,8 @@
 
 $(document).ready(function () {
 
+    $('select').material_select();
+
     validate_form();
     //$(".button-collapse").sideNav();
     $.ajaxSetup({
@@ -61,7 +63,7 @@ $(document).ready(function () {
 
     $("#id_email2").on('keyup', function (ev) {
         if ($(this).val().length > 3) {
-            $.post('/user/register/', {email: $('#id_email').val(),email2: $(this).val()})
+            $.post('/user/register/', {email: $('#id_email').val(), email2: $(this).val()})
                 .done(function (data) {
                     console.log(data);
                     if (data['email2'] == undefined) {
@@ -182,15 +184,71 @@ $(document).ready(function () {
 
     $('#subject_form  input, textarea').val("");
 
+    //Cambiamos el check dependiendo del tipo de pregunta
+    $('#id_type').change(function () {
+        if (parseInt($(this).val()) == 0) {
+            //$('.replies-container').show();
+            $('.valid_reply').attr('type', 'radio').attr('checked', false);
+        } else if (parseInt($(this).val()) == 2) {
+            $('.replies-container').hide().first().show();
+            //$('.replies-container input[name=valid_reply]').first().show();
+        } else if (parseInt($(this).val()) == 1) {
+            //$('.replies-container').show();
+            $('.valid_reply').attr('type', 'checkbox');
+        }
+    });
+
+    $('.valid_reply').click(function () {
+        if (parseInt($('#id_type').val()) == 0) {
+            var id_click = $(this).attr('id');
+            $('.valid_reply').each(function () {
+                if ($(this).attr('id') != id_click) {
+                    $(this).attr('checked', false);
+                }
+            });
+
+        }
+    });
+
+    //Validacion question
+    $('#submit_question').click(function () {
+        $('.valid_reply').each(function (k, v) {
+            if ($(v).attr('checked') == false) {
+                alert("No ha seleccionado ninguan respuesta correcta");
+            }
+        });
+    });
+
+
+    $(".delete_question").click(function () {
+        if (confirm("¿Quiere eliminar la pregunta? No habrá vuelta atrás")) {
+            var id = $(this).attr('id');
+            $.ajax({
+                type: "POST",
+                url: $(this).data('url'),
+                data: {id: id},
+                success: function (response) {
+                    $('#question_' + id).remove();
+                    Materialize.toast('Pregunta eliminada correctamente', 3000)
+                },
+                error: function (res) {
+                    alert("ERROR: No se puede borrar la pregunta");
+                }
+            });
+        }
+        return false;
+    });
+
+
 });
 
-function validate_form(){
-    $('input').each(function(k,v){
-        if( $(v).next().attr('data-error')){
-            $(v).addClass('invalid').attr('placeholder',"Es obligatorio");
-        }else{
-            if($(v).val().length > 0)
-            $(v).addClass('valid');
+function validate_form() {
+    $('input').each(function (k, v) {
+        if ($(v).next().attr('data-error')) {
+            $(v).addClass('invalid').attr('placeholder', "Es obligatorio");
+        } else {
+            if ($(v).val().length > 0)
+                $(v).addClass('valid');
         }
     });
 }
