@@ -3,15 +3,13 @@ __author__ = 'oskyar'
 from TFG.mixins import LoginRequiredMixin
 from ajaxuploader.views import AjaxFileUploader
 from django.core.urlresolvers import reverse_lazy
-from django.http import JsonResponse
 from django.middleware.csrf import get_token
-from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.views.generic import CreateView, FormView, ListView, DeleteView
-from .forms import CreateSubjectForm, CreateTopicForm, CreateQuestionForm, AnswerFormSet, CreateAnswerForm
-from .models import Subject, UserProfile, Topic, Answer, Question
+from django.views.generic import CreateView, FormView
+from .forms import CreateSubjectForm, CreateTopicForm, CreateQuestionForm, AnswerFormSet
+from .models import Subject, UserProfile, Topic, Answer
 
 
 class CreateSubjectView(LoginRequiredMixin, CreateView):
@@ -24,10 +22,8 @@ class CreateSubjectView(LoginRequiredMixin, CreateView):
         Returns the initial data to use for forms on this view.
         """
         initial = super(CreateSubjectView, self).get_initial()
-        # TODO: Quitar inicialización del nombre
-        initial['name'] = "probando con imagen"
-        initial['capacity'] = "10"
-        initial['description'] = "Descripción de la asignatura en la que se intenta subir una imagen."
+
+        initial['name'] = "probando"
         return initial
 
     def form_valid(self, form):
@@ -53,17 +49,6 @@ class CreateSubjectView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse_lazy("create_topic", kwargs={'pk': self.object.id})
-
-
-class ListSubjectView(LoginRequiredMixin, ListView):
-    template_name = 'subject/list.html'
-    context_object_name = 'subjects'
-
-    def get_queryset(self):
-        subjects = list(Subject.objects.filter(teacher=self.request.user.userProfile))
-        for subject in subjects:
-            subject.num_topics = len(subject.topics.all())
-        return subjects
 
 
 class CreateTopicView(LoginRequiredMixin, CreateView):
@@ -98,49 +83,43 @@ class CreateQuestionView(LoginRequiredMixin, FormView):
         context = super(CreateQuestionView, self).get_context_data(**kwargs)
         context['current_topic'] = Topic.objects.get(pk=self.kwargs['pk_topic'])
         context['topics'] = Topic.objects.filter(subject=Subject.objects.get(pk=self.kwargs['pk_subject']))
-        context['replies_form'] = AnswerFormSet(self.request.POST or None, prefix='replies_form')
-
-        questions = list(Topic.objects.get(pk=self.kwargs['pk_topic']).question.all())
-        for question in questions:
-            question.answers = question.answer.all()
-        context['questions'] = questions
+        context['replies_form'] = AnswerFormSet()
         return context
-
-    def post(self, request, *args, **kwargs):
-        replies_form = AnswerFormSet(self.request.POST)
-        for f in replies_form:
-            cd = f.cleaned_data
 
     def form_valid(self, form):
         print("Form valido")
-        context = self.get_context_data()
-        replies_context = context['replies_form']
-
-
         replies_form = AnswerFormSet(self.request.POST)
         question = form.save(commit=False)
         question.topic = Topic.objects.get(pk=self.kwargs['pk_topic'])
+        question.save()
 
         # TODO: lanzar CLEAN y si valid = None ponerlo a False y si es 'on' ponerlo a True
-        replies_form.clean()
-        if replies_form.is_valid():
-            a1 = CreateAnswerForm(reply=form.data.get('id_form-0-reply'), valid=valid0,
-                                  adjustment=form.data.get('id_form-0-adjustement'))
-            a1.is_valid()
-            Answer.objects.create(question=question, reply=form.data.get('id_form-1-reply'), valid=valid1,
-                                  adjustment=form.data.get('id_form-1-adjustement'))
-            Answer.objects.create(question=question, reply=form.data.get('id_form-2-reply'), valid=valid2,
-                                  adjustment=form.data.get('id_form-2-adjustement'))
-            Answer.objects.create(question=question, reply=form.data.get('id_form-3-reply'), valid=valid3,
-                                  adjustment=form.data.get('id_form-3-adjustement'))
-            question.save()
-            return redirect("create_question", pk_subject=self.kwargs['pk_subject'], pk_topic=self.kwargs['pk_topic'])
-        else:
-            print("Entra en el else")
-            return redirect("create_question", pk_subject=self.kwargs['pk_subject'], pk_topic=self.kwargs['pk_topic'])
+        valid0 = False
+        valid1 = False
+        valid2 = False
+        valid3 = False
+        if form.data.get('id_form-0-valid'):
+            valid0 = True
+        if form.data.get('id_form-1-valid'):
+            valid1 = True
+        if form.data.get('id_form-2-valid'):
+            valid2 = True
+        if form.data.get('id_form-3-valid'):
+            valid3 = True
 
-            # return redirect("create_topic", pk=subject.id)
-            # return super(CreateTopicView, self).form_valid(form)
+        Answer.objects.create(question=question, reply=form.data.get('id_form-0-reply'), valid=valid0,
+                              adjustment=form.data.get('id_form-0-adjustement'))
+        Answer.objects.create(question=question, reply=form.data.get('id_form-1-reply'), valid=valid1,
+                              adjustment=form.data.get('id_form-1-adjustement'))
+        Answer.objects.create(question=question, reply=form.data.get('id_form-2-reply'), valid=valid2,
+                              adjustment=form.data.get('id_form-2-adjustement'))
+        Answer.objects.create(question=question, reply=form.data.get('id_form-3-reply'), valid=valid3,
+                              adjustment=form.data.get('id_form-3-adjustement'))
+
+        return redirect("create_question", pk_subject=self.kwargs['pk_subject'], pk_topic=self.kwargs['pk_topic'])
+
+        # return redirect("create_topic", pk=subject.id)
+        # return super(CreateTopicView, self).form_valid(form)
 
     def form_invalid(self, form):
 
@@ -173,29 +152,7 @@ class CreateQuestionView(LoginRequiredMixin, FormView):
     """
 
 
-# TODO: Seguir por aquí, creando el método de borrar.
-"""def delete_question(request, id):
-    note = get_object_or_404(Question, pk=id).delete()
-    return HttpResponseRedirect(reverse('subject.views.notes'))
-"""
 
-
-class DeleteQuestionView(LoginRequiredMixin, DeleteView):
-    model = Question
-    success_url = reverse_lazy('/')
-
-    def post(self, request, *args, **kwargs):
-        if self.request.is_ajax():
-            get_object_or_404(Question, pk=self.kwargs['pk_question']).delete()
-            result = {'success': True}
-            return JsonResponse(result)
-
-
-def delete_question(request):
-    print("Entra aqui")
-    get_object_or_404(Question, pk=int(self.request.REQUEST['id'])).delete()
-    result = {'success': True}
-    return HttpResponse(json.dumps(result), content_type='application/json')
 
 
 def start(request):
