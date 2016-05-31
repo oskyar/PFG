@@ -8,13 +8,13 @@ from django.utils.translation import ugettext as _
 # Asignatura.
 class Subject(models.Model):
     # id = Id creada por defecto por django
-    teacher = models.ForeignKey(UserProfile)
+    teacher = models.ForeignKey(UserProfile, related_name='userProfile')
     name = models.CharField(max_length=128, blank=False, null=False, verbose_name=_("Nombre de la asignatura"))
     description = models.CharField(max_length=512, blank=False, null=False, verbose_name=_("Breve descripción, máximo 512 caracteres"))
     category = models.CharField(max_length=75, blank=False, null=False, verbose_name=_("Categoría"))
     test_opt = models.BooleanField(blank=False, null=False, verbose_name=_("Examen final directo"))
     capacity = models.IntegerField(null=True, verbose_name=_("Nº de alumnos"))
-    image = models.ImageField(upload_to='subject', blank=True, null=True, verbose_name=_("Imagen de la asignatura"))
+    image = models.ImageField(upload_to='subjects', blank=True, null=True, verbose_name=_("Imagen de la asignatura"))
     #pos_image = models.CharField(blank=True, null=True, max_length=250)
 
     def __str__(self):
@@ -23,7 +23,7 @@ class Subject(models.Model):
 
 # Tema
 class Topic(models.Model):
-    subject = models.ForeignKey(Subject)
+    subject = models.ForeignKey(Subject, related_name='topics', on_delete=models.CASCADE)
     name = models.CharField(max_length=64)
     cardinality = models.IntegerField(blank=False, null=False)
     description = models.CharField(max_length=256)
@@ -47,8 +47,7 @@ class Question(models.Model):
     )
 
     # id = Id generado por defecto por django
-    topic = models.ForeignKey(Topic)
-
+    topic = models.ForeignKey(Topic, related_name='question', on_delete=models.CASCADE)
     statement = models.CharField(max_length=150)
     image = models.ImageField(upload_to='question', blank=True, null=True)
     type = models.IntegerField(choices=TYPES_CHOICES,
@@ -58,7 +57,7 @@ class Question(models.Model):
 # Estadísticas pregunta
 class StatisticAnswer(models.Model):
     # id = Id generado por defecto por django
-    answer = models.OneToOneField('subject.Answer')
+    answer = models.OneToOneField('subject.Answer', related_name="statistic")
     num_generate = models.IntegerField(default=0, null=False, blank=False)
     num_replies = models.IntegerField(default=0, null=False, blank=False)
     num_correct = models.IntegerField(default=0, null=False, blank=False)
@@ -67,7 +66,7 @@ class StatisticAnswer(models.Model):
 # Respuestas
 class Answer(models.Model):
     # id = Id generado por defecto por django
-    question = models.ForeignKey(Question)
+    question = models.ForeignKey(Question, related_name="answer")
     reply = models.CharField(max_length=300, blank=False, null=False)
     valid = models.BooleanField(default=False, blank=True, null=False)
     adjustment = models.IntegerField(blank=True, null=True)
