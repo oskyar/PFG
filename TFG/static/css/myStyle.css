@@ -257,6 +257,11 @@ ul.tabs li.tab a i.material-icons {
 
 /****** Asignaturas ***********/
 
+.go-subject:hover {
+    box-shadow: 0px 0px 10px #00b8d4;
+    cursor: pointer;
+}
+
 .container-floating-num {
     position: absolute;
     top: 15px;
@@ -332,7 +337,7 @@ img {
 }
 
 .list-topics ol li {
-    width: 176px;
+    /*width: 176px;*/
     margin-right: 44px;
     float: left;
     position: relative;
