@@ -163,6 +163,7 @@ $(document).ready(function () {
             $(this).parents('.card, .card-image').css('overflow', 'hidden');
         }
     });
+
     var n = 0;
     $('[data-name="image_subject"]').dblclick(function () {
         if (n == 0) {
@@ -210,7 +211,7 @@ $(document).ready(function () {
         }
     });
 
-    //Validacion question
+    //Validate question
     $('#submit_question').click(function () {
         $('.valid_reply').each(function (k, v) {
             if ($(v).attr('checked') == false) {
@@ -237,6 +238,11 @@ $(document).ready(function () {
             });
         }
         return false;
+    });
+
+    //Asignaturas
+    $('[data-target="subject"]').click(function () {
+        window.location = $(this).data('url');
     });
 
 

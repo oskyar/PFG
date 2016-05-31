@@ -9,8 +9,9 @@
 
         <div class="row">
             {% for subject in subjects %}
-                <div class="col l4 m4 s6">
-                    <div class="card small subject-card">
+                <div class="col l4 m4 s6 ">
+                    <div class="card small subject-card go-subject" data-target="subject"
+                         data-url="{% url 'create_topic' subject.id %}">
                         <div class="card-image">
                             <a class="btn-floating btn waves-effect waves-light red container-floating-num tooltipped"
                                data-position="top" data-delay="50" data-tooltip="Capacidad de alumnos"><span

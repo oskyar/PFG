@@ -16,7 +16,9 @@
                         {% csrf_token %}
                         <div class="row">
                             <div class="input-field col l3 m3 s12">
+
                                 {{ form.type }}
+
                                 {% comment %}
                                 <select id="{{ form.type.id_for_label }}" class="select_choice browser-default"
                                         name="{{ form.type.id_for_label }}">
@@ -37,41 +39,40 @@
                         </div>
 
                         <div class="row">
+                            {% for replies in inlines %}
+                                {{ replies.management_form }}
+                                {% for reply in replies.forms %}
 
-                            {% comment %}
-                            {{ replies_form }}
-                            {% endcomment %}
-
-                            {{ replies_form.management_form }}
-
-                            {% for reply in replies_form %}
-                                <div class="replies-container">
-                                    <div class="input-field col l1 m1 s2">
-                                        <input class="valid_reply" id="{{ reply.valid.id_for_label }}"
-                                               name="{{ reply.valid.id_for_label }}" type="radio"
-                                               title="¿Es correcta la respuesta?"/>
-                                        <label for="{{ reply.valid.id_for_label }}"></label>
+                                    <div class="replies-container">
+                                        <div class="input-field col l1 m1 s2">
+                                            <input class="valid_reply" id="{{ reply.valid.id_for_label }}"
+                                                   name="{{ reply.valid.id_for_label }}" type="radio"
+                                                   title="¿Es correcta la respuesta?"/>
+                                            <label for="{{ reply.valid.id_for_label }}"></label>
+                                        </div>
+                                        <div class="input-field col l9 m9 s7">
+                                            <input class="validate"
+                                                   id="{{ reply.reply.id_for_label }}"
+                                                   maxlength="{{ reply.reply.max_length }}"
+                                                   name="{{ reply.reply.id_for_label }}"
+                                                   type="text">
+                                            <label for="{{ reply.reply.id_for_label }}">{{ reply.reply.label }}</label>
+                                        </div>
+                                        <div class="input-field col l2 m2 s3">
+                                            <input class="validate"
+                                                   id="{{ reply.adjustment.id_for_label }}"
+                                                   name="{{ reply.adjustment.id_for_label }}" type="number"/>
+                                            <label for="{{ reply.adjustment.id_for_label }}">{{ reply.adjustment.label }}</label>
+                                        </div>
                                     </div>
-                                    <div class="input-field col l9 m9 s7">
-                                        <input class="validate"
-                                               id="{{ reply.reply.id_for_label }}"
-                                               maxlength="{{ reply.reply.max_length }}"
-                                               name="{{ reply.reply.id_for_label }}"
-                                               type="text">
-                                        <label for="{{ reply.reply.id_for_label }}">{{ reply.reply.label }}</label>
-                                    </div>
-                                    <div class="input-field col l2 m2 s3">
-                                        <input class="validate"
-                                               id="{{ reply.adjustment.id_for_label }}"
-                                               name="{{ reply.adjustment.id_for_label }}" type="number"/>
-                                        <label for="{{ reply.adjustment.id_for_label }}">{{ reply.adjustment.label }}</label>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             {% endfor %}
+
 
                         </div>
 
-                        {% comment %}{% for element in form %}
+                        {% comment %}
+                        {% for element in form %}
 
                                 <div class="input-field col s12 m12 l12">
                                     {{ element.label_tag }}
