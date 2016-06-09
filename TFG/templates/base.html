@@ -62,61 +62,9 @@
 <script type="text/javascript" src="{% static "ajaxuploader/js/fileuploader.js" %}"></script>
 
 <script>
-    var uploader = new qq.FileUploader({
-
-        action: "{% url 'my_ajax_upload' %}",
-        element: $('#file-uploader')[0],
-        multiple: false,
-        customHeaders: {
-                    'X-CSRFToken': '{{ csrf_token }}'
-                },
-        onComplete: function (id, fileName, responseJSON) {
-            if (responseJSON.success) {
-                console.log(responseJSON);
-                if( $('.file-path').children().length > 1)
-                    $('.file-path').children().first().remove();
-                $('[data-name="image_subject"]').attr('src', responseJSON.path);
-                $('#id_photo').val(responseJSON.path);
-            } else {
-                alert("upload failed!");
-            }
-        },
-        onAllComplete: function (uploads) {
-            // uploads is an array of maps
-            // the maps look like this: {file: FileObject, response: JSONServerResponse}
-            // alert("All complete!");
-
-        },
-        params: {
-            'csrf_token': '{{ csrf_token }}',
-            'csrf_name': 'csrfmiddlewaretoken',
-            'csrf_xname': 'X-CSRFToken'
-        },
-        classes: {
-            button: 'upload-image',
-            drop: 'qq-upload-drop-area',
-            dropActive: 'qq-upload-drop-area-active',
-            list: 'file-path',
-
-            file: 'qq-upload-file',
-            spinner: 'qq-upload-spinner',
-            size: 'qq-upload-size',
-            cancel: 'qq-upload-cancel',
-
-            // added to list item when upload completes
-            // used in css to hide progress spinner
-            success: 'qq-upload-success',
-            fail: 'qq-upload-fail'
-        },
-        template: '<div class="qq-uploader">' +
-        '<div class="qq-upload-drop-area"><span>Arrastra aquí para subir el archivo</span></div>' +
-        '<div class="upload-image btn">Cambiar imagen</div>' +
-        '<div class="file-path-wrapper">' +
-        '<ul class="file-path validate li-input" ></ul>' +
-        '</div>' +
-        '</div>'
+    $(document).ready(function () {
+        {% block scripts %}{% endblock %}
     });
-    console.log(uploader)
 </script>
 </body>
 </html>
