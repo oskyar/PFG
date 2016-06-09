@@ -3,14 +3,16 @@ __author__ = 'oskyar'
 from TFG.mixins import LoginRequiredMixin
 from ajaxuploader.views import AjaxFileUploader
 from django.core.urlresolvers import reverse_lazy
+from django.http import HttpResponse
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.views.generic import CreateView, FormView, ListView, DeleteView
-from .forms import CreateSubjectForm, CreateTopicForm, CreateQuestionForm, AnswerFormSet, CreateAnswerForm
+from django.views.generic import CreateView, ListView, DeleteView
+from extra_views import CreateWithInlinesView, InlineFormSet
+from .forms import CreateSubjectForm, CreateTopicForm, CreateQuestionForm, InlineAnswerFormSet, CreateAnswerForm
 from .models import Subject, UserProfile, Topic, Answer, Question
 
 
@@ -90,95 +92,64 @@ class CreateTopicView(LoginRequiredMixin, CreateView):
         return super(CreateTopicView, self).form_invalid(form)
 
 
-class CreateQuestionView(LoginRequiredMixin, FormView):
-    template_name = 'question/create.html'
+class AnswerInline(InlineFormSet):
+    model = Answer
+    extra = 4
+    max_num = 4
+    can_delete = False
+    form_class = CreateAnswerForm
+    # form_class = CreateAnswerForm
+
+
+class CreateQuestionView(LoginRequiredMixin, CreateWithInlinesView):
+    model = Question
+    inlines = [AnswerInline]
     form_class = CreateQuestionForm
+    success_url = '/'
+    template_name = "question/create.html"
+
+    def forms_valid(self, form, inlines):
+        # response = super(CreateQuestionView, self).forms_valid(form, inlines)
+
+        question_form = form.save(commit=False)
+        question_form.topic = Topic.objects.get(pk=self.kwargs['pk_topic'])
+        inline_answer_form = InlineAnswerFormSet(self.request.POST, instance=question_form)
+        if inline_answer_form.is_valid():
+            question_form.save()
+            inline_answer_form.save()
+        # inlineAnswer = InlineAnswerFormSet(parent_model=Question, request=self.request, instance=question)
+        # questionFormSet = inlineAnswer.get_formset()
+
+
+        response = super(CreateQuestionView, self).forms_valid(form, inlines)
+        return response
+
+    def forms_invalid(self, form, inlines):
+        context = super(CreateQuestionView, self).forms_invalid(form, inlines)
+        # inline_answer_form = InlineAnswerFormSet(self.request.POST, instance=form)
+
+        return context
+        # super(CreateQuestionView, self).forms_invalid(form, inlines)
+
+    def get_success_url(self):
+        return reverse_lazy("create_question",
+                            kwargs={'pk_subject': self.kwargs['pk_subject'], 'pk_topic': self.kwargs['pk_topic']})
 
     def get_context_data(self, **kwargs):
         context = super(CreateQuestionView, self).get_context_data(**kwargs)
         context['current_topic'] = Topic.objects.get(pk=self.kwargs['pk_topic'])
         context['topics'] = Topic.objects.filter(subject=Subject.objects.get(pk=self.kwargs['pk_subject']))
-        context['replies_form'] = AnswerFormSet(self.request.POST or None, prefix='replies_form')
+        """replies_form = list()
+        for i in range(4):
+            replies_form.append(CreateAnswerForm(self.request.POST or None, prefix='reply-%s' % (i)))
+        context['replies_form'] = replies_form
+        """
 
         questions = list(Topic.objects.get(pk=self.kwargs['pk_topic']).question.all())
         for question in questions:
             question.answers = question.answer.all()
         context['questions'] = questions
         return context
-
-    def post(self, request, *args, **kwargs):
-        replies_form = AnswerFormSet(self.request.POST)
-        for f in replies_form:
-            cd = f.cleaned_data
-
-    def form_valid(self, form):
-        print("Form valido")
-        context = self.get_context_data()
-        replies_context = context['replies_form']
-
-
-        replies_form = AnswerFormSet(self.request.POST)
-        question = form.save(commit=False)
-        question.topic = Topic.objects.get(pk=self.kwargs['pk_topic'])
-
-        # TODO: lanzar CLEAN y si valid = None ponerlo a False y si es 'on' ponerlo a True
-        replies_form.clean()
-        if replies_form.is_valid():
-            a1 = CreateAnswerForm(reply=form.data.get('id_form-0-reply'), valid=valid0,
-                                  adjustment=form.data.get('id_form-0-adjustement'))
-            a1.is_valid()
-            Answer.objects.create(question=question, reply=form.data.get('id_form-1-reply'), valid=valid1,
-                                  adjustment=form.data.get('id_form-1-adjustement'))
-            Answer.objects.create(question=question, reply=form.data.get('id_form-2-reply'), valid=valid2,
-                                  adjustment=form.data.get('id_form-2-adjustement'))
-            Answer.objects.create(question=question, reply=form.data.get('id_form-3-reply'), valid=valid3,
-                                  adjustment=form.data.get('id_form-3-adjustement'))
-            question.save()
-            return redirect("create_question", pk_subject=self.kwargs['pk_subject'], pk_topic=self.kwargs['pk_topic'])
-        else:
-            print("Entra en el else")
-            return redirect("create_question", pk_subject=self.kwargs['pk_subject'], pk_topic=self.kwargs['pk_topic'])
-
-            # return redirect("create_topic", pk=subject.id)
-            # return super(CreateTopicView, self).form_valid(form)
-
-    def form_invalid(self, form):
-
-        print("form Invalido")
-        return super(CreateQuestionView, self).form_invalid(form)
-
-    """
-    def get(self, request, *args, **kwargs):
-        self.object = None
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-        replies_form = AnswerFormSet()
-        context = self.get_context_data(form=form, replies_form=replies_form)
-        return self.render_to_response(context)
-
-    def post(self, request, *args, **kwargs):
-        ""
-        Handles POST requests, instantiating a form instance and its inline
-        formsets with the passed POST variables and then checking them for
-        validity.
-        ""
-        self.object = None
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-        replies_form = AnswerFormSet(self.request.POST)
-        if (form.is_valid() and replies_form.is_valid()):
-            return self.form_valid(form, replies_form)
-        else:
-            return self.form_invalid(form, replies_form)
-    """
-
-
-# TODO: Seguir por aquí, creando el método de borrar.
-"""def delete_question(request, id):
-    note = get_object_or_404(Question, pk=id).delete()
-    return HttpResponseRedirect(reverse('subject.views.notes'))
-"""
-
 
 class DeleteQuestionView(LoginRequiredMixin, DeleteView):
     model = Question

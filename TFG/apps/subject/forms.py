@@ -1,8 +1,7 @@
 __author__ = 'oskyar'
 
 from django import forms  # ModelForm, CharField, BooleanField, Textarea,NumberInput,
-from django.forms import BaseFormSet
-from django.forms import formset_factory
+from django.forms.models import inlineformset_factory, BaseInlineFormSet
 from django.utils.translation import ugettext_lazy as _
 from .models import Subject, Topic, Answer, Question
 
@@ -104,11 +103,13 @@ class CreateQuestionForm(forms.ModelForm):
 
 class CreateAnswerForm(forms.ModelForm):
     reply = forms.CharField(required=True, label=_("Respuesta"), max_length=300)
-    valid = forms.BooleanField(label=_("Haz check si es correcta la respuesta"), initial=False)
-    adjustment = forms.IntegerField(label=_("Valor (%)"), max_value=100, min_value=0)
+    valid = forms.BooleanField(label=_("Haz check si es correcta la respuesta"), initial=False, required=False,
+                               widget=forms.CheckboxInput(attrs={'class': 'valid-reply'}))
+    adjustment = forms.IntegerField(label=_("Valor (%)"), max_value=100, min_value=0, initial=0, required=False)
 
     error_messages = dict(
         field_required=_("Es obligatorio rellenar el campo"),
+        bad_value=_("El valor tiene que ser entre 0 y 100")
     )
 
     class Meta:
@@ -121,37 +122,37 @@ class CreateAnswerForm(forms.ModelForm):
         # fields =['reply', 'valid', 'adjustment']
 
     def clean_reply(self):
-        print("Entra en el reply de Answer")
-        pass
+        reply = self.cleaned_data.get('reply')
+        if not reply:
+            raise forms.ValidationError(
+                self.error_messages['field_required'], code="required")
+
+        return reply
 
     def clean_valid(self):
-        pass
+        return self.cleaned_data.get('valid') or False
+
+    def clean_adjustment(self):
+        value = self.cleaned_data.get('adjustment')
+        if value > 100 or value < 0:
+            raise forms.ValidationError(
+                self.error_messages['bad_value'], code="bad_value")
+        return value
 
 
-class BaseAnswerFormSet(BaseFormSet):
+class AnswerFormSet(BaseInlineFormSet):
+    error_messages = dict(
+        num_valids_incorrect=_("El número de respuestas correctas sólo puede ser 1"),
+    )
     def clean(self):
-        print("Entra en BaseAnswer")
-        super(BaseAnswerFormSet, self).clean()
-        for form in self.forms:
-            print(form)
-
-        valid0 = False
-        valid1 = False
-        valid2 = False
-        valid3 = False
-        if form.data.get('id_form-0-valid'):
-            valid0 = True
-        if form.data.get('id_form-1-valid'):
-            valid1 = True
-        if form.data.get('id_form-2-valid'):
-            valid2 = True
-        if form.data.get('id_form-3-valid'):
-            valid3 = True
-        pass
-
-    def is_valid(self):
-        print("Form valid")
+        if self.data.get('type') is Question.STANDARD:
+            num_valids = 0
+            for num in range(0, 4):
+                if self.data.get('answer-' + num + 'valid') is not None:
+                    num_valids += 1
+            if num_valids is not 1:
+                raise forms.ValidationError(
+                    self.error_messages['num_valids_incorrect'], code="bad_value")
 
 
-AnswerFormSet = formset_factory(CreateAnswerForm, extra=4, formset=BaseAnswerFormSet, can_order=True, validate_min=4,
-                                validate_max=4, min_num=4, max_num=4)
+InlineAnswerFormSet = inlineformset_factory(Question, Answer, form=CreateQuestionForm, formset=AnswerFormSet)

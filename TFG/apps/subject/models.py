@@ -69,7 +69,7 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, related_name="answer")
     reply = models.CharField(max_length=300, blank=False, null=False)
     valid = models.BooleanField(default=False, blank=True, null=False)
-    adjustment = models.IntegerField(blank=True, null=True)
+    adjustment = models.IntegerField(blank=True, null=True, default=0)
 
     def __str__(self):
         return "%s - %s - %s" % (self.question.statement, self.reply, self.valid)
