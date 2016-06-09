@@ -1,9 +1,8 @@
 # encoding:utf-8
-from urllib.parse import urlparse
 
+import dj_database_url
 from django.utils.translation import ugettext_lazy as _
 from unipath import Path
-import dj_database_url
 
 LANGUAGES = (
     ('en-us', _('English')),
@@ -171,7 +170,8 @@ INSTALLED_APPS = (
     'TFG.apps.subject',
     'registration',
     'ajaxuploader',
-    'braces'
+    'braces',
+    'extra_views'
 )
 
 from django.core.urlresolvers import reverse_lazy
