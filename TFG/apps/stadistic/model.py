@@ -5,7 +5,7 @@ from django.db import models
 
 
 # Asignatura.
-class Statistic(models.Model):
+class StatisticQuestion(models.Model):
     # id = Id creada por defecto por django
     question = models.OneToOneField(Question, related_name='statistic')
     num_generated = models.PositiveIntegerField(default=0)
