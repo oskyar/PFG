@@ -2,78 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fbc4851-ab7c-4edc-8066-f4769d61bf2f" name="Default" comment="- Se actualizan dependencias del proyecto.&#10;- Se modifica diseño en preguntas.&#10;- Ya se traen preguntas y sus respuestas en las preguntas.&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/answer/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/answer/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/answer/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/answer/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/answer/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/question/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/question/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/question/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/question/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/question/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/question/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/search/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/search/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/search/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/statistic/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/statistic/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/test/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/test/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/test/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/test/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/test/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/test/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/topic/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/topic/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/topic/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/topic/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/topic/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/topic/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/static/js/es_ES.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/breadcrumb.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/question/question_list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/search/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/search/search.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/subject/subject_card.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/subject/subject_detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/subject/subject_list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/subtopic/subtopic_create.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/subtopic/subtopic_detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/subtopic/subtopic_list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/test/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/test/test_create.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/topic/topic_create.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/topic/topic_detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/topic/topic_list.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TFG/static/js/materialize.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TFG/templates/subject/detail.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TFG/templates/subject/list.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TFG/templates/topic/create.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/TFG/apps/stadistic/__init__.py" afterPath="$PROJECT_DIR$/TFG/apps/answer/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/TFG/apps/stadistic/model.py" afterPath="$PROJECT_DIR$/TFG/apps/statistic/models.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/TFG/templates/question/create.html" afterPath="$PROJECT_DIR$/TFG/templates/question/question_create.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/TFG/templates/subject/create.html" afterPath="$PROJECT_DIR$/TFG/templates/subject/subject_create.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/test_TFG.iml" afterPath="$PROJECT_DIR$/.idea/test_TFG.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/index/models.py" afterPath="$PROJECT_DIR$/TFG/apps/index/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/subject/admin.py" afterPath="$PROJECT_DIR$/TFG/apps/subject/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/subject/forms.py" afterPath="$PROJECT_DIR$/TFG/apps/subject/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/subject/models.py" afterPath="$PROJECT_DIR$/TFG/apps/subject/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/subject/urls.py" afterPath="$PROJECT_DIR$/TFG/apps/subject/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/subject/views.py" afterPath="$PROJECT_DIR$/TFG/apps/subject/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/user/admin.py" afterPath="$PROJECT_DIR$/TFG/apps/user/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/user/models.py" afterPath="$PROJECT_DIR$/TFG/apps/user/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/user/views.py" afterPath="$PROJECT_DIR$/TFG/apps/user/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/settings.py" afterPath="$PROJECT_DIR$/TFG/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/static/css/myStyle.css" afterPath="$PROJECT_DIR$/TFG/static/css/myStyle.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/static/js/test_functions.js" afterPath="$PROJECT_DIR$/TFG/static/js/test_functions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/base.html" afterPath="$PROJECT_DIR$/TFG/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/menu.html" afterPath="$PROJECT_DIR$/TFG/templates/menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/urls.py" afterPath="$PROJECT_DIR$/TFG/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dependencias.txt" afterPath="$PROJECT_DIR$/dependencias.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/migrar modelos a base de datos" afterPath="$PROJECT_DIR$/migrar modelos a base de datos" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <list id="ef1a7dfa-392c-40a5-8998-ddb61171f2f7" name="New changelist" comment="New changelist" />
     <ignored path="test_TFG.iws" />
@@ -181,12 +110,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TFG/apps/test/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFG/apps/answer/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
               <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TFG/apps/subject/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+              <folding>
+                <element signature="e#23#51#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TFG/apps/test/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+              <folding>
+                <element signature="e#23#51#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -198,40 +161,6 @@
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TFG/apps/subject/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-              <folding>
-                <element signature="e#23#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TFG/apps/test/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/TFG/apps/test/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
-              <folding>
-                <element signature="e#23#51#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -250,7 +179,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFG/apps/test/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
+            <state relative-caret-position="585">
               <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
               <folding />
             </state>
@@ -260,7 +189,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFG/apps/user/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="480">
               <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="48" />
               <folding>
                 <element signature="e#23#58#0" expanded="true" />
@@ -424,6 +353,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Project Files" />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -603,10 +536,6 @@
             </PATH_ELEMENT>
           </PATH>
         </subPane>
-      </pane>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Project Files" />
       </pane>
     </panes>
   </component>
@@ -1081,7 +1010,7 @@
     <frame x="1985" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16970702" sideWeight="0.49430895" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1713654" sideWeight="0.49430895" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Heroku" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.359375" sideWeight="0.50193477" order="8" side_tool="true" content_ui="tabs" />
@@ -1286,7 +1215,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1315,7 +1243,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1358,7 +1285,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-45">
           <caret line="3" column="48" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1387,7 +1313,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="7" column="23" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1409,7 +1334,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1459,7 +1383,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1488,7 +1411,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="587">
           <caret line="48" column="55" selection-start-line="48" selection-start-column="55" selection-end-line="48" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1503,7 +1425,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="482">
           <caret line="115" column="48" selection-start-line="115" selection-start-column="48" selection-end-line="115" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1511,7 +1432,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1519,7 +1439,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1572,7 +1491,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/apps/user/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
+        <state relative-caret-position="480">
           <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="48" />
           <folding>
             <element signature="e#23#58#0" expanded="true" />
@@ -1592,7 +1511,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="46" column="52" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1606,7 +1524,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/apps/test/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
+        <state relative-caret-position="585">
           <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
           <folding />
         </state>
@@ -1638,7 +1556,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/apps/subject/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="75">
           <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
           <folding>
             <element signature="e#23#51#0" expanded="true" />
@@ -1648,8 +1566,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/apps/test/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
+        <state relative-caret-position="210">
+          <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
           <folding>
             <element signature="e#23#51#0" expanded="true" />
           </folding>
