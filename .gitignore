@@ -9,3 +9,4 @@ __pycache__
 local_settings.py
 migrations/
 */media
+/workspace.xml

@@ -42,8 +42,8 @@
                         <div class="profile teal lighten-1 center-align">
                             <div class="circle">
                                 <input hidden type="text" value="75" class="dial"/>
-                                {% if request.session.photo != null %}
-                                    <img class="img" width="100%" src="{{ request.session.photo }}">
+                                {% if user.userProfile.photo != null %}
+                                    <img class="img" width="100%" src="/media/{{ user.userProfile.photo }}">
                                 {% else %}
                                     <img class="img" src="/media/profiles/home-peluches.png">
                                 {% endif %}
