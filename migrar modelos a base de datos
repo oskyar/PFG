@@ -8,3 +8,11 @@
 
 3. Hacemos la migracion, y esto crea la tabla junto con los campos definidos en python
     ./manage.py migrate
+
+
+
+Borrar base de datos completa (comando shell)
+for i in `psql dbtfg -tc "select tablename from pg_tables where schemaname='public'"`; do psql dbtfg -c "drop table $i cascade"; done;
+
+Crear superusuario aplicación
+./manage.py createsuperuser

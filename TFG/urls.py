@@ -24,17 +24,19 @@ urlpatterns = [
     url(r'^', include('TFG.apps.index.urls')),
     # url(r'^db', TFG.apps.index.views.db, name='db'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^chaining/', include('smart_selects.urls')),
     url(r'^user/', include('TFG.apps.user.urls')),
     url(r'^subject/', include('TFG.apps.subject.urls')),
+    url(r'^search/',include('TFG.apps.search.urls')),
+    # url(r'^test/', include('TFG.apps.test.urls')),
 
     url(r'^media/(?P<path>.*)$', serve,
         {'document_root': settings.MEDIA_ROOT,}),
 ]
 
-
 import_module("TFG.apps.index.signals")
 
-#Este código sirve para buscar todos los signals añadidos a las apps
+# Este código sirve para buscar todos los signals añadidos a las apps
 """logger = logging.getLogger(__name__)
 
 signal_modules = {}

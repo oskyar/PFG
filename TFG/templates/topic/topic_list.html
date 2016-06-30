@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% block title %}Ponte a prueba - Lista de TEMAS{% endblock title %}
+<!-- Wide card with share menu button -->
+{% block content %}
+    <div class="row">
+        <div class="col l10 m9 s12 subject-card">
+            <h2 class="teal-text header">{% trans 'Mis asignaturas' %}</h2>
+            <div class="divider"></div>
+            <h4 class="orange-text" id="section_creadas">{% trans 'Creadas' %}</h4>
+            <div class="row">
+                {% for subject in subjects %}
+                    <div class="col l4 m4 s6 ">
+                        <div class="card small subject-card go-subject">
+                            <div class="card-image">
+                                <a class="btn-floating btn waves-effect waves-light red container-floating-num tooltipped"
+                                   data-position="top" data-delay="50" data-tooltip="Capacidad de alumnos"><span
+                                        class="num-limit" data-name="capacity">{{ subject.capacity }}</span></a>
+                                <a class="btn-floating btn waves-effect waves-light mdl-color--teal-100 container-floating-num tooltipped"
+                                   data-position="top" data-delay="50" data-tooltip="Número de temas"><span
+                                        class="num-limit" data-name="num_topics">{{ subject.num_topics }}</span></a>
+
+                                <div class="container-img">
+                                    {% if subject.image %}
+                                        <img data-name="image_subject" src="{% static subject.image.url %}">
+                                    {% else %}
+                                        <img data-name="image_subject" src="/media/profiles/home-peluches.png">
+                                    {% endif %}
+
+                                </div>
+                                <span class="card-title" data-name="subject_name">{{ subject.name }}</span>
+                            </div>
+                            <div class="card-content min-height-card">
+                                <i class="material-icons red-text left">clear</i><span
+                                    data-name="description">{{ subject.description }}</span>
+                                <div class="card-action">
+                                    {% if subject.test_opt %}
+                                        <span data-name="text_opt"><i class="material-icons green-text left">done</i> Acceder al examen final directamente</span>
+                                    {% else %}
+                                        <span data-name="text_opt"><i class="material-icons red-text left">clear</i> Acceder al examen final directamente</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="buttons-card-hover" id="buttons-card-hover" hidden>
+                                <a class="btn-large waves-effect waves-light light-blue button-see-card"
+                                   href="{% url 'detail_subject' subject.id %}">Ver</a>
+                                <a class="btn-large  waves-effect waves-light orange button-edit-card">Editar</a>
+                                <a class="btn-large  waves-effect waves-light red button-delete-card"
+                                   href="{% url 'create_test' subject.id %}">Crear test</a>
+                                <a class="btn-large  waves-effect waves-light button-enroll-card">Matricularme</a>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <h5 class="teal-text">Todavía no tiene ninguna asignatura, ¡cree alguna o matricúlese!</h5>
+                {% endfor %}
+            </div>
+            <div class="divider"></div>
+            <h4 class="orange-text" id="section_matriculadas">{% trans 'Matriculadas' %}</h4>
+            <div class="row">
+
+            </div>
+        </div>
+        <div class="col hide-on-small-only m3 l2">
+            <div class="table-of-contents">
+                <h6>{% trans 'Tabla de contenidos' %}</h6>
+                <ul class="section">
+                    <li><a href="#section_creadas">{% trans 'Creadas' %}</a></li>
+                    <li><a href="#section_matriculadas">{% trans 'Matriculadas' %}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

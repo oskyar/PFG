@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% block title %}Ponte a prueba - Creando examen{% endblock title %}
+<!-- Wide card with share menu button -->
+{% block content %}
+
+    <div class="row col l12 m12 s12 subject-card">
+        <h4>Creando TEST </h4>
+
+        <div class="row">
+
+            <div class="col l8 m8 s12 ">
+                <form method="POST" enctype="multipart/form-data" action="">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col l6 m6 s12">
+                            {% if form.subject %}
+                                {{ form.subject }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l6 m6 s12">
+                            <div class="input-field">
+                                {{ form.name|add_class:"validate"|add_error_class:"invalid" }}
+                                <label class="validate" for="{{ form.name.id_for_label }}"
+                                       data-error="{{ form.name.errors|striptags }}"
+                                       data-success="Nombre de test correcto">{{ form.name.label }}</label>
+                            </div>
+                        </div>
+                        <div class="col l4 m4 s12">
+                            <div class="input-field">
+                                {{ form.visibility }}
+                                <label class="validate"
+                                       for="{{ form.visibility.id_for_label }}">{{ form.visibility.label }}</label>
+                            </div>
+                        </div>
+                        <div class="col l2 m2 s12">
+                            <label class="validate"
+                                   for="{{ form.active.id_for_label }}">{{ form.active.label }}</label>
+                            <div class="switch">
+                                <label>
+                                    {% trans 'No' %}
+                                    {{ form.active }}
+                                    <span class="lever"></span>
+                                    {% trans 'Sí' %}
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l4 m4 s12">
+                            <div class="input-field">
+                                {{ form.type }}
+                                {{ form.type.label_tag }}
+                            </div>
+                        </div>
+                        <div class="col l4 m4 s12">
+                            <div class="input-field">
+                                {{ form.num_question|add_class:"validate"|add_error_class:"invalid" }}
+                                <label class="validate" for="{{ form.num_question.id_for_label }}"
+                                       data-error="{{ form.num_question.errors|striptags }}"
+                                       data-success="Correcto">{{ form.num_question.label }}</label>
+                            </div>
+                        </div>
+                        <div class="col l4 m4 s12" id="container_duration">
+                            <div class="input-field">
+                                {{ form.duration|add_class:"validate"|add_error_class:"invalid" }}
+                                <label class="validate" for="{{ form.duration.id_for_label }}"
+                                       data-error="{{ form.duration.errors|striptags }}"
+                                       data-success="Correcto">{{ form.duration.label }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l4 m4 s12">
+                            <label>{% trans '¿Establecer fecha de inicio?' %}</label>
+                            <div class="switch">
+                                <label>
+                                    {% trans 'No' %}
+                                    <input type="checkbox" id="switch_start_date">
+                                    <span class="lever"></span>
+                                    {% trans 'Sí' %}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col l4 m4 s12">
+                            <label>{% trans '¿Establecer fecha de finalización?' %}</label>
+                            <div class="switch">
+                                <label>
+                                    {% trans 'No' %}
+                                    <input type="checkbox" id="switch_end_date">
+                                    <span class="lever"></span>
+                                    {% trans 'Sí' %}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col l4 m4 s12">
+                            <label>{% trans '¿Requerir código de activación?' %}</label>
+                            <div class="switch">
+                                <label>
+                                    {% trans 'No' %}
+                                    <input type="checkbox" id="switch_activation_code">
+                                    <span class="lever"></span>
+                                    {% trans 'Sí' %}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l4 m4 s12">
+                            <div class="input-field" id="container_start_date" hidden>
+                                {{ form.start_date|add_class:"datepicker validate" }}
+                                <label class="validate" for="{{ form.start_date.id_for_label }}"
+                                       data-error="{{ form.start_date.errors|striptags }}"
+                                       data-success="Correcto">{{ form.start_date.label }}</label>
+                            </div>
+                            <div>&nbsp;</div>
+                        </div>
+                        <div class="col l4 m4 s12">
+                            <div class="input-field" id="container_end_date" hidden>
+                                {{ form.end_date|add_class:"datepicker validate" }}
+                                <label class="validate" for="{{ form.end_date.id_for_label }}"
+                                       data-error="{{ form.end_date.errors|striptags }}"
+                                       data-success="Correcto">{{ form.end_date.label }}</label>
+                            </div>
+                            <div>&nbsp;</div>
+                        </div>
+
+                        <div class="col l4 m4 s12">
+                            <div class="input-field" id="container_activation_code" hidden>
+                                {{ form.activation_code|add_class:"validate"|add_error_class:"invalid" }}
+                                <label class="validate" for="{{ form.activation_code.id_for_label }}"
+                                       data-error="{{ form.activation_code.errors|striptags }}"
+                                       data-success="Correcto">{{ form.activation_code.label }}</label>
+                            </div>
+                            <div>&nbsp;</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn orange waves-effect waves-light">Añadir preguntas ahora</button>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block script_code %}
+
+    //Formato del Datepicker al español.
+    $('.datepicker').pickadate({
+    labelMonthNext: 'Mes siguiente',
+    labelMonthPrev: 'Mes anterior',
+    labelMonthSelect: 'Selecciona un mes',
+    labelYearSelect: 'Selecciona un año',
+    weekdaysLetter: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+    firstDay: true,
+    monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
+    'Noviembre', 'Diciembre'],
+    monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+    weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+    weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+    today: 'Hoy',
+    clear: 'Limpiar',
+    close: 'Cerrar',
+    //format: 'dddd!, d !de mmmm !de yyyy',
+    format: 'dd/mm/yyyy',
+    formatSubmit: 'dd/mm/yyyy',
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+
+    var transitionDate = "slide";
+    $('#switch_start_date').change(function () {
+    if ($(this).prop('checked')) {
+    $('#container_start_date').show(transitionDate);
+    }else{
+    $('#container_start_date').hide(transitionDate);
+    $('#id_start_date').pickadate('picker').set('clear');
+    }
+    });
+
+    $('#switch_end_date').change(function () {
+    if ($(this).prop('checked')) {
+    $('#container_end_date').show(transitionDate);
+    }else{
+    $('#container_end_date').hide(transitionDate);
+    $('#id_end_date').pickadate('picker').set('clear');
+    }
+    });
+
+    $('#switch_activation_code').change(function () {
+    if ($(this).prop('checked')) {
+    $('#container_activation_code').show(transitionDate);
+    }else{
+    $('#container_activation_code').hide(transitionDate);
+    $('#id_activation_code').val("");
+    }
+    });
+
+    $('#id_type').change(function(){
+    if ($('#id_type').val() == "0") {
+    $('#container_duration').hide(transitionDate);
+    $('#id_duration').val("");
+    } else if ($('#id_type').val() == "1") {
+    $('#container_duration').show(transitionDate);
+    $('label[for=id_duration]').text("Duración (min)");
+    }
+    else if ($('#id_type').val() == "2") {
+    $('#container_duration').show(transitionDate);
+    $('label[for=id_duration]').text("Duración (seg)");
+    }
+    });
+
+    initialize_test_view();
+
+{% endblock %}

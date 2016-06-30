@@ -1,6 +1,5 @@
 __author__ = 'oskyar'
 
-
 # user/admin.py
 
 from django.contrib import admin

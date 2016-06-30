@@ -1,19 +1,22 @@
 __author__ = 'oskyar'
 
+from TFG.apps.user.models import UserProfile
 from TFG.mixins import LoginRequiredMixin
 from ajaxuploader.views import AjaxFileUploader
 from django.core.urlresolvers import reverse_lazy
 from django.middleware.csrf import get_token
-from django.shortcuts import redirect
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-from django.views.generic import CreateView, FormView
-from .forms import CreateSubjectForm, CreateTopicForm, CreateQuestionForm, AnswerFormSet
-from .models import Subject, UserProfile, Topic, Answer
+from django.shortcuts import get_object_or_404, redirect
+from django.utils.translation import ugettext as _
+from vanilla import DetailView, RedirectView, UpdateView, DeleteView, ListView, CreateView
+from .forms import CreateSubjectForm
+from .models import Subject
+from django.utils import timezone
+from braces import views
+from guardian.shortcuts import assign_perm
 
 
 class CreateSubjectView(LoginRequiredMixin, CreateView):
-    template_name = 'subject/create.html'
+    template_name = 'subject/subject_create.html'
     form_class = CreateSubjectForm
     success_url = "/"
 
@@ -22,15 +25,20 @@ class CreateSubjectView(LoginRequiredMixin, CreateView):
         Returns the initial data to use for forms on this view.
         """
         initial = super(CreateSubjectView, self).get_initial()
-
-        initial['name'] = "probando"
+        # TODO: Quitar inicialización del nombre
+        # initial['name'] = "probando con imagen"
+        # initial['capacity'] = "10"
+        # initial['description'] = "Descripción de la asignatura en la que se intenta subir una imagen."
         return initial
 
     def form_valid(self, form):
         subject = form.save(commit=False)
-        subject.teacher = UserProfile.objects.get_user_by_username(self.request.user)
-        subject.category = "Prueba"
+        subject.teacher = self.request.user.userProfile
+        subject.created_on = timezone.now()
         subject.save()
+        assign_perm('subject.add_subject', self.request.user, subject)
+        assign_perm('subject.change_subject', self.request.user, subject)
+        assign_perm('subject.delete_subject', self.request.user, subject)
         # return redirect("/subject/"+str(subject.id)+"/topic/create")
 
         # return redirect("create_topic", pk=subject.id)
@@ -50,114 +58,128 @@ class CreateSubjectView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse_lazy("create_topic", kwargs={'pk': self.object.id})
 
+    def get_breadcrumbs(self, subject):
+        breadcrumbs = list()
+        breadcrumbs.append(
+            {"url": "/", "title": "Inicio", "tooltip": "Inicio"})
+        breadcrumbs.append(
+            {"url": reverse_lazy('detail_subject', kwargs={'pk': self.kwargs.get('pk')}), "title": subject.name,
+             "tooltip": _("Asignatura")})
+        return breadcrumbs
 
-class CreateTopicView(LoginRequiredMixin, CreateView):
-    template_name = 'topic/create.html'
-    form_class = CreateTopicForm
+
+class UpdateSubjectView(LoginRequiredMixin, views.PermissionRequiredMixin, UpdateView):
+    form_class = CreateSubjectForm
+    fields = "__all__"
+    template_name = "subject/subject_create.html"
+    context_object_name = 'subject'
+    lookup_field = 'pk'
+    permission_required = "subject.change_subject"
+
+    def get_object(self):
+        return Subject.objects.get(pk=self.kwargs.get('pk'))
 
     def get_context_data(self, **kwargs):
-        context = super(CreateTopicView, self).get_context_data(**kwargs)
-        subject = Subject.objects.get(pk=self.kwargs['pk'])
-        context['subject'] = subject
-        context['topics'] = Topic.objects.filter(subject=subject)
+        context = super(UpdateSubjectView, self).get_context_data(**kwargs)
+        context['edit'] = True
         return context
 
     def form_valid(self, form):
-        topic = form.save(commit=False)
-        topic.subject = Subject.objects.get(pk=self.kwargs['pk'])
-        topic.save()
-        return redirect("create_topic", pk=self.kwargs['pk'])
+        subject = form.save(commit=False)
+        subject.teacher = self.request.user.userProfile
+
+        subject.save()
+        # return redirect("/subject/"+str(subject.id)+"/topic/create")
 
         # return redirect("create_topic", pk=subject.id)
-        # return super(CreateTopicView, self).form_valid(form)
+        return super(UpdateSubjectView, self).form_valid(form)
 
     def form_invalid(self, form):
-        return super(CreateTopicView, self).form_invalid(form)
+        return super(UpdateSubjectView, self).form_invalid(form)
+
+    def get_success_url(self):
+        return reverse_lazy("create_topic", kwargs={'pk': self.object.id})
 
 
-class CreateQuestionView(LoginRequiredMixin, FormView):
-    template_name = 'question/create.html'
-    form_class = CreateQuestionForm
+class DetailSubjectView(DetailView):
+    model = Subject
+    template_name = "subject/subject_detail.html"
+    lookup_field = 'pk'
 
     def get_context_data(self, **kwargs):
-        context = super(CreateQuestionView, self).get_context_data(**kwargs)
-        context['current_topic'] = Topic.objects.get(pk=self.kwargs['pk_topic'])
-        context['topics'] = Topic.objects.filter(subject=Subject.objects.get(pk=self.kwargs['pk_subject']))
-        context['replies_form'] = AnswerFormSet()
+        context = super(DetailSubjectView, self).get_context_data()
+        subject = Subject.objects.get(pk=self.kwargs.get('pk'))
+        context['owner'] = subject.teacher
+        context['topics'] = subject.topics.all()
+        context['breadcrumbs'] = self.get_breadcrumbs(subject)
         return context
 
-    def form_valid(self, form):
-        print("Form valido")
-        replies_form = AnswerFormSet(self.request.POST)
-        question = form.save(commit=False)
-        question.topic = Topic.objects.get(pk=self.kwargs['pk_topic'])
-        question.save()
+    def get_breadcrumbs(self, subject):
+        breadcrumbs = list()
+        breadcrumbs.append(
+            {"url": "/", "title": "Inicio", "tooltip": "Inicio"})
+        breadcrumbs.append(
+            {"url": reverse_lazy('detail_subject', kwargs={'pk': self.kwargs.get('pk')}), "title": subject.name,
+             "tooltip": _("Asignatura")})
+        return breadcrumbs
 
-        # TODO: lanzar CLEAN y si valid = None ponerlo a False y si es 'on' ponerlo a True
-        valid0 = False
-        valid1 = False
-        valid2 = False
-        valid3 = False
-        if form.data.get('id_form-0-valid'):
-            valid0 = True
-        if form.data.get('id_form-1-valid'):
-            valid1 = True
-        if form.data.get('id_form-2-valid'):
-            valid2 = True
-        if form.data.get('id_form-3-valid'):
-            valid3 = True
 
-        Answer.objects.create(question=question, reply=form.data.get('id_form-0-reply'), valid=valid0,
-                              adjustment=form.data.get('id_form-0-adjustement'))
-        Answer.objects.create(question=question, reply=form.data.get('id_form-1-reply'), valid=valid1,
-                              adjustment=form.data.get('id_form-1-adjustement'))
-        Answer.objects.create(question=question, reply=form.data.get('id_form-2-reply'), valid=valid2,
-                              adjustment=form.data.get('id_form-2-adjustement'))
-        Answer.objects.create(question=question, reply=form.data.get('id_form-3-reply'), valid=valid3,
-                              adjustment=form.data.get('id_form-3-adjustement'))
+class ListSubjectView(LoginRequiredMixin, ListView):
+    template_name = 'subject/subject_list.html'
+    context_object_name = 'subjects'
 
-        return redirect("create_question", pk_subject=self.kwargs['pk_subject'], pk_topic=self.kwargs['pk_topic'])
+    def get_queryset(self):
+        subjects = list(Subject.objects.filter(teacher=self.request.user.userProfile))
+        for subject in subjects:
+            subject.num_topics = len(subject.topics.all())
+        return subjects
 
-        # return redirect("create_topic", pk=subject.id)
-        # return super(CreateTopicView, self).form_valid(form)
+    def get_context_data(self, **kwargs):
+        context = super(ListSubjectView, self).get_context_data()
+        context['my_subjects'] = self.request.user.userProfile.my_subjects.all()
+        context['breadcrumbs'] = self.get_breadcrumbs()
+        return context
 
-    def form_invalid(self, form):
+    def get_breadcrumbs(self):
+        breadcrumbs = list()
+        breadcrumbs.append(
+            {"url": "/", "title": "Inicio", "tooltip": "Inicio"})
+        breadcrumbs.append(
+            {"url": reverse_lazy('list_subjects'), "title": _("Lista de asignaturas"),
+             "tooltip": _("Lista de asignaturas")})
+        return breadcrumbs
 
-        print("form Invalido")
-        return super(CreateQuestionView, self).form_invalid(form)
 
-    """
+class DeleteSubjectView(LoginRequiredMixin, DeleteView):
+    model = Subject
+    success_url = "/"
+
     def get(self, request, *args, **kwargs):
-        self.object = None
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-        replies_form = AnswerFormSet()
-        context = self.get_context_data(form=form, replies_form=replies_form)
-        return self.render_to_response(context)
-
-    def post(self, request, *args, **kwargs):
-        ""
-        Handles POST requests, instantiating a form instance and its inline
-        formsets with the passed POST variables and then checking them for
-        validity.
-        ""
-        self.object = None
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-        replies_form = AnswerFormSet(self.request.POST)
-        if (form.is_valid() and replies_form.is_valid()):
-            return self.form_valid(form, replies_form)
+        subject = Subject.objects.get(pk=self.kwargs.get('pk'))
+        owner = subject.teacher.user
+        if self.request.user == owner:
+            get_object_or_404(Subject, pk=subject.pk).delete()
+            return redirect(reverse_lazy('list_subjects'))
         else:
-            return self.form_invalid(form, replies_form)
-    """
+            return super(DeleteSubjectView, self).post(request, *args, **kwargs)
 
 
+class UserRegisterSubject(LoginRequiredMixin, RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        id_subject = self.kwargs.get('pk')
+        subject = Subject.objects.get(pk=id_subject)
+        subject.students.add(UserProfile.objects.get(pk=self.request.user.userProfile.id))
+        # self.request.user.userProfile.my_subjects.add(Subject.objects.get(pk=id_subject))
+        return reverse_lazy('detail_subject', kwargs=self.kwargs)
 
 
-
-def start(request):
-    return render_to_response('import.html',
-                              {'csrf_token': csrf_token}, context_instance=RequestContext(request))
+class UserUnregisterSubject(LoginRequiredMixin, RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        id_subject = self.kwargs.get('pk')
+        subject = Subject.objects.get(pk=id_subject)
+        subject.students.remove(UserProfile.objects.get(pk=self.request.user.userProfile.id))
+        # self.request.user.userProfile.my_subjects.add(Subject.objects.get(pk=id_subject))
+        return reverse_lazy('detail_subject', kwargs=self.kwargs)
 
 
 import_uploader = AjaxFileUploader()

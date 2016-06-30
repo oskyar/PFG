@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% block title %}Ponte a prueba - Creando asignatura{% endblock title %}
+<!-- Wide card with share menu button -->
+{% block content %}
+    <div class="row">
+        <div class="col l10 m9 s12 subject-card">
+            <h2 class="teal-text header">{% trans 'Mis asignaturas' %}</h2>
+            <div class="divider"></div>
+            <h4 class="orange-text" id="section_creadas" data-scrollspy="true">{% trans 'Creadas' %}</h4>
+            <div class="row">
+                {% for subject in subjects %}
+                    <div class="col l4 m4 s12 ">
+                        {% include 'subject/subject_card.html' %}
+                    </div>
+                {% empty %}
+                    <h5 class="teal-text">Todavía no tiene ninguna asignatura, ¡cree alguna o matricúlese!</h5>
+                {% endfor %}
+            </div>
+            <div class="divider"></div>
+            <h4 class="orange-text" id="section_matriculadas" data-scrollspy="true">{% trans 'Matriculadas' %}</h4>
+            <div class="row">
+                {% for subject in my_subjects %}
+                    <div class="col l4 m4 s12 ">
+                        {% include 'subject/subject_card.html' %}
+                    </div>
+                {% empty %}
+                    <h5 class="teal-text">¡Todavía no te has matriculado en ninguna asignatura! ¡Búsquela arriba en el buscador y matricúlese!</h5>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col hide-on-small-only m3 l2">
+            <div class="table-of-contents" id="table_of_contents">
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block script_code %}
+
+    /*Para usar scrollSpy es necesario añadir data-title para ponerle texto al enlace y data-scrollspy=True para
+    activarlo.*/
+    addScrollSpy("{% trans 'Tabla de contenidos' %}");
+
+{% endblock %}

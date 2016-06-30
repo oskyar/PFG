@@ -1,9 +1,8 @@
 # encoding:utf-8
-from urllib.parse import urlparse
 
+import dj_database_url
 from django.utils.translation import ugettext_lazy as _
 from unipath import Path
-import dj_database_url
 
 LANGUAGES = (
     ('en-us', _('English')),
@@ -25,7 +24,7 @@ MANAGERS = ADMINS
 
 # Database
 DATABASES = {
-    'default': {
+    'heroku': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': 'ec2-54-163-228-188.compute-1.amazonaws.com',
         # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -36,10 +35,21 @@ DATABASES = {
         # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
         'PORT': '5432',  # Set to empty string for default.
     },
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'dbtfg',  # Or path to database file if using sqlite3.
+        # The following settings are not used with sqlite3:
+        'USER': 'oskyar',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
+        'PORT': '5432',  # Set to empty string for default.
 
+    }
 }
 
-#db_from_env = dj_database_url.config()
+# db_from_env = dj_database_url.config()
 DATABASES['default'].update(dj_database_url.config())
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
@@ -119,6 +129,11 @@ MIDDLEWARE_CLASSES = [
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # this is default
+    'guardian.backends.ObjectPermissionBackend',
+)
+
 ROOT_URLCONF = 'TFG.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -139,7 +154,8 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': ["django.template.context_processors.i18n",
                                    "django.template.context_processors.request",
-                                   "django.contrib.auth.context_processors.auth"],
+                                   "django.contrib.auth.context_processors.auth",
+                                   'django.contrib.messages.context_processors.messages', ],
             'debug': DEBUG,
         },
     }
@@ -157,8 +173,22 @@ INSTALLED_APPS = (
     'TFG.apps.index',
     'TFG.apps.user',
     'TFG.apps.subject',
+    'TFG.apps.topic',
+    'TFG.apps.question',
+    'TFG.apps.answer',
+    'TFG.apps.test',
+    'TFG.apps.search',
+    'TFG.apps.statistic',
+    'widget_tweaks',
+    'vanilla',
+    'guardian',
+    # 'TFG.apps.statistic',
+    #    'TFG.apps.test',
     'registration',
-    'ajaxuploader'
+    'ajaxuploader',
+    'braces',
+    'extra_views',
+    'smart_selects'
 )
 
 from django.core.urlresolvers import reverse_lazy

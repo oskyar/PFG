@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% block title %}Ponte a prueba - Tema{% endblock title %}
+<!-- Wide card with share menu button -->
+{% block content %}
+    <div class="row">
+    <div class="col l10 m9 s12">
+        <div class="icons-header">
+            <h5 class="left teal-text title-header">Tema: </h5>
+            {% if user == topic.subject.teacher.user %}
+                <a href="{% url 'delete_topic' topic.subject.id topic.id %}"
+                   class="right red btn btn-floating waves-effect waves-circle tooltipped"
+                   data-tooltip="Eliminar asignatura"><i
+                        class="material-icons">delete</i> </a>
+                <a href="{% url 'edit_topic' topic.subject.id topic.id %}"
+                   class="right blue btn-large btn-floating waves-effect waves-circle tooltipped"
+                   data-tooltip="Editar asignatura"><i
+                        class="material-icons">edit</i> </a>
+            {% endif %}
+            <h3 class="orange-text header tooltipped" data-position="top" data-delay="50"
+                data-tooltip="Subtema">{{ topic.cardinality }}. {{ topic.name }}</h3>
+        </div>
+        <h5 class="teal-text header" id="information" data-scrollspy="true">{% trans 'Información' %}</h5>
+        <div class="divider"></div>
+        <div class="row">
+            <div class="col l6 m6 s12">
+                <div>
+                    <span class="orange-text">{% trans 'Nombre de la asignatura' %}:</span>
+                    <span> {{ topic.subject.name }} </span>
+                </div>
+                <div>
+                    <span class="orange-text">{% trans 'Subtemas' %}:</span>
+                    <span> {{ topic.subtopics.all.count }} </span>
+                </div>
+                <div>
+                    <span class="orange-text">{% trans 'Descripción' %}:</span>
+                    <span> {{ topic.description }}</span>
+                </div>
+            </div>
+            <div class="col l6 m6 s12">
+                <div>
+                    <span class="orange-text">{% trans 'Valor tema' %}:</span>
+                    <span> {{ topic.value }} </span>
+                </div>
+                <div>
+                    <span class="orange-text">{% trans 'Subtemas gamificados' %}:</span>
+                    <span> {{ topic.subtopics.gamificado.count }} </span>
+                </div>
+
+                <div>
+                    <span class="orange-text">{% trans '¿Gamificado?' %}:</span>
+                    <span> {{ topic.gamificar }}</span>
+                </div>
+            </div>
+        </div>
+
+
+        <h5 class="teal-text header" id="topics_subject" data-scrollspy="true">{% trans 'Subtemas' %}
+            ({{ topic.subtopics.all.count }})</h5>
+        <div class="divider"></div>
+
+        <div class="collection ">
+            {% for subtopic in topic.subtopics.all %}
+                <div class="collection-item collection-subtopics">
+                    <i class="material-icons deep-orange-text">filter_{{ subtopic.cardinality }}</i>
+                    <span>{{ subtopic.name }} ({{ subtopic.questions.all.count }})</span>
+                    <a href="{% url 'delete_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}"
+                       class="waves-effect waves-circle btn-floating secondary-content red">
+                        <i class="material-icons delete"
+                           data-confirmed="{% trans "El subtema ha sido eliminado correctamente" %}"
+                           data-textconfirm="'{{ subtopic.name }}' {% trans "será eliminado. También se borrarán todas las preguntas asociadas" %}"
+                           data-attribute="subtopic"
+                           data-subtopic="subtopic_{{ subtopic.id }}"
+                           data-url="{% url 'delete_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}">delete</i></a>
+                    <a href="{% url 'edit_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}"
+                       class="waves-effect waves-circle btn-floating blue secondary-content"
+                       data-subtopic="subtopic_{{ subtopic.id }}"><i
+                            class="material-icons ">edit</i></a>
+                    <a href="{% url 'detail_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}"
+                       data-subtopic="subtopic_{{ subtopic.id }}"
+                       class="waves-effect waves-circle btn-floating secondary-content green"><i
+                            class="material-icons">visibility</i></a>
+                </div>
+            {% empty %}
+                {% if user.userProfile == topic.subject.teacher %}
+
+                    <a class="collection-item blue-text"
+                       href="{% url 'create_subtopic' topic.subject.id topic.id %}"><i
+                            class="material-icons green-text left">add</i>{% trans 'Este tema no tiene subtemas. ¡Pinche aquí para crear un subtema ahora!' %}
+                    </a>
+                {% endif %}
+
+            {% endfor %}
+            {% if topic.subjects.all and user.userProfile == topic.subject.teacher %}
+
+                <a class="collection-item blue-text"
+                   href="{% url 'create_subtopic' topic.subject.id topic.id %}"><i
+                        class="material-icons green-text left">add</i>{% trans '¡Pinche aquí para crear un subtema!' %}
+                </a>
+            {% endif %}
+
+        </div>
+    </div>
+    <div class="col hide-on-small-only m3 l2">
+        <div class="table-of-contents" id="table_of_contents">
+
+        </div>
+    </div>
+{% endblock content %}
+
+{% block script_code %}
+
+    addScrollSpy("{% trans 'Tabla de contenidos' %}");
+
+{% endblock %}

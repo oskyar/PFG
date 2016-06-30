@@ -3,3 +3,6 @@ sudo apt-get install python3-dev libpq-dev
 
 # en caso de necesitar eventos
 sudo apt-get install libevent-dev
+
+#Actualizar versión de todas las dependencias del proyecto
+pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U

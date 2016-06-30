@@ -3,7 +3,6 @@
 {% if user.is_authenticated %}
     <nav>
         <div class="nav-wrapper teal lighten-2">
-
             <a href="/" class="brand-logo center">¿Cuánto sabes?</a>
             <a href="#" data-activates="menu-lateral" class="button-collapse ">
                 <div class="chip">
@@ -12,7 +11,24 @@
                 </div>
             </a>
 
+            <ul class="left ">
+                {% comment %}<li><a href="{% url 'create_test' %}">Crear TEST</a></li> {% endcomment %}
+                <li>
+                    <nav>
+                        <div class="nav-wrapper">
+                            <div class="input-field teal">
+                                <input id="search" type="search" placeholder="Buscar Asignatura">
+                                <label for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </div>
+                    </nav>
+                </li>
+
+            </ul>
             <ul class="right hide-on-med-and-down">
+                {% comment %}<li><a href="{% url 'create_test' %}">Crear TEST</a></li> {% endcomment %}
+
                 <li><a href="{% url 'create_subject' %}">Crear Asignatura</a></li>
                 <!--<li><a href="collapsible.html">Exámenes</a></li>
                 <li><a href="mobile.html">Trending</a></li>-->

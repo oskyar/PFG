@@ -12,6 +12,7 @@ from registration.backends.default.views import RegistrationView
 from . import signals
 from .forms import UserProfileForm
 from .models import UserProfile
+from guardian.shortcuts import assign_perm
 
 
 class UserProfileView(RegistrationView):
@@ -32,6 +33,7 @@ class UserProfileView(RegistrationView):
         user_profile.created_on = timezone.now()
         user_profile.modify_on = timezone.now()
         user_profile.save()
+        assign_perm('user.change_user', self.request.user, user_profile)
 
         return user_profile
 
