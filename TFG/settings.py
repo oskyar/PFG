@@ -24,7 +24,7 @@ MANAGERS = ADMINS
 
 # Database
 DATABASES = {
-    'heroku': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': 'ec2-54-163-228-188.compute-1.amazonaws.com',
         # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -34,28 +34,23 @@ DATABASES = {
         'PASSWORD': 'XriE7WjU6ZWDHYjB54k5D9XQCZ',
         # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
         'PORT': '5432',  # Set to empty string for default.
-    },
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'dbtfg',  # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': 'oskyar',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
-        'PORT': '5432',  # Set to empty string for default.
-
     }
 }
 
 # db_from_env = dj_database_url.config()
 DATABASES['default'].update(dj_database_url.config())
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ['*']
-DEBUG = True
+DEBUG = False
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
