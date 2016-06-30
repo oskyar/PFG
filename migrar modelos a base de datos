@@ -16,3 +16,6 @@ for i in `psql dbtfg -tc "select tablename from pg_tables where schemaname='publ
 
 Crear superusuario aplicación
 ./manage.py createsuperuser
+
+# Obligatorio para la sincronización de la BD local to heroku y viceversa
+https://devcenter.heroku.com/articles/heroku-postgresql
