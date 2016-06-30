@@ -1,0 +1,14 @@
+{% load static from staticfiles %}
+{% load i18n %}
+
+{% if breadcrumbs %}
+    <nav>
+        <div class="nav-wrapper deep-orange container-breadcrumb">
+            <div class="col s12">
+                {% for breadcrumb in breadcrumbs %}
+                    <a href="{{ breadcrumb.url }}" class="breadcrumb tooltipped" data-tooltip="{{ breadcrumb.tooltip }}"> {{ breadcrumb.title }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </nav>
+{% endif %}

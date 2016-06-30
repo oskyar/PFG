@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% block title %}Ponte a prueba - Creando asignatura{% endblock title %}
+<!-- Wide card with share menu button -->
+{% block content %}
+
+    <div class="row">
+        <div class="col l12 m12 s12 subject-card">
+            <div class="icons-header">
+                {% if edit %}
+                    <a href="{% url 'detail_subject' subject.id %}"
+                       class="right green btn-large btn-floating waves-effect waves-circle"><i
+                            class="material-icons">visibility</i></a>
+                    <h2 class="teal-text header">{% trans 'Editar asignatura' %}</h2>
+                {% else %}
+                    <h2 class="teal-text header">{% trans 'Crear asignatura' %}</h2>
+                {% endif %}
+            </div>
+            <div class="row">
+                <div class="col l5 m5 hide-on-small-only">
+                    <div class="card small subject-card">
+                        <div class="card-image">
+                            <a class="btn-floating btn waves-effect waves-light red container-floating-num tooltipped"
+                               data-position="top" data-delay="50" data-tooltip="Capacidad de alumnos"><span
+                                    class="num-limit" data-name="capacity"> 0</span></a>
+                            <a class="btn-floating btn waves-effect waves-light mdl-color--teal-100 container-floating-num tooltipped"
+                               data-position="top" data-delay="50" data-tooltip="Número de temas"><span
+                                    class="num-limit" data-name="num_topics"> 0</span></a>
+
+                            <div class="container-img">
+                                <img data-name="image_subject" src="{% static 'img/transparent.jpg' %}">
+
+                            </div>
+                        <span class="card-title"><span data-name="subject_name">Nombre de la asignatura</span> ( <span
+                                class="" data-name="category">Categoría</span> )</span>
+                        </div>
+                        <div class="card-content min-height-card">
+                            <i class="material-icons red-text left">clear</i><span data-name="description"> Descripción de la asignatura</span>
+                        </div>
+                        <div class="card-action">
+                            <span data-name="text_opt"><i class="material-icons red-text left">clear</i> Acceder al examen final directamente</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l1 m1">&nbsp;</div>
+                <div class="col l6 m6 s12 ">
+                    <form id="form_subject" method="POST" enctype="multipart/form-data" action="">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="input-field col s12 m8 l12">
+                                {{ form.name }}
+                                <label class="validate" data-error="{{ form.name.errors|striptags }}"
+                                       data-success="Nombre de asignatura correcto"
+                                       for="{{ form.name.auto_id }}">{{ form.name.label }}</label>
+                            </div>
+
+                            <div class="file-field input-field col s12 m12 l12">
+                                <div id="file-uploader" class="">
+                                    <span>{{ form.image.label }}</span>
+                                    {{ form.image }}
+                                </div>
+                            </div>
+
+                            <div class="input-field col s12 m4 l2">
+                                {{ form.capacity }}
+                                <label class="validate"
+                                       for="{{ form.capacity.auto_id }}">{{ form.capacity.label }}</label>
+                            </div>
+                            <div class="input-field col s12 m4 l4">
+                                {{ form.category }}
+                                <label class="validate" data-error="{{ form.category.errors|striptags }}"
+                                       data-success="Categoría correcta"
+                                       for="{{ form.category.auto_id }}">{{ form.category.label }}</label>
+                            </div>
+                            <!--<div class="input-field col s12 m4 l2">
+                                <input id="id_num_topics" placeholder="0" type="number" maxlength="2"/>
+                                <label class="validate"
+                                       for="num_topics" name="num_topics">Nº de Temas</label>
+                            </div>-->
+                            <div class="col s12 m12 l4">
+                                {{ form.test_opt.label_tag }}
+                                <div class="switch">
+                                    <label>
+                                        {% trans 'No' %}
+                                        {{ form.test_opt }}
+                                        <span class="lever"></span>
+                                        {% trans 'Sí' %}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-field col s12 m12 l12">
+                            {{ form.description }}
+                            <label class="validate"
+                                   for="{{ form.description.auto_id }}">{{ form.description.label }}</label>
+                        </div>
+                        <!--<button type="submit" class="btn waves-effect waves-light">Guardar y salir</button>-->
+                        {% if edit %}
+                            <button type="submit"
+                                    class="btn waves-effect waves-light deep-orange">{% trans 'Actualizar asignatura y crear temas' %}</button>
+                        {% else %}
+                            <button type="submit"
+                                    class="btn waves-effect waves-light">{% trans 'Guardar y crear temas' %}</button>
+                        {% endif %}
+                        <!--<button type="submit" class="btn waves-effect waves-light right">Crear y seguir con los temas
+                        </button>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static "ajaxuploader/js/fileuploader.js" %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            var uploader = new qq.FileUploader({
+
+                action: "{% url 'my_ajax_upload' %}",
+                element: $('#file-uploader')[0],
+                multiple: false,
+                customHeaders: {
+                    'X-CSRFToken': "{% csrf_token %}"
+                },
+                onComplete: function (id, fileName, responseJSON) {
+                    if (responseJSON.success) {
+                        console.log(responseJSON);
+                        if ($('.file-path').children().length > 1)
+                            $('.file-path').children().first().remove();
+                        $('[data-name="image_subject"]').attr('src', responseJSON.path);
+                        $('#id_photo').val(responseJSON.path);
+                    } else {
+                        alert("upload failed!");
+                    }
+                },
+                onAllComplete: function (uploads) {
+                    // uploads is an array of maps
+                    // the maps look like this: {file: FileObject, response: JSONServerResponse}
+                    // alert("All complete!");
+
+                },
+                params: {
+                    'csrf_token': "{% csrf_token %}",
+                    'csrf_name': 'csrfmiddlewaretoken',
+                    'csrf_xname': 'X-CSRFToken'
+                },
+                classes: {
+                    button: 'upload-image',
+                    drop: 'qq-upload-drop-area',
+                    dropActive: 'qq-upload-drop-area-active',
+                    list: 'file-path',
+
+                    file: 'qq-upload-file',
+                    spinner: 'qq-upload-spinner',
+                    size: 'qq-upload-size',
+                    cancel: 'qq-upload-cancel',
+
+                    // added to list item when upload completes
+                    // used in css to hide progress spinner
+                    success: 'qq-upload-success',
+                    fail: 'qq-upload-fail'
+                },
+                template: '<div class="qq-uploader"><div class="qq-upload-drop-area"><span>Arrastra aquí para subir el archivo</span></div><div class="upload-image btn">Cambiar imagen</div><div class="file-path-wrapper"><ul class="file-path validate li-input"></ul></div></div>'
+            });
+            console.log(uploader)
+
+        });
+
+
+    </script>
+{% endblock %}
+
+{% block script_code %}
+    {% if edit %}
+        $('input').trigger('keyup');
+        {% if form.description.value != None %}
+            $('textarea').val("{{ form.description.value }}");
+        {% endif %}
+    {% endif %}
+{% endblock %}

@@ -24,6 +24,8 @@
 </header>
 <main>
     <div class="container">
+        {% include "breadcrumb.html" %}
+
         {% block content %}{% endblock %}
     </div>
 </main>
@@ -58,12 +60,13 @@
 <script type="text/javascript" src="{% static "js/jquery-ui.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.knob.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/materialize.min.js" %}"></script>
-<script type="text/javascript" src="{% static "js/test_functions.js" %}"></script>
-<script type="text/javascript" src="{% static "ajaxuploader/js/fileuploader.js" %}"></script>
 
+<script type="text/javascript" src="{% static "js/test_functions.js" %}"></script>
+
+{% block scripts %}{% endblock %}
 <script>
     $(document).ready(function () {
-        {% block scripts %}{% endblock %}
+        {% block script_code %}{% endblock %}
     });
 </script>
 </body>

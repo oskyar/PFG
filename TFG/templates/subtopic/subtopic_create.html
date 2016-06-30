@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% block title %}Ponte a prueba - Creando Tema{% endblock title %}
+<!-- Wide card with share menu button -->
+{% block content %}
+
+    <div class="row">
+        <div class="col l12 m12 s12">
+            <div class="icons-header">
+                {% if edit %}
+                    <a href="{% url 'detail_subtopic' subject.id topic.id subtopic.id %}"
+                       class="right green btn-large btn-floating waves-effect waves-circle"><i
+                            class="material-icons">visibility</i>
+                    </a>
+                    <h5 class="left teal-text header">{% trans 'Editar subtema' %}:
+                    </h5>
+                    <h3 class="orange-text">"{{ subtopic.name }}"</h3>
+                {% else %}
+                    <h5 class="teal-text header">{% trans 'Crear subtema' %}:
+                    </h5>
+                {% endif %}
+                {% comment %}<h5 class="left teal-text title-header">Tema: </h5>
+                <h3 class="orange-text header tooltipped" data-position="top" data-delay="50"
+                    data-tooltip="Subtema">{{ subtopic.topic.cardinality }}. {{ subtopic.topic.name }}</h3>
+                    {% endcomment %}
+            </div>
+            <div class="row">
+                <div class="col l8 m8 s12 ">
+                    <form method="POST" enctype="multipart/form-data" action="">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="input-field col l1 m1 s4">
+                                {{ form.cardinality.label_tag }}
+                                {{ form.cardinality }}
+                                {{ form.cardinality.errors }}
+                            </div>
+                            <div class="input-field col l7 m7 s12">
+                                {{ form.name.label_tag }}
+                                {{ form.name }}
+                                {{ form.name.errors }}
+                            </div>
+                            <div class="input-field col l2 m2 s4">
+                                {{ form.value.label_tag }}
+                                {{ form.value }}
+                                {{ form.value.errors }}
+                            </div>
+                            <div class="col l2 m2 s4">
+                                {{ form.gamificar.label_tag }}
+                                <div class="switch">
+                                    <label>
+                                        {% trans 'No' %}
+                                        {{ form.gamificar }}
+                                        <span class="lever"></span>
+                                        {% trans 'Sí' %}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12">
+                                {{ form.description.label_tag }}
+                                {{ form.description }}
+                                {{ form.description.errors }}
+                            </div>
+
+
+                        </div>
+
+                        {% if not edit %}
+                            <button type="submit" name="create_subtopic"
+                                    class="btn waves-effect waves-light">{% trans 'Crear otro subtema' %}
+                            </button>
+                        {% endif %}
+
+                        {% if edit %}
+                            <button type="submit" name="create_question"
+                                    class="btn orange waves-effect waves-light">{% trans 'Actualizar y crear preguntas' %}
+                            </button>
+                        {% else %}
+                            <button type="submit" name="create_question"
+                                    class="btn orange waves-effect waves-light">{% trans 'Crear y añadir preguntas' %}
+                            </button>
+                        {% endif %}
+
+
+                    </form>
+                </div>
+                <div class="list-topics col l4 m4 s12 ">
+                    <h4 class="orange-text header">Subtemas</h4>
+                    <ol>
+                        {% for subtopic in subtopics %}
+                            <li>
+                                <a type="submit"
+                                   href="{% url 'create_question' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}"
+                                   class="btn waves-effect waves-light">{{ subtopic.cardinality }}.{{ subtopic.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block script_code %}
+
+    {% if edit %}
+        $('textarea').val("{{ form.description.value }}");
+    {% endif %}
+
+{% endblock %}

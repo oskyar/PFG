@@ -3,11 +3,13 @@ __author__ = 'oskyar'
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.db import models
+from smart_selects.db_fields import ChainedForeignKey, ChainedManyToManyField
+from TFG.apps.test.models import Test
 
 
 class UserProfileManager(models.Manager):
     def get_user_by_email(self, email):
-        #user = User.objects.get(email=email)
+        # user = User.objects.get(email=email)
         try:
             return self.get(user=User.objects.get(email=email).id)
         except UserProfile.DoesNotExist:
@@ -19,12 +21,22 @@ class UserProfileManager(models.Manager):
         except UserProfile.DoesNotExist:
             return None
 
+    def num_test_by_user(self, *args, **kwargs):
+        return self.sub
+
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='userProfile')
+    tests_registered = models.ManyToManyField(
+        'test.Test',
+        related_name='students', blank=True)
+
     dni = models.CharField(max_length=9, blank=True, null=True)
     photo = models.ImageField(upload_to='profiles/', blank=True, null=True)
     created_on = models.DateTimeField(blank=True, null=False)
     modify_on = models.DateTimeField(blank=True, null=False)
+    level = models.PositiveIntegerField(default=0, blank=True, null=False)
+    score = models.PositiveIntegerField(default=0, blank=True, null=False)
 
     objects = UserProfileManager()
 
@@ -38,8 +50,8 @@ class UserProfile(models.Model):
         return self.user.get_username()
 
 
-class UserProfileAdmin (admin.ModelAdmin):
-    list_display = ('user','dni', 'photo', 'created_on', 'modify_on')
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'dni', 'photo', 'created_on', 'modify_on')
 
 
 """

@@ -1,0 +1,61 @@
+{% load static from staticfiles %}
+{% load i18n %}
+
+<div class="card small subject-card go-subject">
+    <div class="card-image">
+        <a class="btn-floating btn waves-effect waves-light red container-floating-num tooltipped"
+           data-position="top" data-delay="50" data-tooltip="Capacidad de alumnos"><span
+                class="num-limit" data-name="capacity">{{ subject.students.all.count }}</span></a>
+        <a class="btn-floating btn waves-effect waves-light mdl-color--teal-100 container-floating-num tooltipped"
+           data-position="top" data-delay="50" data-tooltip="Número de temas"><span
+                class="num-limit" data-name="num_topics">{{ subject.num_topics }}</span></a>
+
+        <div class="container-img">
+            {% if subject.image %}
+                <img data-name="image_subject" src="{% static subject.image.url %}">
+            {% else %}
+                <img data-name="image_subject" src="/media/profiles/home-peluches.png">
+            {% endif %}
+
+        </div>
+        <span class="card-title" data-name="subject_name">{{ subject.name }}</span>
+    </div>
+    <div class="card-content min-height-card">
+        <i class="material-icons red-text left">clear</i><span
+            data-name="description">{{ subject.description }}</span>
+        <div class="card-action">
+            {% if subject.test_opt %}
+                <span data-name="text_opt"><i class="material-icons green-text left">done</i> Acceder al examen final directamente</span>
+            {% else %}
+                <span data-name="text_opt"><i class="material-icons red-text left">clear</i> Acceder al examen final directamente</span>
+            {% endif %}
+        </div>
+    </div>
+    <div class="buttons-card-hover" id="buttons-card-hover" hidden>
+    {{ subject.student.all }}
+        {% if user == subject.teacher.user or subject in user.userProfile.my_subjects.all %}
+            <a class="btn-large waves-effect waves-light light-blue button-see-card width-100"
+               href="{% url 'detail_subject' subject.id %}">Ver</a>
+        {% else %}
+            <a class="btn-large waves-effect waves-light light-blue button-see-card"
+               href="{% url 'detail_subject' subject.id %}">Ver</a>
+        {% endif %}
+
+        {% if user == subject.teacher.user %}
+            <a href="{% url 'edit_subject' subject.id %}" class="btn-large  waves-effect waves-light orange button-edit-card">Editar</a>
+        {% endif %}
+
+        {% if user == subject.teacher.user %}
+            <a class="btn-large  waves-effect waves-light red button-delete-card"
+               href="{% url 'create_test' subject.id %}">Crear test</a>
+        {% else %}
+            <a class="btn-large  waves-effect waves-light red button-delete-card width-100"
+               href="{% url 'create_test' subject.id %}">¡Saber cuánto sé! (Hacer test)</a>
+        {% endif %}
+
+        {% if user != subject.teacher.user and subject not in user.userProfile.my_subjects.all %}
+            <a href="{% url 'register_subject' subject.id %}"
+               class="btn-large  waves-effect waves-light button-enroll-card">Matricularme</a>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% block title %}Ponte a prueba - Creando asignatura{% endblock title %}
+<!-- Wide card with share menu button -->
+{% block content %}
+    <div class="row">
+        <div class="col l10 m9 s12 subject-card">
+            <h2 class="teal-text header">{% trans 'Mis asignaturas' %}</h2>
+            <div class="divider"></div>
+            <h4 class="orange-text" id="section_creadas">{% trans 'Creadas' %}</h4>
+
+            <div class="divider"></div>
+            <h4 class="orange-text" id="section_matriculadas">{% trans 'Matriculadas' %}</h4>
+            <div class="row">
+
+            </div>
+        </div>
+        <div class="col hide-on-small-only m3 l2">
+            <div class="table-of-contents">
+            </div>
+        </div>
+    </div>
+{% endblock content %}

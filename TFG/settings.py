@@ -49,7 +49,7 @@ DATABASES = {
     }
 }
 
-#db_from_env = dj_database_url.config()
+# db_from_env = dj_database_url.config()
 DATABASES['default'].update(dj_database_url.config())
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
@@ -129,6 +129,11 @@ MIDDLEWARE_CLASSES = [
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # this is default
+    'guardian.backends.ObjectPermissionBackend',
+)
+
 ROOT_URLCONF = 'TFG.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -150,7 +155,7 @@ TEMPLATES = [
             'context_processors': ["django.template.context_processors.i18n",
                                    "django.template.context_processors.request",
                                    "django.contrib.auth.context_processors.auth",
-                                   'django.contrib.messages.context_processors.messages',],
+                                   'django.contrib.messages.context_processors.messages', ],
             'debug': DEBUG,
         },
     }
@@ -168,10 +173,22 @@ INSTALLED_APPS = (
     'TFG.apps.index',
     'TFG.apps.user',
     'TFG.apps.subject',
+    'TFG.apps.topic',
+    'TFG.apps.question',
+    'TFG.apps.answer',
+    'TFG.apps.test',
+    'TFG.apps.search',
+    'TFG.apps.statistic',
+    'widget_tweaks',
+    'vanilla',
+    'guardian',
+    # 'TFG.apps.statistic',
+    #    'TFG.apps.test',
     'registration',
     'ajaxuploader',
     'braces',
-    'extra_views'
+    'extra_views',
+    'smart_selects'
 )
 
 from django.core.urlresolvers import reverse_lazy

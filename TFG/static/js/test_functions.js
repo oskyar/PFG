@@ -31,6 +31,12 @@ $(document).ready(function () {
         }
     });
 
+    $("#search").on('change', function (ev) {
+
+        window.location.href = "/search/" + $(this).val();
+
+    });
+
     $("#id_username").on('keyup', function (ev) {
         if ($(this).val().length > 3) {
             $.post('/user/register/', {username: $(this).val()})
@@ -127,7 +133,7 @@ $(document).ready(function () {
         $('[data-name="subject_name"]').text($(this).val());
     });
     $('#id_category').on('keyup', function () {
-        $('[data-name="subject_name"]').text($(this).val());
+        $('[data-name="category"]').text($(this).val());
     });
     $('#id_description').on('keyup', function () {
         if ($(this).val().length > 0) {
@@ -260,16 +266,51 @@ $(document).ready(function () {
     });
 
     //Asignaturas
-    $('[data-target="subject"]').click(function () {
-        window.location = $(this).data('url');
+    $('.go-subject').hover(function (ev) {
+        $(this).find('#buttons-card-hover').show('clip')
+    }, function (ev) {
+        $(this).find('#buttons-card-hover').hide('slide')
     });
 
+    $(".delete").click(function () {
+        if (confirm($(this).data('textconfirm'))) {
+
+            var attribute = $(this).data('attribute');
+            var id = $(this).data(attribute);
+            var text_confirmed = $(this).data('confirmed');
+            $.ajax({
+                type: "POST",
+                url: $(this).data('url'),
+                data: {},
+                success: function (response) {
+                    console.log(attribute)
+                    console.log(id)
+
+                    console.log($('[' + attribute + '=' + id + ']').length)
+                    $('[data-' + attribute + '=' + id + ']').remove();
+                    Materialize.toast(text_confirmed, 3000)
+                },
+                error: function (res) {
+                    alert("ERROR: No se puede borrar el registro");
+                }
+            });
+        }
+        return false;
+    });
 
 });
 
 function initialize_question_view() {
     $('#id_type').trigger('change');
     //$('.valid-reply').trigger('click');
+}
+
+function initialize_test_view() {
+    $("input[type=checkbox]").removeAttr('checked');
+    $('#id_type').val("0");
+
+    $('#container_duration').hide();
+
 }
 
 function validate_form() {
@@ -281,4 +322,29 @@ function validate_form() {
                 $(v).addClass('valid');
         }
     });
+}
+
+function addScrollSpy(cabecera) {
+    var ul = $('<ul>', {
+        class: 'section',
+        id: 'section_table_contents'
+    });
+
+    var h6 = $('<h6>', {
+        text: cabecera
+    });
+
+    $('#table_of_contents').append(h6);
+    $('#table_of_contents').append(ul);
+
+    $('[data-scrollspy=true]').each(function (k, v) {
+        $(v).addClass('scrollspy');
+        var a = $('<a>', {
+            href: "#" + $(v).attr('id'),
+            text: $(v).text()
+        });
+        var li = $('<li>').append(a);
+        $('#section_table_contents').append(li);
+    });
+    $('.scrollspy').scrollSpy();
 }

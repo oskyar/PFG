@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% block title %}Ponte a prueba - Detallando asignatura{% endblock title %}
+<!-- Wide card with share menu button -->
+{% block content %}
+    <div class="row">
+        <div class="col l10 m9 s12">
+
+            <div class="icons-header">
+
+                <h5 class="left teal-text title-header">Asignatura: </h5>
+                {% if user == subject.teacher.user %}
+                    <a href="{% url 'delete_subject' subject.id %}"
+                       class="right red btn-floating waves-effect waves-circle"><i
+                            class="material-icons">delete</i></a>
+                    <a href="{% url 'edit_subject' subject.id %}"
+                       class="right blue btn-large btn-floating waves-effect waves-circle"><i
+                            class="material-icons">edit</i> </a>
+                {% endif %}
+                <h3 class="orange-text header tooltipped" data-position="top" data-delay="50"
+                    data-tooltip="Asignatura">{{ subject.name }}</h3>
+
+
+            </div>
+            <h5 class="teal-text header" id="information" data-scrollspy="true">{% trans 'Información' %} </h5>
+            <div class="divider"></div>
+            <div class="row">
+                <div class="col l6 m6 s12">
+                    <div>
+                        <span class="orange-text">{% trans 'Propietario' %}:</span>
+                        <span> {{ owner.user.first_name }} {{ owner.user.last_name }} </span>
+                    </div>
+                    <div>
+                        <span class="orange-text">{% trans 'Temas' %}:</span>
+                        <span> {{ subject.topics.all.count }} </span>
+                    </div>
+                    <div>
+                        <span class="orange-text">{% trans 'Nº Alumnos' %}:</span>
+                        <span> {{ subject.students.all.count }} </span>
+                    </div>
+                    <div>
+                        <span class="orange-text">{% trans 'Número de test realizados' %}:</span>
+                        <span> {{ subject.tests.all.count }}</span>
+                    </div>
+                    <div>
+                        <span class="orange-text">{% trans 'Descripción' %}:</span>
+                        <span> {{ subject.description }}</span>
+                    </div>
+                </div>
+                <div class="col l6 m6 s12">
+                    <div>
+                        &nbsp;
+                    </div>
+                    <div>
+                        <span class="orange-text">{% trans 'Temas gamificados' %}:</span>
+                        <span> {{ subject.topics.gamificado.count }} </span>
+                    </div>
+                    <div>
+                        <span class="orange-text">{% trans 'Capacidad de Alumnos' %}:</span>
+                        <span> {{ subject.capacity }} </span>
+                    </div>
+                    <div>
+                        <span class="orange-text">{% trans 'Número de test realizados' %}:</span>
+                        <span> {{ subject.tests.all.count }}</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="section">
+                <h5 class="teal-text header" id="topics_subject" data-scrollspy="true">{% trans 'Temas' %}
+                    ({{ subject.topics.all.count }})</h5>
+                <div class="divider"></div>
+
+                <ul class="collapsible" data-collapsible="accordion">
+                    {% for topic in topics %}
+                        <li class="grid-topics" data-topic="topic_{{ topic.id }}">
+                            <div class="collapsible-header"><i
+                                    class="material-icons">filter_{{ topic.cardinality }}</i>{{ topic.name }}
+                                {% if user == subject.teacher.user %}
+                                    <a class="waves-effect waves-circle btn-floating waves red right icon-action"
+                                       href="#">
+                                        <i data-topic="topic_{{ topic.id }}"
+                                           data-attribute="topic"
+                                           class="material-icons right delete"
+                                           data-textconfirm="'{{ topic.name }}' {% trans "será el tema que va a borrar. Se borrarán también todos los subtemas y preguntas asociadas" %}"
+                                           data-confirmed="{% trans "El tema ha sido eliminado correctamente" %}"
+                                           data-url="{% url 'delete_topic' topic.subject.id topic.id %}">delete</i>
+                                    </a>
+                                    <a class="waves-effect waves-circle btn-floating waves blue right icon-action"
+                                       href="{% url 'edit_topic' topic.subject.id topic.id %}">
+                                        <i class="material-icons right icon-action">edit</i>
+                                    </a>
+                                {% endif %}
+
+                                <a class="waves-effect waves-circle btn-floating waves green right icon-action"
+                                   href="{% url 'detail_topic' topic.subject.id topic.id %}">
+                                    <i class="material-icons right icon-action">visibility</i>
+                                </a>
+                            </div>
+                            <div class="collapsible-body deep-purple">
+
+                                <div class="collection subgrid-subtopics">
+                                    {% for subtopic in topic.subtopics.all %}
+                                        {% if user == subject.teacher.user %}
+                                            <a href="#">
+                                                <i class="icon-subgrid material-icons right red-text delete"
+                                                   data-confirmed="{% trans "El subtema ha sido eliminado correctamente" %}"
+                                                   data-textconfirm="'{{ subtopic.name }}' {% trans "será eliminado. También se borrarán todas las preguntas asociadas" %}"
+                                                   data-attribute="subtopic"
+                                                   data-subtopic="subtopic_{{ subtopic.id }}"
+                                                   data-url="{% url 'delete_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}">delete</i></a>
+                                            <a href="{% url 'edit_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}"
+                                               data-subtopic="subtopic_{{ subtopic.id }}"><i
+                                                    class="icon-subgrid material-icons right blue-text ">edit</i></a>
+                                        {% endif %}
+                                        <a href="{% url 'detail_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}"
+                                           data-subtopic="subtopic_{{ subtopic.id }}"><i
+                                                class="icon-subgrid material-icons right green-text">visibility</i></a>
+                                        <a href="{% url 'detail_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}"
+                                           class="collection-item"
+                                           data-subtopic="subtopic_{{ subtopic.id }}">{{ subtopic.name }}
+                                        </a>
+                                    {% empty %}
+                                        {% if user.userProfile == subject.teacher %}
+                                            <a class="collection-item blue-text"
+                                               href="{% url 'create_subtopic' topic.subject.id topic.id %}"><i
+                                                    class="material-icons green-text left">add</i>{% trans 'Este tema no tiene subtemas. ¡Pinche aquí para crear un subtema ahora!' %}
+                                            </a>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if topic.subtopics.all and user.userProfile == subject.teacher %}
+                                        <a href="{% url 'create_subtopic' topic.subject.id topic.id %}"
+                                           class="collection-item blue-text"><i
+                                                class="material-icons green-text left">add</i>{% trans 'Pinche aquí para crear otro subtema' %}
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </li>
+                    {% empty %}
+                        {% if user != subject.teacher.user %}
+                            <li class="grid-topics">
+                                <a class="collapsible-header red-text"
+                                   href="">{% trans 'Esta asignatura no contiene ningún tema aún' %}
+                                    <i class="material-icons red-text">do_not_disturbe</i>
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if user == subject.teacher.user %}
+                        <li class="grid-topics">
+                            <a class="collapsible-header"
+                               href="{% url 'create_topic' subject.id %}">{% trans 'Pinche aquí para crear un tema' %}
+                                <i class="material-icons green-text">add</i>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+
+            </div>
+            <div class="section">
+                <h5 class="teal-text header" id="test_subject" data-scrollspy="true">{% trans 'Test gamificado' %}</h5>
+                <div class="divider"></div>
+            </div>
+            <div class="section">
+                <div class="col l12 m12 s12">
+                    <ul class="tabs">
+                        {% for topic in subject.topics.gamificado %}
+                            <li class="tab col s3" data-topic="topic_{{ topic.id }}">
+                                <a class="active tooltipped" data-position="top"
+                                   data-delay="50"
+                                   data-tooltip="Introducción a las plataformas con sistema de gamificación"
+                                   href="#tab_{{ topic.id }}">{{ topic.name }}
+                                    <i class="material-icons green-text ">done</i></a>
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+                {% for topic in subject.topics.gamificado %}
+                    <div id="tab_{{ topic.id }}" class="col s12 tabla-test" data-topic="topic_{{ topic.id }}">
+
+                        <ul class="collapsible" data-collapsible="accordion">
+                            {% for subtopic in topic.subtopics.gamificado %}
+                                <li data-subtopic="subtopic_{{ subtopic.id }}">
+                                    <a class="collapsible-header green-text"><i
+                                            class="material-icons left ">input</i> {{ subtopic.name }}
+                                        <i class="material-icons green-text right">done</i></a>
+                                </li>
+                            {% empty %}
+                                {% if user == topic.subject.teacher %}
+                                    <li><a class="collapsible-header"
+                                           href="{% url 'create_subtopic' topic.subject.id topic.id %}">{% trans 'Este tema no tiene subtemas. ¡Pinche aquí para crear un subtema ahora!' %}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+                <h5 class="teal-text header" id="registered_users"
+                    data-scrollspy="true">{% trans 'Alumnos matriculados' %} ({{ subject.students.all.count }})</h5>
+                <div class="divider"></div>
+                <ul class="collection">
+                    {% for student in subject.students.all %}
+                        <li class="collection-item avatar">
+                            <img src="/media/{{ student.photo }}" alt="" class="circle">
+                            <span class="title">{{ student.user.first_name }} {{ student.user.last_name }}</span>
+                            <div>
+                                <span class="orange-text">{% trans 'Última conexión' %}:</span>
+                                <span> {{ student.user.last_login|date:"d-M-y  H:m" }} </span>
+                            </div>
+                            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <h5 class="teal-text header" id="table_clasification"
+                    data-scrollspy="true">{% trans 'Clasificación' %}</h5>
+                <div class="divider"></div>
+            </div>
+        </div>
+        <div class="col hide-on-small-only m3 l2">
+            <div class="table-of-contents" id="table_of_contents">
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+
+        $(document).ready(function () {
+
+            $('.grid-topics .collapsible-header, .grid-topics .collapsible-body').hover(function () {
+                $(this).find('.icon-action').show();
+            }, function () {
+                $(this).find('.icon-action').hide();
+
+            });
+
+        });
+
+    </script>
+{% endblock %}
+
+{% block script_code %}
+
+    /*Para usar scrollSpy es necesario añadir data-scrollspy=True para activarlo.*/
+    addScrollSpy("{% trans 'Tabla de contenidos' %}");
+
+{% endblock %}

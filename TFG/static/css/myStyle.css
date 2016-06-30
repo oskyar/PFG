@@ -222,7 +222,19 @@ div.input-field label {
     width: 100%;
 }
 
-/***** Asignatura *******/
+/******* Logros *********/
+
+.collection .collection-item.avatar {
+    padding-left: 90px;
+}
+
+.collection .collection-item.avatar .circle {
+    width: 62px;
+    height: 62px;
+    top: 13px;
+}
+
+/****** Asignaturas ***********/
 
 ul.tabs li.tab a i.material-icons {
     position: relative;
@@ -240,22 +252,6 @@ ul.tabs li.tab a i.material-icons {
     padding-top: 50px;
     padding-bottom: 50px;
 }
-
-/***********************/
-
-/******* Logros *********/
-
-.collection .collection-item.avatar {
-    padding-left: 90px;
-}
-
-.collection .collection-item.avatar .circle {
-    width: 62px;
-    height: 62px;
-    top: 13px;
-}
-
-/****** Asignaturas ***********/
 
 .go-subject:hover {
     box-shadow: 0px 0px 10px #00b8d4;
@@ -281,15 +277,12 @@ ul.tabs li.tab a i.material-icons {
     min-height: 100px;
 }
 
-.subject-card {
-    margin-top: 30px;
-}
-
 .li-input {
     background-color: transparent;
     border-width: medium medium 1px;
     border-style: none none solid;
-    border-color: -moz-use-text-color -moz-use-text-color #9E9E9E;
+    border-color: #9E9E9E;
+    -moz-use-text-color: #9E9E9E;
     -moz-border-top-colors: none;
     -moz-border-right-colors: none;
     -moz-border-bottom-colors: none;
@@ -306,9 +299,54 @@ ul.tabs li.tab a i.material-icons {
     transition: all 0.3s ease 0s;
 }
 
+.subject-card {
+    position: relative;
+}
+
+.subject-card .buttons-card-hover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(100, 100, 100, 0.4);
+    top: 0px;
+    z-index: 1000;
+}
+
 .subject-card .card-title {
     text-shadow: 0px 2px 2px black;
     font-weight: 400;
+}
+
+.button-see-card {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 50%;
+}
+
+.button-edit-card {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 50%;
+}
+
+.button-enroll-card {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 50%;
+}
+
+.button-delete-card {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 50%;
+}
+
+.width-100 {
+    width: 100% !important;
 }
 
 img {
@@ -323,6 +361,40 @@ img {
 .container-img img {
     width: 100%; /* Set to auto to preserve aspect ratio */
     height: 100%
+}
+
+.tabla-test {
+    margin-bottom: 25px;
+}
+
+.subgrid-subtopics {
+    margin-left: 15px !important;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.icon-action {
+    display: none;
+    margin: 0px;
+    margin-top: 4px;
+    margin-left: 5px;
+}
+
+.icon-action i {
+    margin-top: -4px;
+    margin-right: 4px;
+}
+
+.icon-subgrid {
+    margin-top: 8px;
+}
+
+.icons-header {
+    margin-bottom: 25px;
+}
+
+.icons-header a {
+    margin-right: 20px;
 }
 
 /******   Temas  *****/
@@ -342,6 +414,7 @@ img {
     float: left;
     position: relative;
     margin-bottom: 5px;
+    clear: both;
 }
 
 .list-topics ol li:before {
@@ -363,6 +436,34 @@ img {
 
     -moz-border-radius: 20px;
     border-radius: 20px;
+}
+
+.title-header {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    line-height: 35px;
+    margin-right: 24px;
+}
+
+/******** SUBTEMAS *********/
+
+.collection-subtopics {
+    height: 57px;
+    line-height: 2.5rem !important;
+}
+
+.collection-subtopics span {
+    font-size: 1.2rem;
+    padding-left: 5px;
+}
+
+.collection-subtopics a {
+    margin-left: 10px;
+}
+
+.form-input-questions {
+    float: left;
+    margin-top: 5px;
 }
 
 /******** PREGUNTAS **********/
@@ -424,7 +525,12 @@ img {
     height: 45px;
 }
 
-/***********************/
+/******* BREADCRUMB ****************/
+.container-breadcrumb {
+    padding-left: 15px;
+}
+
+/***************************/
 
 .padding-10 {
     padding: 10px;
@@ -478,4 +584,9 @@ img {
 
 .bg-red {
     /*background-color: red;*/
+}
+
+.header {
+    margin-top: 17px;
+    margin-right: 20px;
 }

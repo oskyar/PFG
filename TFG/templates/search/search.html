@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% block title %}Ponte a prueba - Creando asignatura{% endblock title %}
+<!-- Wide card with share menu button -->
+{% block content %}
+    <div class="row">
+        <div class="col l10 m9 s12 subject-card">
+            <h4 class="orange-text" id="sections_finded">{% trans 'Asignaturas encontradas por ' %} "{{ token }}"</h4>
+            <div class="divider"></div>
+            <div class="row">
+                {% for subject in subjects %}
+                    <div class="col l4 m4 s6 ">
+                        {% include 'subject/subject_card.html' %}
+                    </div>
+                {% empty %}
+                    <h5 class="teal-text">{% trans 'No existen asignaturas con ese nombre, por favor indique otro' %}</h5>
+                {% endfor %}
+            </div>
+
+            <h4 class="orange-text" id="section_owner">{% trans 'Asignaturas creadas por mi' %}</h4>
+            <div class="divider"></div>
+            <div class="row">
+                {% for subject in subjects_owner %}
+                    <div class="col l4 m4 s6 ">
+                        {% include 'subject/subject_card.html' %}
+                    </div>
+                {% empty %}
+                    <h5 class="teal-text">{% trans 'No existen asignaturas con ese nombre, por favor indique otro' %}</h5>
+                {% endfor %}
+            </div>
+
+            <h4 class="orange-text" id="section_registered">{% trans 'Asignaturas matriculadas' %}</h4>
+            <div class="divider"></div>
+            <div class="row">
+                {% for subject in my_subjects %}
+                    <div class="col l4 m4 s6 ">
+                        {% include 'subject/subject_card.html' %}
+                    </div>
+                {% empty %}
+                    <h5 class="teal-text">{% trans 'No existen asignaturas con ese nombre, por favor indique otro' %}</h5>
+                {% endfor %}
+            </div>
+
+
+            <h4 class="orange-text" id="section_last_subjects">{% trans 'Últimas asignaturas creadas' %}</h4>
+            <div class="divider"></div>
+            <div class="row">
+                {% for subject in last_subjects %}
+                    <div class="col l4 m4 s6 ">
+                        {% include 'subject/subject_card.html' %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

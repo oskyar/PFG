@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% block title %}Ponte a prueba - Tema{% endblock title %}
+<!-- Wide card with share menu button -->
+{% block content %}
+    <div class="row">
+        <div class="col l10 m9 s12">
+            <div class="icons-header">
+                <h5 class="left teal-text title-header">Subtema: </h5>
+                {% if user == subtopic.topic.subject.teacher.user %}
+                    <a href="{% url 'delete_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}"
+                       class="right red btn-floating waves-effect waves-circle"><i class="material-icons">delete</i></a>
+                    <a href="{% url 'edit_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}"
+                       class="right blue btn-large btn-floating waves-effect waves-circle"><i
+                            class="material-icons">edit</i> </a>
+                {% endif %}
+                <h3 class="orange-text header tooltipped" data-position="top" data-delay="50"
+                    data-tooltip="Subtema">{{ subtopic.cardinality }}. {{ subtopic.name }}</h3>
+            </div>
+            <h5 class="teal-text header" id="information" data-scrollspy="true">{% trans 'Información' %}</h5>
+            <div class="divider"></div>
+            <div class="row">
+                <div class="col l6 m6 s12">
+                    <div>
+                        <span class="orange-text">{% trans 'Nombre de la asignatura' %}:</span>
+                        <span> {{ subtopic.topic.subject.name }} </span>
+                    </div>
+                    <div>
+                        <span class="orange-text">{% trans 'Preguntas' %}:</span>
+                        <span> {{ subtopic.questions.all.count }} </span>
+                    </div>
+                    <div>
+                        <span class="orange-text">{% trans 'Descripción' %}:</span>
+                        <span> {{ subtopic.description }}</span>
+                    </div>
+                </div>
+                <div class="col l6 m6 s12">
+                    <div>
+                        <span class="orange-text">{% trans 'Nombre del tema' %}:</span>
+                        <span> {{ subtopic.topic.name }} </span>
+                    </div>
+                    <div>
+                        <span class="orange-text">{% trans 'Valor Subtema' %}:</span>
+                        <span> {{ subtopic.value }} </span>
+                    </div>
+                    <div>
+                        <span class="orange-text">{% trans '¿Gamificado?' %}:</span>
+                        <span> {{ subtopic.gamificar }} </span>
+                    </div>
+                </div>
+            </div>
+
+            {% if user == subtopic.topic.subject.teacher.user %}
+                <a id="button_delete_questions"
+                   class="right red btn waves-effect">{% trans 'ELIMINAR PREGUNTAS SELECCIONADAS' %}</a>
+
+                <form class="form-input-questions">
+                    <input type="checkbox" id="check_all"/>
+                    <label for="check_all" class="tooltipped input-check-all" data-delay="50"
+                           data-tooltip="Seleccionar/Deseleccionar todas las preguntas"></label>
+                </form>
+                <h5 class="teal-text header" id="questions_subtopic" data-scrollspy="true">{% trans 'Preguntas' %}
+                    ({{ subtopic.questions.all.count }})</h5>
+                <div class="divider"></div>
+
+                <div class="collection ">
+                {% for question in subtopic.questions.all %}
+
+                    <div class="collection-item collection-subtopics" data-question="question_{{ question.id }}">
+                        <form class="form-input-questions">
+                            <input type="checkbox" class="input-question" id="question_{{ question.id }}"
+                                   data-confirmed="{% trans "La pregunta ha sido eliminada correctamente" %}"
+                                   data-textconfirm="'{{ question.statement }}' {% trans "será eliminada." %}"
+                                   data-attribute="question"
+                                   data-question="question_{{ question.id }}"
+                                   data-url="{% url 'delete_question'  question.subtopic.topic.subject.id question.subtopic.topic.id question.subtopic.id question.id %}"/>
+                            <label for="question_{{ question.id }}"></label>
+                        </form>
+                        <span>{{ question.statement }}</span>
+                        <a class="waves-effect waves-circle btn-floating secondary-content red">
+                            <i class="material-icons delete"
+                               data-confirmed="{% trans "La pregunta ha sido eliminada correctamente" %}"
+                               data-textconfirm="'{{ question.statement }}' {% trans "será eliminada." %}"
+                               data-attribute="question"
+                               data-question="question_{{ question.id }}"
+                               data-url="{% url 'delete_question'  question.subtopic.topic.subject.id question.subtopic.topic.id question.subtopic.id question.id %}">delete</i></a>
+                        {% comment %}<a href="{% url 'edit_question' question.subtopic.topic.subject.id question.subtopic.topic.id question.subtopic.id question.id%}"
+                       class="waves-effect waves-circle btn-floating blue secondary-content"
+                       data-subtopic="subtopic_{{ subtopic.id }}"><i
+                            class="material-icons ">edit</i></a>
+
+                    <a href="{% url 'detail_question' question.subtopic.topic.subject.id question.subtopic.topic.id question.subtopic.id question.id %}"
+                       data-subtopic="subtopic_{{ subtopic.id }}"
+                       class="waves-effect waves-circle btn-floating secondary-content green"><i
+                            class="material-icons">visibility</i></a> {% endcomment %}
+                    </div>
+                {% empty %}
+                    {% if user.userProfile == subtopic.topic.subject.teacher %}
+                        <a class="collection-item blue-text"
+                           href="{% url 'create_question' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}">
+                            <i class="material-icons green-text left">add</i>{% trans 'Este subtema no tiene preguntas todavía. ¡Pinche aquí para crearlas ahora!' %}
+                        </a>
+                    {% endif %}
+
+                {% endfor %}
+                {% if subtopic.questions.all and user.userProfile == subtopic.topic.subject.teacher %}
+
+                    <a class="collection-item blue-text"
+                       href="{% url 'create_question' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}">
+                        <i class="material-icons green-text left">add</i>{% trans '¡Pinche aquí para crear una pregunta!' %}
+                    </a>
+                {% endif %}
+            {% endif %}
+            </div>
+        </div>
+        <div class="col hide-on-small-only m3 l2">
+            <div class="table-of-contents" id="table_of_contents">
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('#check_all').on('click', function () {
+                if ($(this).prop('checked')) {
+                    $('.input-question').prop('checked', true);
+                } else {
+                    $('.input-question').prop('checked', false);
+
+                }
+            });
+
+            $(".delete").click(function () {
+                if (confirm($(this).data('textconfirm'))) {
+                    delete_model(this);
+
+                }
+                return false;
+            });
+
+
+            $('#button_delete_questions').click(function () {
+                if (confirm("{%  trans '¿Está seguro que desea borrar las preguntas seleccionadas?' %}")) {
+                    $('.input-question:checked').each(function (k, v) {
+
+                        delete_model(v);
+
+                        /* $.ajax({
+                         type: "GET",
+                         url: $(this).data('url'),
+                         data: {},
+                         success: function (response) {
+                         console.log(attribute)
+                         console.log(id)
+
+                         console.log($('[' + attribute + '=' + id + ']').length)
+                         $('[data-' + attribute + '=' + id + ']').remove();
+                         Materialize.toast(text_confirmed, 3000)
+                         },
+                         error: function (res) {
+                         alert("ERROR: No se puede borrar el registro");
+                         }
+                         })*/
+                    });
+                }
+            });
+        });
+
+        function delete_model(obj) {
+            var attribute = $(obj).data('attribute');
+            var id = $(obj).data(attribute);
+            var text_confirmed = $(obj).data('confirmed');
+            $.ajax({
+                type: "POST",
+                url: $(obj).data('url'),
+                data: {},
+                success: function (response) {
+                    console.log(attribute)
+                    console.log(id)
+
+                    console.log($('[' + attribute + '=' + id + ']').length)
+                    $('[data-' + attribute + '=' + id + ']').remove();
+                    Materialize.toast(text_confirmed, 3000)
+                },
+                error: function (res) {
+                    alert("ERROR: No se puede borrar el registro");
+                }
+            });
+        }
+    </script>
+
+{% endblock %}
+
+{% block script_code %}
+
+    addScrollSpy("{% trans 'Tabla de contenidos' %}");
+
+
+{% endblock %}
