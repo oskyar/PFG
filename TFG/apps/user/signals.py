@@ -1,6 +1,7 @@
 from django.dispatch import Signal
 from django.dispatch import receiver
 
+"""
 update_user_profile = Signal(providing_args=['userProfile', 'request'])
 
 
@@ -14,3 +15,4 @@ def change_photo_user(sender, user, request, **kwargs):
 
 
 update_user_profile.connect(change_photo_user)
+"""

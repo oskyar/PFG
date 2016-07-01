@@ -2,15 +2,16 @@ __author__ = 'oskyar'
 
 from django import forms
 from django.contrib.auth.models import User
-from registration.forms import RegistrationForm
+from registration.forms import RegistrationForm, RegistrationFormNoFreeEmail
 # from registration.models import UserModel
 # Para traducir textos
 from django.utils.translation import ugettext_lazy as _
 import re
 import datetime
+from s3direct.widgets import S3DirectWidget
 
 
-class UserProfileForm(RegistrationForm):
+class UserProfileForm(RegistrationFormNoFreeEmail, RegistrationForm):
     error_messages = dict(password_mismatch=_("Las dos contraseñas no coinciden."),
                           user_exists=_("El nombre de usuario no está disponible"),
                           email_exists=_("El correo electrónico ya existe, introduzca uno diferente"),
@@ -29,9 +30,23 @@ class UserProfileForm(RegistrationForm):
     dni = forms.CharField(min_length=9, max_length=9, required=False,
                           widget=forms.TextInput(attrs={'class': 'validate'}), label=_("DNI"))
 
-    photo = forms.ImageField(required=False, label=_("Cambiar mi foto"))
+    photo = forms.URLField(widget=S3DirectWidget(dest='profiles', html=(
+        '<div class="s3direct" data-policy-url="{policy_url}">'
+        '  <a class="file-link" target="_blank" src="{file_url}" >{file_name}</a>'
+        '  <img class="left img-user" width=195 height=195 src="{file_url}"></img>'
+        '  <input class="file-url" type="hidden" value="{file_url}" id="{element_id}" name="{name}" />'
+        '  <input class="file-dest" type="hidden" value="{dest}">'
+        '  <input class="file-input input-field btn" type="file" />'
+        '  <a class="file-remove btn orange" href="#remove">Remove</a>'
+        '  <div class="progress progress-striped active">'
+        '    <div class="bar"></div>'
+        '  </div>'
+        '</div>'
+    )), required=False, label=_("Cambiar mi foto"))
     created_on = forms.DateTimeField(required=False, initial=datetime.datetime.today())
     modify_on = forms.DateTimeField(required=False, initial=datetime.datetime.today())
+
+    bad_domains = []
 
     class Meta:
         model = User
@@ -51,7 +66,6 @@ class UserProfileForm(RegistrationForm):
             self.fields['password2'].required = False
             self.fields['email2'].widget.attrs['disabled'] = 'disabled'
             self.fields['email2'].required = False
-
 
     def clean_username(self):
         """Comprueba que no exista un username igual en la db"""

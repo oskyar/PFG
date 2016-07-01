@@ -1,18 +1,24 @@
 __author__ = 'oskyar'
 
+from TFG.decorators import cbv_permission_required_or_403
+from TFG.mixins import LoginRequiredMixin
 from django.contrib import messages
-from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import JsonResponse
 from django.utils import timezone
 from django.utils.translation import ugettext as _
 from django.views.generic import UpdateView
+from guardian.shortcuts import assign_perm
 from registration.backends.default.views import RegistrationView
+from vanilla import TemplateView
 from . import signals
 from .forms import UserProfileForm
 from .models import UserProfile
-from guardian.shortcuts import assign_perm
+
+
+class Index(TemplateView):
+    template_name = "user/index.html"
 
 
 class UserProfileView(RegistrationView):
@@ -25,6 +31,7 @@ class UserProfileView(RegistrationView):
     form_class = UserProfileForm
 
     def register(self, form):
+
         new_user = super(UserProfileView, self).register(form)
         user_profile = UserProfile()
         user_profile.user = new_user
@@ -33,7 +40,20 @@ class UserProfileView(RegistrationView):
         user_profile.created_on = timezone.now()
         user_profile.modify_on = timezone.now()
         user_profile.save()
-        assign_perm('user.change_user', self.request.user, user_profile)
+        assign_perm('change_user', new_user, new_user)
+        assign_perm('delete_user', new_user, new_user)
+        assign_perm('change_userprofile', new_user, user_profile)
+        assign_perm('delete_userprofile', new_user, user_profile)
+        assign_perm('subject.add_subject', new_user)
+        assign_perm('subject.register_subject', new_user)
+
+        """send_mail(
+            'Subject here',
+            'Here is the message.',
+            'ozafra@omegacrmconsulting.com',
+            ['oskyar@gmail.com'],
+            fail_silently=False,
+        )"""
 
         return user_profile
 
@@ -55,12 +75,12 @@ class UserProfileView(RegistrationView):
             # def get(self, request, *args, **kwargs):
             # super(UserProfile,self).get():
 
+    def myProfile(self, user, *args, **kwargs):
+        return user.username == kwargs["pk"]
 
-def myProfile(self, user, *args, **kwargs):
-    return user.username == kwargs["pk"]
 
-
-class UserProfileUpdateView(UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+@cbv_permission_required_or_403('change_user', (User, 'username', 'pk'))
+class UserProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = User
     form_class = UserProfileForm
     template_name = "user/edit_profile.html"
@@ -108,7 +128,7 @@ class UserProfileUpdateView(UserPassesTestMixin, SuccessMessageMixin, UpdateView
         # Recuperamos UserProfile para modificar la fecha de modificación
         userProfile = UserProfile.objects.get(pk=self.get_object().pk)
         userProfile.modify_on = timezone.now()
-        userProfile.photo = form.cleaned_data['photo']
+        # userProfile.photo = form.cleaned_data['photo']
         userProfile.save()
         # messages.add_message(self.request, messages.SUCCESS, _("Perfil actualizado"))
         storage = messages.get_messages(self.request)
@@ -127,3 +147,7 @@ class UserProfileUpdateView(UserPassesTestMixin, SuccessMessageMixin, UpdateView
             return JsonResponse(form.errors, status=200)
         else:
             return response
+
+
+class ClientViewErrors(TemplateView):
+    template_name = "403.html"

@@ -3,8 +3,7 @@ __author__ = 'oskyar'
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.db import models
-from smart_selects.db_fields import ChainedForeignKey, ChainedManyToManyField
-from TFG.apps.test.models import Test
+from s3direct.fields import S3DirectField
 
 
 class UserProfileManager(models.Manager):
@@ -32,7 +31,7 @@ class UserProfile(models.Model):
         related_name='students', blank=True)
 
     dni = models.CharField(max_length=9, blank=True, null=True)
-    photo = models.ImageField(upload_to='profiles/', blank=True, null=True)
+    photo = S3DirectField(dest='profiles', blank=True, null=True)
     created_on = models.DateTimeField(blank=True, null=False)
     modify_on = models.DateTimeField(blank=True, null=False)
     level = models.PositiveIntegerField(default=0, blank=True, null=False)
