@@ -2,8 +2,8 @@ __author__ = 'oskyar'
 
 from django.db import models
 from django.utils.translation import ugettext as _
+from s3direct.fields import S3DirectField
 from smart_selects.db_fields import ChainedManyToManyField
-from django.utils import timezone
 
 
 # Manager de Asignatura
@@ -49,15 +49,16 @@ class Subject(models.Model):
     capacity = models.IntegerField(
         null=True,
         verbose_name=_("Nº máx. alumnos"))
-    image = models.ImageField(
-        upload_to='subjects',
+    image = S3DirectField(
+        dest='subjects',
         blank=True,
         null=True,
-        verbose_name=_("Imagen de la asignatura"))
-    created_on = models.DateTimeField(blank=True, null=False, auto_created=timezone.now())
+        verbose_name="Imagen de la asignatura")
+    created_on = models.DateTimeField(blank=True, null=False)
     # pos_image = models.CharField(blank=True, null=True, max_length=250)
 
     objects = SubjectManager()
 
-    def __str__(self):
-        return self.name + " (" + self.category + ")"
+
+def __str__(self):
+    return self.name + " (" + self.category + ")"

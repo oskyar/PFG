@@ -1,20 +1,20 @@
 __author__ = 'oskyar'
 
 from TFG.apps.user.models import UserProfile
+from TFG.decorators import cbv_permission_required_or_403
 from TFG.mixins import LoginRequiredMixin
-from ajaxuploader.views import AjaxFileUploader
 from django.core.urlresolvers import reverse_lazy
 from django.middleware.csrf import get_token
 from django.shortcuts import get_object_or_404, redirect
+from django.utils import timezone
 from django.utils.translation import ugettext as _
+from guardian.shortcuts import assign_perm
 from vanilla import DetailView, RedirectView, UpdateView, DeleteView, ListView, CreateView
 from .forms import CreateSubjectForm
 from .models import Subject
-from django.utils import timezone
-from braces import views
-from guardian.shortcuts import assign_perm
 
 
+@cbv_permission_required_or_403('subject.add_subject')
 class CreateSubjectView(LoginRequiredMixin, CreateView):
     template_name = 'subject/subject_create.html'
     form_class = CreateSubjectForm
@@ -47,13 +47,11 @@ class CreateSubjectView(LoginRequiredMixin, CreateView):
     def form_invalid(self, form):
         return super(CreateSubjectView, self).form_invalid(form)
 
-    # @method_decorator(csrf_except)
-
     def dispatch(self, request, *args, **kwargs):
         csrf_token = get_token(request)
         self.token = csrf_token
         return super(CreateSubjectView, self).dispatch(request, *args,
-                                                       **kwargs)  # Método que sirve para la inserción de imágenes por medio de Ajax
+                                                       **kwargs)
 
     def get_success_url(self):
         return reverse_lazy("create_topic", kwargs={'pk': self.object.id})
@@ -68,13 +66,13 @@ class CreateSubjectView(LoginRequiredMixin, CreateView):
         return breadcrumbs
 
 
-class UpdateSubjectView(LoginRequiredMixin, views.PermissionRequiredMixin, UpdateView):
+@cbv_permission_required_or_403('subject.change_subject', (Subject, 'pk', 'pk'))
+class UpdateSubjectView(LoginRequiredMixin, UpdateView):
     form_class = CreateSubjectForm
     fields = "__all__"
     template_name = "subject/subject_create.html"
     context_object_name = 'subject'
     lookup_field = 'pk'
-    permission_required = "subject.change_subject"
 
     def get_object(self):
         return Subject.objects.get(pk=self.kwargs.get('pk'))
@@ -150,6 +148,7 @@ class ListSubjectView(LoginRequiredMixin, ListView):
         return breadcrumbs
 
 
+@cbv_permission_required_or_403('subject.delete_subject', (Subject, 'pk', 'pk'))
 class DeleteSubjectView(LoginRequiredMixin, DeleteView):
     model = Subject
     success_url = "/"
@@ -180,6 +179,3 @@ class UserUnregisterSubject(LoginRequiredMixin, RedirectView):
         subject.students.remove(UserProfile.objects.get(pk=self.request.user.userProfile.id))
         # self.request.user.userProfile.my_subjects.add(Subject.objects.get(pk=id_subject))
         return reverse_lazy('detail_subject', kwargs=self.kwargs)
-
-
-import_uploader = AjaxFileUploader()

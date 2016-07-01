@@ -2,6 +2,7 @@ __author__ = 'oskyar'
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from s3direct.fields import S3DirectWidget
 from .models import Subject
 
 
@@ -16,6 +17,19 @@ class CreateSubjectForm(forms.ModelForm):
     capacity = forms.CharField(widget=forms.NumberInput(attrs={'placeholder': 0, 'required': True}),
                                label=_("Nº máx. alumnos"))
     category = forms.CharField(required=True, label="Categoría")
+
+    image = forms.URLField(widget=S3DirectWidget(dest='subject', html=(
+        '<div class="s3direct" data-policy-url="{policy_url}">'
+        '  <a class="file-link" target="_blank" src="{file_url}" >{file_name}</a>'
+        '  <input class="file-url" type="hidden" value="{file_url}" id="{element_id}" name="{name}" />'
+        '  <input class="file-dest" type="hidden" value="{dest}">'
+        '  <input class="file-input input-field btn" type="file" />'
+        '  <a class="file-remove btn orange" href="#remove">Remove</a>'
+        '  <div class="progress progress-striped active">'
+        '    <div class="bar"></div>'
+        '  </div>'
+        '</div>'
+    )), required=False, label=_("Imagen asignatura"))
 
     class Meta:
         model = Subject
@@ -32,7 +46,7 @@ class CreateSubjectForm(forms.ModelForm):
 
     def clean_image(self):
         image = self.cleaned_data['image']
-        print(image)
+        return image
 
     def clean_description(self):
         description = self.cleaned_data['description']

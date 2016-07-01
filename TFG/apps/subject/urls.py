@@ -15,6 +15,5 @@ urlpatterns = [
     url(r'^(?P<pk>\w+)/delete$', views.DeleteSubjectView.as_view(), name='delete_subject'),
     url(r'^(?P<pk>\w+)/edit$', views.UpdateSubjectView.as_view(), name='edit_subject'),
     url(r'^(?P<pk>\w+)$', views.DetailSubjectView.as_view(), name='detail_subject'),
-    url(r'^ajax-upload$', views.import_uploader, name="my_ajax_upload"),
     # url(r'thanks/(?P<username>[\w]+)/$', ThanksView.as_view(), name="thanks"),
 ]
