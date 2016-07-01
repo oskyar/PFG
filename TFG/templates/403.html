@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}Permisos insuficientes{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col s12 m12 l12 ">
+            <h2 class="">Permisos insuficcientes:</h2>
+
+            <h5>Lo sentimos: No tiene los permisos suficientes para realizar esta acción</h5>
+
+            <p> Será redirigido a la página principal en unos segundos.</p>
+
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block script_code %}
+    setTimeout(function(){
+    window.location.href = "/"
+    },5000);
+{% endblock %}

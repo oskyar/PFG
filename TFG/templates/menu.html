@@ -43,7 +43,7 @@
                             <div class="circle">
                                 <input hidden type="text" value="75" class="dial"/>
                                 {% if user.userProfile.photo != null %}
-                                    <img class="img" width="100%" src="/media/{{ user.userProfile.photo }}">
+                                    <img class="img" width="100%" src="{{ user.userProfile.photo }}">
                                 {% else %}
                                     <img class="img" src="/media/profiles/home-peluches.png">
                                 {% endif %}
@@ -97,6 +97,7 @@
                         </a>
 
                     </li>
+                    {% comment %}
                     <li>
                         <div class="collapsible-header"><i class="material-icons small">settings</i> Configuración
                         </div>
@@ -122,6 +123,7 @@
                             </ul>
                         </div>
                     </li>
+                    {% endcomment %}
                     <li>
                         <a class="collapsible-header" href='{% url 'edit_profile' user.username %}'><i
                                 class="material-icons">person_outline</i>
@@ -137,25 +139,29 @@
 {% else %}
     <nav>
         <div class="nav-wrapper teal lighten-2">
-            <a href="/" class="brand-logo center">¿Cuánto sabes?</a>
-            <a class="waves-effect deep-orange btn btn-login"
-               title="Iniciar sesión" href="/user/login">
-                Iniciar sesión
-            </a>
-            <span> ó </span>
-            <a href="{% url 'registration_register' %}" class="waves-effect deep-orange btn btn-login"
-               title="Iniciar sesión">
-                Registrarme
-            </a>
-            <div class="side-nav hide" id="menu-lateral">
-            </div>
-        </div>
-        <!--  <ul class="right hide-on-med-and-down">
-              <li><a href="subject.html">Crear Asignatura</a></li>
-              <li><a href="collapsible.html">Exámenes</a></li>
-              <li><a href="mobile.html">Trending</a></li>
-          </ul>-->
+            <div class="row">
+                <div class="col s12 l12 m12">
 
+                    <a href="/" class="brand-logo center">¿Cuánto sabes?</a>
+                    <a class="waves-effect deep-orange btn btn-login"
+                       title="Iniciar sesión" href="/user/login">
+                        Iniciar sesión
+                    </a>
+
+                    <a href="{% url 'registration_register' %}" class="waves-effect deep-orange btn btn-login"
+                       title="Iniciar sesión">
+                        Registrarme
+                    </a>
+                </div>
+                <div class="side-nav hide" id="menu-lateral">
+                </div>
+            </div>
+            <!--  <ul class="right hide-on-med-and-down">
+                  <li><a href="subject.html">Crear Asignatura</a></li>
+                  <li><a href="collapsible.html">Exámenes</a></li>
+                  <li><a href="mobile.html">Trending</a></li>
+              </ul>-->
+        </div>
 
     </nav>
 

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}Error en el sistema{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col s12 m12 l12 ">
+            <h2 class="">Error en el sistema:</h2>
+
+            <h5>{% trans 'Debido a un motivo desconocido el servidor ha dado un error en el sistema, por favor intente realizar esta acción en unos minutos.' %}</h5>
+            <h6>{% trans 'Perdone las molestias.' %}</h6>
+
+        </div>
+    </div>
+
+{% endblock content %}
+
