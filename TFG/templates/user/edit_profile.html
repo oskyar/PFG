@@ -2,12 +2,16 @@
 {% load i18n %}
 {% block title %}Actualizando perfil{% endblock title %}
 
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
 {% block content %}
     <div class="row">
-        <div class="col s12 m10 l8 form-register">
-            <h2 class="">Formulario de registro</h2>
+        <div class="col s12 m12 l12 form-register">
+            <h2 class="">Editar perfil</h2>
 
-            <h6>Los campos con * son obligatorios</h6>
+            <h6 class="orange-text">Todos los campos son obligatorios</h6>
 
             <form method="post" name="update_register" id="update_register" action="" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -17,89 +21,102 @@
                     {% endfor %}
                 {% endif %}
                 <div class="row">
-                    <div class="col l4 m4 s12">
-                        <div class="input-field">
-                            <i class="material-icons prefix">account_circle</i>
-                            {{ form.username }}
-                            <label for="{{ form.username.id_for_label }}"
-                                   data-error="{{ form.username.errors|striptags }}"
-                                   data-success="Nombre de usuario disponible">{{ form.username.label }}</label>
-                        </div>
-                    </div>
-                    <div class="col l4 m4 s12">
-                        <div class="input-field">
-                            <i class="material-icons prefix">email</i>
-                            {{ form.email }}
-                            <label for="{{ form.email.id_for_label }}"
-                                   data-error="{{ form.email.errors|striptags }}"
-                                   data-success="Email disponible">{{ form.email.label }}</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col l4 m4 s12">
-                        <div class="input-field">
-                            <i class="material-icons prefix">text_format</i>
-                            {{ form.first_name }}
-                            <label for="{{ form.first_name.id_for_label }}"
-                                   data-error="{{ form.first_name.errors|striptags }}"
-                                   data-success="Nombre correcto">{{ form.first_name.label }}</label>
-                        </div>
-                    </div>
-                    <div class="col l4 m4 s12">
-                        <div class="input-field">
-                            <i class="material-icons prefix">text_format</i>
-                            {{ form.last_name }}
-                            <label for="{{ form.last_name.id_for_label }}"
-                                   data-error="{{ form.last_name.errors|striptags }}"
-                                   data-success="Apellidos correctos">{{ form.last_name.label }}</label>
-                        </div>
-                    </div>
-                    <div class="col l4 m4 s12">
-                        <div class="input-field">
-                            <i class="material-icons prefix">fingerprint</i>
-                            {{ form.dni }}
-                            <label for="{{ form.dni.id_for_label }}"
-                                   data-error="{{ form.dni.errors|striptags }}"
-                                   data-success="DNI correcto">{{ form.dni.label }}</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
                     <div class="col l12 m12 s12">
-                        <div class="file-field input-field">
-                            <div class="btn">
-                                <span>{{ form.photo.label }}</span>
-                                <input id="{{ form.photo.id_for_label }}" type="file" name="photo">
+                        <div class="row">
+                            <div class="col l8 m8 s12">
+                                <div class="row">
+                                    <div class="col l6 m12 s12">
+                                        <div class="input-field">
+                                            <i class="material-icons prefix">account_circle</i>
+                                            {{ form.username }}
+                                            <label for="{{ form.username.id_for_label }}"
+                                                   data-error="{{ form.username.errors|striptags }}"
+                                                   data-success="Nombre de usuario disponible">{{ form.username.label }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col l6 m12 s12">
+                                        <div class="input-field">
+                                            <i class="material-icons prefix">email</i>
+                                            {{ form.email }}
+                                            <label for="{{ form.email.id_for_label }}"
+                                                   data-error="{{ form.email.errors|striptags }}"
+                                                   data-success="Email disponible">{{ form.email.label }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col l6 m12 s12">
+                                        <div class="input-field">
+                                            <i class="material-icons prefix">text_format</i>
+                                            {{ form.first_name }}
+                                            <label for="{{ form.first_name.id_for_label }}"
+                                                   data-error="{{ form.first_name.errors|striptags }}"
+                                                   data-success="Nombre correcto">{{ form.first_name.label }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col l6 m12 s12">
+                                        <div class="input-field">
+                                            <i class="material-icons prefix">text_format</i>
+                                            {{ form.last_name }}
+                                            <label for="{{ form.last_name.id_for_label }}"
+                                                   data-error="{{ form.last_name.errors|striptags }}"
+                                                   data-success="Apellidos correctos">{{ form.last_name.label }}</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col l6 m6 s12">
+                                        <div class="input-field">
+                                            <i class="material-icons prefix">fingerprint</i>
+                                            {{ form.dni }}
+                                            <label for="{{ form.dni.id_for_label }}"
+                                                   data-error="{{ form.dni.errors|striptags }}"
+                                                   data-success="DNI correcto">{{ form.dni.label }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col l12 m12 s12 ">
+                                        <button type="submit" form="update_register"
+                                                class="btn waves-effect right waves-light">
+                                            Actualizar datos
+
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
+                            <div class="col l4 m4 s12">
+                                <div class="file-field input-field">
+                                    {{ form.photo }}
+                                    <div class="btn">
+                                        <span>{{ form.photo.label }}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col l12 m12 s12">
-                        <button type="submit" form="update_register"
-                                class="btn waves-effect waves-light right">
-                            Actualizar datos
-
-                        </button>
                     </div>
                 </div>
             </form>
-
-
-            <div class="">
-
-                <!--<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                    Get Started
-
-                </a>-->
-            </div>
         </div>
     </div>
 
 {% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('.file-remove').click(function () {
+                $('.img-user').hide();
+            });
+
+            $('.file-url, .file-input, .file-dest,.file-remove').change(function () {
+                setTimeout(function () {
+                    $('.img-user').attr('src', $('#id_photo').val()).show();
+                }, 2000);
+            })
+
+        });
+
+    </script>
+{% endblock %}
