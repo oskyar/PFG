@@ -47,14 +47,6 @@ class UserProfileView(RegistrationView):
         assign_perm('subject.add_subject', new_user)
         assign_perm('subject.register_subject', new_user)
 
-        """send_mail(
-            'Subject here',
-            'Here is the message.',
-            'ozafra@omegacrmconsulting.com',
-            ['oskyar@gmail.com'],
-            fail_silently=False,
-        )"""
-
         return user_profile
 
     def form_valid(self, form):
