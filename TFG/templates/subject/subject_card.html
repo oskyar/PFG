@@ -12,7 +12,7 @@
 
         <div class="container-img">
             {% if subject.image %}
-                <img data-name="image_subject" src="{% static subject.image.url %}">
+                <img data-name="image_subject" src="{{ subject.image }}">
             {% else %}
                 <img data-name="image_subject" src="/media/profiles/home-peluches.png">
             {% endif %}

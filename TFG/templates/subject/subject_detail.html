@@ -1,22 +1,33 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 {% load i18n %}
+{% load guardian_tags %}
+
+
 {% block title %}Ponte a prueba - Detallando asignatura{% endblock title %}
 <!-- Wide card with share menu button -->
 {% block content %}
+    {% get_obj_perms user for subject as "perm_subject" %}
     <div class="row">
         <div class="col l10 m9 s12">
 
             <div class="icons-header">
 
                 <h5 class="left teal-text title-header">Asignatura: </h5>
-                {% if user == subject.teacher.user %}
+                {% if "delete_subject" in perm_subject %}
                     <a href="{% url 'delete_subject' subject.id %}"
                        class="right red btn-floating waves-effect waves-circle"><i
                             class="material-icons">delete</i></a>
+                {% endif %}
+                {% if "change_subject" in perm_subject %}
                     <a href="{% url 'edit_subject' subject.id %}"
                        class="right blue btn-large btn-floating waves-effect waves-circle"><i
                             class="material-icons">edit</i> </a>
+                {% endif %}
+                {% if "unregister_subject" in perm_subject %}
+                    <a href="{% url 'create_test' subject.id %}"
+                       class="right yellow darken-1 btn-large btn-floating waves-effect waves-circle"><i
+                            class="material-icons">format_list_numbered</i> </a>
                 {% endif %}
                 <h3 class="orange-text header tooltipped" data-position="top" data-delay="50"
                     data-tooltip="Asignatura">{{ subject.name }}</h3>
@@ -165,47 +176,53 @@
                 <div class="divider"></div>
             </div>
             <div class="section">
-                <div class="col l12 m12 s12">
-                    <ul class="tabs">
-                        {% for topic in subject.topics.gamificado %}
-                            <li class="tab col s3" data-topic="topic_{{ topic.id }}">
-                                <a class="active tooltipped" data-position="top"
-                                   data-delay="50"
-                                   data-tooltip="Introducción a las plataformas con sistema de gamificación"
-                                   href="#tab_{{ topic.id }}">{{ topic.name }}
-                                    <i class="material-icons green-text ">done</i></a>
-                            </li>
-                        {% endfor %}
-
-                    </ul>
-                </div>
-                {% for topic in subject.topics.gamificado %}
-                    <div id="tab_{{ topic.id }}" class="col s12 tabla-test" data-topic="topic_{{ topic.id }}">
-
-                        <ul class="collapsible" data-collapsible="accordion">
-                            {% for subtopic in topic.subtopics.gamificado %}
-                                <li data-subtopic="subtopic_{{ subtopic.id }}">
-                                    <a class="collapsible-header green-text"><i
-                                            class="material-icons left ">input</i> {{ subtopic.name }}
-                                        <i class="material-icons green-text right">done</i></a>
+                {% if subject.topics.gamificado %}
+                    <div class="col l12 m12 s12">
+                        <ul class="tabs">
+                            {% for topic in subject.topics.gamificado %}
+                                <li class="tab col s3" data-topic="topic_{{ topic.id }}">
+                                    <a class="active tooltipped" data-position="top"
+                                       data-delay="50"
+                                       data-tooltip="Introducción a las plataformas con sistema de gamificación"
+                                       href="#tab_{{ topic.id }}">{{ topic.name }}
+                                        <i class="material-icons green-text ">done</i></a>
                                 </li>
                             {% empty %}
-                                {% if user == topic.subject.teacher %}
-                                    <li><a class="collapsible-header"
-                                           href="{% url 'create_subtopic' topic.subject.id topic.id %}">{% trans 'Este tema no tiene subtemas. ¡Pinche aquí para crear un subtema ahora!' %}</a>
-                                    </li>
-                                {% endif %}
                             {% endfor %}
+
                         </ul>
                     </div>
-                {% endfor %}
+                    {% for topic in subject.topics.gamificado %}
+                        <div id="tab_{{ topic.id }}" class="col s12 tabla-test" data-topic="topic_{{ topic.id }}">
+
+                            <ul class="collapsible" data-collapsible="accordion">
+                                {% for subtopic in topic.subtopics.gamificado %}
+
+                                    <li data-subtopic="subtopic_{{ subtopic.id }}">
+                                        <a class="collapsible-header green-text"><i
+                                                class="material-icons left ">input</i> {{ subtopic.name }}
+                                            <i class="material-icons green-text right">done</i></a>
+                                    </li>
+                                {% empty %}
+                                    {% if user == topic.subject.teacher %}
+                                        <li><a class="collapsible-header"
+                                               href="{% url 'create_subtopic' topic.subject.id topic.id %}">{% trans 'Este tema no tiene subtemas. ¡Pinche aquí para crear un subtema ahora!' %}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="section">
                 <h5 class="teal-text header" id="registered_users"
                     data-scrollspy="true">{% trans 'Alumnos matriculados' %} ({{ subject.students.all.count }})</h5>
                 <div class="divider"></div>
                 <ul class="collection">
                     {% for student in subject.students.all %}
                         <li class="collection-item avatar">
-                            <img src="/media/{{ student.photo }}" alt="" class="circle">
+                            <img src="{{ student.photo }}" alt="" class="circle">
                             <span class="title">{{ student.user.first_name }} {{ student.user.last_name }}</span>
                             <div>
                                 <span class="orange-text">{% trans 'Última conexión' %}:</span>
@@ -247,7 +264,6 @@
 
 {% block script_code %}
 
-    /*Para usar scrollSpy es necesario añadir data-scrollspy=True para activarlo.*/
     addScrollSpy("{% trans 'Tabla de contenidos' %}");
 
 {% endblock %}

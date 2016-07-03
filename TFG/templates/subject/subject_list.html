@@ -15,7 +15,8 @@
                         {% include 'subject/subject_card.html' %}
                     </div>
                 {% empty %}
-                    <h5 class="teal-text">Todavía no tiene ninguna asignatura, ¡cree alguna o matricúlese!</h5>
+                    <h5 class="teal-text">Todavía no tiene ninguna asignatura, <a href="{% url 'create_subject' %}">¡pinche
+                        aquí para crear una ahora!</a></h5>
                 {% endfor %}
             </div>
             <div class="divider"></div>
@@ -26,7 +27,7 @@
                         {% include 'subject/subject_card.html' %}
                     </div>
                 {% empty %}
-                    <h5 class="teal-text">¡Todavía no te has matriculado en ninguna asignatura! ¡Búsquela arriba en el buscador y matricúlese!</h5>
+                    <h5 class="teal-text">{% trans '¡Todavía no te has matriculado en ninguna asignatura! ¡Búsquela arriba en el buscador y matricúlese!' %}</h5>
                 {% endfor %}
             </div>
         </div>
@@ -39,8 +40,6 @@
 
 {% block script_code %}
 
-    /*Para usar scrollSpy es necesario añadir data-title para ponerle texto al enlace y data-scrollspy=True para
-    activarlo.*/
     addScrollSpy("{% trans 'Tabla de contenidos' %}");
 
 {% endblock %}

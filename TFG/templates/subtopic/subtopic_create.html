@@ -30,22 +30,8 @@
                     <form method="POST" enctype="multipart/form-data" action="">
                         {% csrf_token %}
                         <div class="row">
-                            <div class="input-field col l1 m1 s4">
-                                {{ form.cardinality.label_tag }}
-                                {{ form.cardinality }}
-                                {{ form.cardinality.errors }}
-                            </div>
-                            <div class="input-field col l7 m7 s12">
-                                {{ form.name.label_tag }}
-                                {{ form.name }}
-                                {{ form.name.errors }}
-                            </div>
-                            <div class="input-field col l2 m2 s4">
-                                {{ form.value.label_tag }}
-                                {{ form.value }}
-                                {{ form.value.errors }}
-                            </div>
-                            <div class="col l2 m2 s4">
+                            <div class="col l12 m12 s12">
+
                                 {{ form.gamificar.label_tag }}
                                 <div class="switch">
                                     <label>
@@ -55,7 +41,26 @@
                                         {% trans 'Sí' %}
                                     </label>
                                 </div>
+
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col l2 m2 s3">
+                                {{ form.cardinality.label_tag }}
+                                {{ form.cardinality }}
+                                {{ form.cardinality.errors }}
+                            </div>
+                            <div class="input-field col l8 m8 s6">
+                                {{ form.name.label_tag }}
+                                {{ form.name }}
+                                {{ form.name.errors }}
+                            </div>
+                            <div class="input-field col l2 m2 s3">
+                                {{ form.value.label_tag }}
+                                {{ form.value }}
+                                {{ form.value.errors }}
+                            </div>
+
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12">
@@ -63,10 +68,7 @@
                                 {{ form.description }}
                                 {{ form.description.errors }}
                             </div>
-
-
                         </div>
-
                         {% if not edit %}
                             <button type="submit" name="create_subtopic"
                                     class="btn waves-effect waves-light">{% trans 'Crear otro subtema' %}

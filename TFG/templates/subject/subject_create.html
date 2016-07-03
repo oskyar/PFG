@@ -5,6 +5,10 @@
 <!-- Wide card with share menu button -->
 {% block content %}
 
+    {% block head %}
+        {{ form.media }}
+    {% endblock %}
+
     <div class="row">
         <div class="col l12 m12 s12 subject-card">
             <div class="icons-header">
@@ -29,7 +33,8 @@
                                     class="num-limit" data-name="num_topics"> 0</span></a>
 
                             <div class="container-img">
-                                <img data-name="image_subject" src="{% static 'img/transparent.jpg' %}">
+                                <img id="image_subject" data-name="image_subject"
+                                     src="{% static 'img/transparent.jpg' %}">
 
                             </div>
                         <span class="card-title"><span data-name="subject_name">Nombre de la asignatura</span> ( <span
@@ -55,10 +60,15 @@
                                        for="{{ form.name.auto_id }}">{{ form.name.label }}</label>
                             </div>
 
-                            <div class="file-field input-field col s12 m12 l12">
-                                <div id="file-uploader" class="">
-                                    <span>{{ form.image.label }}</span>
+                            <div class="col s12 m12 l12">
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span>{{ form.image.label }}</span>
+                                    </div>
                                     {{ form.image }}
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                    </div>
                                 </div>
                             </div>
 
@@ -113,64 +123,7 @@
 {% endblock content %}
 
 {% block scripts %}
-    <script type="text/javascript" src="{% static "ajaxuploader/js/fileuploader.js" %}"></script>
 
-    <script>
-        $(document).ready(function () {
-            var uploader = new qq.FileUploader({
-
-                action: "{% url 'my_ajax_upload' %}",
-                element: $('#file-uploader')[0],
-                multiple: false,
-                customHeaders: {
-                    'X-CSRFToken': "{% csrf_token %}"
-                },
-                onComplete: function (id, fileName, responseJSON) {
-                    if (responseJSON.success) {
-                        console.log(responseJSON);
-                        if ($('.file-path').children().length > 1)
-                            $('.file-path').children().first().remove();
-                        $('[data-name="image_subject"]').attr('src', responseJSON.path);
-                        $('#id_photo').val(responseJSON.path);
-                    } else {
-                        alert("upload failed!");
-                    }
-                },
-                onAllComplete: function (uploads) {
-                    // uploads is an array of maps
-                    // the maps look like this: {file: FileObject, response: JSONServerResponse}
-                    // alert("All complete!");
-
-                },
-                params: {
-                    'csrf_token': "{% csrf_token %}",
-                    'csrf_name': 'csrfmiddlewaretoken',
-                    'csrf_xname': 'X-CSRFToken'
-                },
-                classes: {
-                    button: 'upload-image',
-                    drop: 'qq-upload-drop-area',
-                    dropActive: 'qq-upload-drop-area-active',
-                    list: 'file-path',
-
-                    file: 'qq-upload-file',
-                    spinner: 'qq-upload-spinner',
-                    size: 'qq-upload-size',
-                    cancel: 'qq-upload-cancel',
-
-                    // added to list item when upload completes
-                    // used in css to hide progress spinner
-                    success: 'qq-upload-success',
-                    fail: 'qq-upload-fail'
-                },
-                template: '<div class="qq-uploader"><div class="qq-upload-drop-area"><span>Arrastra aquí para subir el archivo</span></div><div class="upload-image btn">Cambiar imagen</div><div class="file-path-wrapper"><ul class="file-path validate li-input"></ul></div></div>'
-            });
-            console.log(uploader)
-
-        });
-
-
-    </script>
 {% endblock %}
 
 {% block script_code %}
@@ -180,4 +133,16 @@
             $('textarea').val("{{ form.description.value }}");
         {% endif %}
     {% endif %}
+
+    $('.img-user').hide();
+    $('.file-link').hide();
+    $('.file-remove').click(function(){
+    $('.file-path').val("");
+    });
+    $('.file-url, .file-input, .file-dest,.file-remove').change(function () {
+    setTimeout(function () {
+    $('#image_subject').attr('src', $('.file-url').val());
+    }, 2000);
+    })
+
 {% endblock %}
