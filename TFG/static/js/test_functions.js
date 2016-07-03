@@ -31,7 +31,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#search").on('change', function (ev) {
+    $("#search, #search_menu").on('change', function (ev) {
 
         window.location.href = "/search/" + $(this).val();
 

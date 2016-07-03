@@ -15,7 +15,7 @@
                 {% comment %}<li><a href="{% url 'create_test' %}">Crear TEST</a></li> {% endcomment %}
                 <li>
                     <nav>
-                        <div class="nav-wrapper">
+                        <div class="nav-wrapper hide-on-med-and-down">
                             <div class="input-field teal">
                                 <input id="search" type="search" placeholder="Buscar Asignatura">
                                 <label for="search"><i class="material-icons">search</i></label>
@@ -26,14 +26,16 @@
                 </li>
 
             </ul>
+            {% comment %}
             <ul class="right hide-on-med-and-down">
-                {% comment %}<li><a href="{% url 'create_test' %}">Crear TEST</a></li> {% endcomment %}
 
+
+                <li><a href="{% url 'create_test' %}">Crear Test</a></li>
                 <li><a href="{% url 'create_subject' %}">Crear Asignatura</a></li>
                 <!--<li><a href="collapsible.html">Exámenes</a></li>
                 <li><a href="mobile.html">Trending</a></li>-->
             </ul>
-
+            {% endcomment %}
 
             <div class="side-nav fixed" id="menu-lateral">
 
@@ -67,6 +69,17 @@
                 </div>
 
                 <ul class="collapsible" data-collapsible="accordion">
+                    <li class="show-on-small hide-on-large-only">
+                        <nav>
+                            <div class="nav-wrapper">
+                                <div class="input-field teal">
+                                    <input id="search_menu" type="search" placeholder="Buscar Asignatura">
+                                    <label for="search_menu"><i class="material-icons">search</i></label>
+                                    <i class="material-icons">close</i>
+                                </div>
+                            </div>
+                        </nav>
+                    </li>
                     <li>
                         <a class="collapsible-header" href="{% url 'list_subjects' %}"><i class="material-icons">folder_open</i>
                             Mis asignaturas</a>
@@ -141,17 +154,20 @@
         <div class="nav-wrapper teal lighten-2">
             <div class="row">
                 <div class="col s12 l12 m12">
+                    <div class="left">
 
-                    <a href="/" class="brand-logo center">¿Cuánto sabes?</a>
-                    <a class="waves-effect deep-orange btn btn-login"
-                       title="Iniciar sesión" href="/user/login">
-                        Iniciar sesión
-                    </a>
-
-                    <a href="{% url 'registration_register' %}" class="waves-effect deep-orange btn btn-login"
-                       title="Iniciar sesión">
-                        Registrarme
-                    </a>
+                        <a href="/" class="brand-logo center">¿Cuánto sabes?</a>
+                        <a class="waves-effect orange lighten-2  btn btn-login"
+                           title="Iniciar sesión" href="/user/login">
+                            Iniciar sesión
+                        </a>
+                    </div>
+                    <div class="right">
+                        <a href="{% url 'registration_register' %}" class="waves-effect deep-orange btn btn-login"
+                           title="Registrarme">
+                            Registrarme
+                        </a>
+                    </div>
                 </div>
                 <div class="side-nav hide" id="menu-lateral">
                 </div>

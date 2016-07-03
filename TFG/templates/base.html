@@ -16,6 +16,8 @@
     <link href="{% static 'ajaxuploader/css/fileuploader.css' %}" media="screen" rel="stylesheet" type="text/css"/>
     <link type="text/css" rel="stylesheet" href="{% static "css/materialize.min.css" %}" media="screen,projection"/>
     <link rel="stylesheet" href="{% static "css/myStyle.css" %}"/>
+    <script type="text/javascript" src="{% static "js/jquery-1.11.3.min.js" %}"></script>
+
     <!-- Scripts -->
     {% block head %}
     {% endblock %}
@@ -25,6 +27,21 @@
     {% include "menu.html" %}
 </header>
 <main>
+    {% if user.is_authenticated %}
+        <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 24px; right: 24px;">
+            <a class="btn-floating btn-large red">
+                <i class="material-icons">edit</i>
+            </a>
+            <ul>
+                <li><a class="btn-floating blue tooltipped" data-delay="50" data-position="top"
+                       data-tooltip="Crear asignatura" href="{% url 'create_subject' %}"><i
+                        class="material-icons">note_add</i></a></li>
+                <li><a class="btn-floating yellow darken-1 tooltipped" data-delay="50" data-position="top"
+                       data-tooltip="Hacer test" href="{% url 'create_test' %}"><i class="material-icons">format_list_numbered</i></a>
+                </li>
+            </ul>
+        </div>
+    {% endif %}
     <div class="container">
         {% include "breadcrumb.html" %}
 
@@ -58,7 +75,6 @@
         </div>
     </div>
 </footer>
-<script type="text/javascript" src="{% static "js/jquery-1.11.3.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery-ui.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.knob.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/materialize.min.js" %}"></script>

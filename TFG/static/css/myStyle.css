@@ -530,6 +530,13 @@ img {
     padding-left: 15px;
 }
 
+/******** TEST *******************/
+
+.text-weight-sub {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 /***************************/
 
 .padding-10 {
@@ -589,4 +596,12 @@ img {
 .header {
     margin-top: 17px;
     margin-right: 20px;
+}
+
+.file-remove {
+    margin-top: 0px !important;
+}
+
+.overflow-hidden {
+    overflow: hidden;
 }

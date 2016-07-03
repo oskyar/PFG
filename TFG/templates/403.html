@@ -5,11 +5,17 @@
 {% block content %}
     <div class="row">
         <div class="col s12 m12 l12 ">
-            <h2 class="">Permisos insuficcientes:</h2>
+            {% if user.is_authenticated %}
+                <h2 class="teal-text">Permisos insuficientes:</h2>
 
-            <h5>Lo sentimos: No tiene los permisos suficientes para realizar esta acción</h5>
+                <h5>Lo sentimos: No tiene los permisos suficientes para realizar esta acción</h5>
 
-            <p> Será redirigido a la página principal en unos segundos.</p>
+                <p> Será redirigido a la página principal en unos segundos.</p>
+            {% else %}
+                <h2 class="teal-text">Es necesario haber iniciado sesión:</h2>
+
+                <h5>En unos segundos será redirigido a la página de inicio de sesión</h5>
+            {% endif %}
 
         </div>
     </div>
@@ -17,7 +23,13 @@
 {% endblock content %}
 
 {% block script_code %}
-    setTimeout(function(){
-    window.location.href = "/"
-    },5000);
+    {% if user.is_authenticated %}
+        setTimeout(function(){
+        window.location.href = "{% url 'index' %}"
+        },5000);
+    {% else %}
+        setTimeout(function(){
+        window.location.href = "/user/login"
+        },5000);
+    {% endif %}
 {% endblock %}
