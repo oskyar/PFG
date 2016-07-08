@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fbc4851-ab7c-4edc-8066-f4769d61bf2f" name="Default" comment="- Se actualizan dependencias del proyecto.&#10;- Se modifica diseño en preguntas.&#10;- Ya se traen preguntas y sus respuestas en las preguntas.&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/settings.py" afterPath="$PROJECT_DIR$/TFG/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/menu.html" afterPath="$PROJECT_DIR$/TFG/templates/menu.html" />
     </list>
     <list id="ef1a7dfa-392c-40a5-8998-ddb61171f2f7" name="New changelist" comment="New changelist" />
@@ -81,31 +83,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="local_settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TFG/local_settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="66" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFG/templates/menu.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="221" column="3" selection-start-line="221" selection-start-column="3" selection-end-line="221" selection-end-column="3" />
+            <state relative-caret-position="350">
+              <caret line="230" column="31" selection-start-line="230" selection-start-column="31" selection-end-line="230" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFG/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TFG/apps/subject/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="275" column="60" selection-start-line="275" selection-start-column="60" selection-end-line="275" selection-end-column="60" />
+            <state relative-caret-position="120">
+              <caret line="190" column="25" selection-start-line="190" selection-start-column="25" selection-end-line="190" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -188,7 +190,6 @@
         <option value="$PROJECT_DIR$/TFG/apps/question/forms.py" />
         <option value="$PROJECT_DIR$/TFG/templates/subject/subject_list.html" />
         <option value="$PROJECT_DIR$/TFG/templates/subtopic/subtopic_detail.html" />
-        <option value="$PROJECT_DIR$/TFG/local_settings.py" />
         <option value="$PROJECT_DIR$/TFG/templates/question/question_create.html" />
         <option value="$PROJECT_DIR$/TFG/templates/subject/subject_create.html" />
         <option value="$PROJECT_DIR$/TFG/templates/topic/topic_create.html" />
@@ -225,10 +226,11 @@
         <option value="$PROJECT_DIR$/TFG/apps/test/views.py" />
         <option value="$PROJECT_DIR$/TFG/apps/user/views.py" />
         <option value="$PROJECT_DIR$/TFG/templates/test/doing_test.html" />
-        <option value="$PROJECT_DIR$/TFG/settings.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/TFG/templates/user/index.html" />
         <option value="$PROJECT_DIR$/TFG/templates/menu.html" />
+        <option value="$PROJECT_DIR$/TFG/local_settings.py" />
+        <option value="$PROJECT_DIR$/TFG/settings.py" />
       </list>
     </option>
   </component>
@@ -1208,19 +1210,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="dbDummy://dbtable:/aaf31428/b8c6e9c3-c28c-44da-8dac-e2a6713ad2a3/dbtfg.public.question_question">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TFG/apps/statistic/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1619,14 +1608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1653,8 +1634,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/templates/menu.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="221" column="3" selection-start-line="221" selection-start-column="3" selection-end-line="221" selection-end-column="3" />
+        <state relative-caret-position="350">
+          <caret line="230" column="31" selection-start-line="230" selection-start-column="31" selection-end-line="230" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/local_settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="66" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="190" column="25" selection-start-line="190" selection-start-column="25" selection-end-line="190" selection-end-column="25" />
           <folding />
         </state>
       </provider>

@@ -187,8 +187,8 @@ INSTALLED_APPS = (
 )
 
 # AWS keys, configurado en consola con HEROKU
-AWS_ACCESS_KEY_ID = 'AKIAIC6CESUMFZDQANEQ'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
 AWS_STORAGE_BUCKET_NAME = 'test-tfg'
 
 S3DIRECT_REGION = 'us-west-2'
@@ -261,9 +261,9 @@ LOGGING = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'test.tfg.ozafra@gmail.com'
+EMAIL_HOST_USER = 'ozafra@omegacrmconsulting.com'
 EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = 'test.tfg.ozafra@gmail.com'
+DEFAULT_FROM_EMAIL = 'ozafra@omegacrmconsulting.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 # Días para poder activar la cuenta
