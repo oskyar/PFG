@@ -269,7 +269,7 @@ class SendTestSubjectView(LoginRequiredMixin, TemplateView):
         message1 = (
             'Test NUEVO: ' + test.name + " de la asignatura " + subject.name,
             '¡¡Hay un nuevo test para realizar en la plataforma, accede a ahora para realizarlo!!',
-            'ozafra@omegacrmconsulting.com',
+            'test.tfg.ozafra2@gmail.com',
             list_emails)
         send_mass_mail((message1, message1), fail_silently=False)
 
