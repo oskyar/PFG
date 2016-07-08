@@ -99,6 +99,7 @@ $(document).ready(function () {
     $(".dial").knob({
         min: 0,
         max: 100,
+        value:23,
         angleOffset: 0, //30 me gusta
         angleArc: 360,     //300 me gusta
         readOnly: true,
@@ -107,7 +108,7 @@ $(document).ready(function () {
         displayInput: false,
         fgColor: '#a7ffeb',
         bgColor: '#4db6ac',
-        lineCap: 'round'
+        lineCap: 'round',
     }).hover(function () {
 
         $('.level').fadeToggle(200);
