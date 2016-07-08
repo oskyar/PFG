@@ -1,0 +1,618 @@
+/* Para trabajar OFFLINE con iconos
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../font/MaterialIcons-Regular.eot); /* For IE6-8 *
+    src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(../font/MaterialIcons-Regular.woff2) format('woff2'),
+    url(../font/MaterialIcons-Regular.woff) format('woff'),
+    url(../font/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px; /* Preferred icon size *
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. *
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. *
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. *
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. *
+    font-feature-settings: 'liga';
+}
+*/
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+h2 {
+    font-weight: 300;
+}
+
+main {
+    padding-left: 14%;
+    flex: 1 0 auto;
+}
+
+header, main, footer {
+    padding-left: 300px;
+}
+
+@media only screen and (max-width: 992px) {
+    header, main, footer {
+        padding-left: 0;
+    }
+}
+
+.container {
+    width: 90%;
+}
+
+.profile {
+    padding: 10px;
+    padding-top: 20px;
+}
+
+.table-of-contents {
+    padding-top: 30px;
+}
+
+/*
+.profile-img:hover {
+    -webkit-transform: rotateX(180deg);
+    -moz-transform: rotateX(180deg);
+    -o-transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+}*/
+
+.img-user {
+    width: 185px;
+    height: 185px;
+    border-radius:50%;
+    clear: both;
+}
+
+.profile .circle {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.profile img {
+    width: 185px;
+    height: 185px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    display: block;
+    position: relative;
+    margin-top: -217px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile .level {
+    width: 185px;
+    height: 185px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    display: none;
+    position: relative;
+    margin-top: -185px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.profile .user {
+    position: relative;
+    clear: both;
+    padding: 0px;
+    margin: 0px;
+    height: 50px;
+    top: -25px;
+    margin-top: 10px;
+}
+
+.profile button {
+    position: relative;
+    top: -15px;
+}
+
+.profile canvas {
+    position: relative;
+    z-index: 1000;
+    /*left: 23px;
+    top: 10px;*/
+}
+
+.btn-login {
+    margin-left: 20px;
+}
+
+.btn-logout {
+    top: 3px;
+    height: 36px !important;
+    color: inherit !important;
+    font: inherit !important;
+    line-height: 36px !important;
+    margin: auto;
+    width: 200px;
+}
+
+.side-nav .collapsible-header {
+    color: black !important;
+}
+
+.side-nav li.active {
+    background-color: #ffab91 !important;
+}
+
+.side-nav .collapsible-body li a {
+    margin: 0px 1rem 0px 1.3rem;
+    display: flex;
+    padding-right: 5px;
+}
+
+li a .small {
+    display: flex;
+    font-size: 1rem !important;
+}
+
+li a div {
+    display: inline;
+    padding-left: 10px;
+    line-height: 20px;
+    margin: auto;
+}
+
+.level .text-level {
+    font-size: 25px;
+    color: #fb8c00;
+    margin-top: -30px;
+}
+
+.level .text-level .num-level {
+    font-size: 10rem;
+    margin: auto;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.level .text-score {
+    position: relative;
+    font-size: 1.2em;
+    color: #e65100;
+    z-index: 4;
+}
+
+.card-panel i.close {
+    cursor: pointer;
+}
+
+.card ul {
+    padding-left: 30px;
+}
+
+.card ul li {
+    list-style-type: circle;
+}
+
+/**** Formulario Usuario *****/
+.small-medium {
+    font-size: 3rem;
+}
+
+div.input-field label {
+    width: 100%;
+}
+
+/******* Logros *********/
+
+.collection .collection-item.avatar {
+    padding-left: 90px;
+}
+
+.collection .collection-item.avatar .circle {
+    width: 62px;
+    height: 62px;
+    top: 13px;
+}
+
+/****** Asignaturas ***********/
+
+ul.tabs li.tab a i.material-icons {
+    position: relative;
+    top: 5px;
+    left: 10px;
+}
+
+#clasification {
+    margin-top: 30px;
+}
+
+.container-login {
+    width: 400px;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.go-subject:hover {
+    box-shadow: 0px 0px 10px #00b8d4;
+    cursor: pointer;
+}
+
+.container-floating-num {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.container-floating-num .num-limit {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.subject-card .card-image a:first-child {
+    margin-right: 50px;
+}
+
+.min-height-card {
+    min-height: 100px;
+}
+
+.li-input {
+    background-color: transparent;
+    border-width: medium medium 1px;
+    border-style: none none solid;
+    border-color: #9E9E9E;
+    -moz-use-text-color: #9E9E9E;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    border-radius: 0px;
+    outline: medium none;
+    height: 2rem;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0px;
+    box-shadow: none;
+    box-sizing: content-box;
+    transition: all 0.3s ease 0s;
+}
+
+.subject-card {
+    position: relative;
+}
+
+.subject-card .buttons-card-hover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(100, 100, 100, 0.4);
+    top: 0px;
+    z-index: 1000;
+}
+
+.subject-card .card-title {
+    text-shadow: 0px 2px 2px black;
+    font-weight: 400;
+}
+
+.button-see-card {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 50%;
+}
+
+.button-edit-card {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 50%;
+}
+
+.button-enroll-card {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 50%;
+}
+
+.button-delete-card {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 50%;
+}
+
+.width-100 {
+    width: 100% !important;
+}
+
+img {
+    cursor: move;
+}
+
+.container-img {
+    width: 430px;
+    height: 200px;
+}
+
+.container-img img {
+    width: 100%; /* Set to auto to preserve aspect ratio */
+    height: 100%
+}
+
+.tabla-test {
+    margin-bottom: 25px;
+}
+
+.subgrid-subtopics {
+    margin-left: 15px !important;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.icon-action {
+    display: none;
+    margin: 0px;
+    margin-top: 4px;
+    margin-left: 5px;
+}
+
+.icon-action i {
+    margin-top: -4px;
+    margin-right: 4px;
+}
+
+.icon-subgrid {
+    margin-top: 8px;
+}
+
+.icons-header {
+    margin-bottom: 25px;
+}
+
+.icons-header a {
+    margin-right: 20px;
+}
+
+/******   Temas  *****/
+
+.list-topics ol {
+    display: block;
+
+    list-style: none;
+
+    overflow: hidden;
+    counter-reset: numList;
+}
+
+.list-topics ol li {
+    /*width: 176px;*/
+    margin-right: 44px;
+    float: left;
+    position: relative;
+    margin-bottom: 5px;
+    clear: both;
+}
+
+.list-topics ol li:before {
+    counter-increment: numList;
+    content: counter(numList);
+
+    float: left;
+    position: absolute;
+    left: -36px;
+
+    font: bold 12px sans-serif;
+    text-align: center;
+    color: #fff;
+    line-height: 36px;
+
+    width: 36px;
+    height: 36px;
+    background: #ff5722;
+
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.title-header {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    line-height: 35px;
+    margin-right: 24px;
+}
+
+/******** SUBTEMAS *********/
+
+.collection-subtopics {
+    height: 57px;
+    line-height: 2.5rem !important;
+}
+
+.collection-subtopics span {
+    font-size: 1.2rem;
+    padding-left: 5px;
+}
+
+.collection-subtopics a {
+    margin-left: 10px;
+}
+
+.form-input-questions {
+    float: left;
+    margin-top: 5px;
+}
+
+/******** PREGUNTAS **********/
+
+.list-answers ol {
+    display: block;
+    list-style: none;
+    overflow: hidden;
+    counter-reset: numList;
+    background-color: #f5fffd;
+}
+
+.list-answers ol li {
+    width: 100%;
+    margin-right: 44px;
+    float: left;
+    position: relative;
+    margin-bottom: 0px;
+    margin-left: 25px;
+    margin-top: 5px;
+    min-height: 40px;
+    line-height: 2.4;
+    padding-left: 15px;
+}
+
+.list-answers ol li:before {
+    counter-increment: numList;
+    content: counter(numList);
+
+    float: left;
+    position: absolute;
+    left: -36px;
+
+    font: bold 12px sans-serif;
+    text-align: center;
+    color: #fff;
+    line-height: 36px;
+
+    width: 36px;
+    height: 36px;
+    background: #ff5722;
+
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.list-answers ol li.valid:before {
+    background: #03ff00;
+}
+
+.list-answers div.icon-edit {
+    width: 45px;
+    height: 45px;
+
+}
+
+.list-answers div.icon-edit .material-icons {
+    width: 45px;
+    height: 45px;
+}
+
+/******* BREADCRUMB ****************/
+.container-breadcrumb {
+    padding-left: 15px;
+}
+
+/******** TEST *******************/
+
+.text-weight-sub {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/***************************/
+
+.padding-10 {
+    padding: 10px;
+}
+
+/** OPACITY  **/
+
+.opacity-10 {
+    opacity: 1;
+}
+
+.opacity-9 {
+    opacity: 0.9;
+}
+
+.opacity-8 {
+    opacity: 0.8;
+}
+
+.opacity-7 {
+    opacity: 0.7;
+}
+
+.opacity-6 {
+    opacity: 0.6;
+}
+
+.opacity-5 {
+    opacity: 0.5;
+}
+
+.opacity-4 {
+    opacity: 0.4;
+}
+
+.opacity-3 {
+    opacity: 0.3;
+}
+
+.opacity-2 {
+    opacity: 0.2;
+}
+
+.opacity-1 {
+    opacity: 0.1;
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.bg-red {
+    /*background-color: red;*/
+}
+
+.header {
+    margin-top: 17px;
+    margin-right: 20px;
+}
+
+.file-remove {
+    margin-top: 0px !important;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.clear-both{
+    clear:both;
+}

@@ -2,93 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fbc4851-ab7c-4edc-8066-f4769d61bf2f" name="Default" comment="- Se actualizan dependencias del proyecto.&#10;- Se modifica diseño en preguntas.&#10;- Ya se traen preguntas y sus respuestas en las preguntas.&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/static/img/transparent.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/static/img/transparent2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/static/img/welcome_card.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/conf/app_template/migrations/__init__.py-tpl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/answer/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/answer/migrations/0002_auto_20160708_1129.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/answer/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/question/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/question/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/statistic/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/statistic/migrations/0002_auto_20160707_0251.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/statistic/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/subject/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/subject/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/test/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/test/migrations/0002_testdone_replies.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/test/migrations/0003_auto_20160708_1129.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/test/migrations/0004_testdone_percent.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/test/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/topic/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/topic/migrations/0002_subtopic_num_questions_gami.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/topic/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/user/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/user/migrations/0002_auto_20160708_1544.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/apps/user/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/static/css/materialize.css-0.97.1" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/static/css/materialize.min.css0.97.1" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/admin/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/admin/migrations/0002_logentry_remove_auto_add.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/admin/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/auth/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/auth/migrations/0002_alter_permission_name_max_length.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/auth/migrations/0003_alter_user_email_max_length.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/auth/migrations/0004_alter_user_username_opts.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/auth/migrations/0005_alter_user_last_login_null.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/auth/migrations/0006_require_contenttypes_0002.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/auth/migrations/0007_alter_validators_add_error_messages.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/auth/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/contenttypes/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/contenttypes/migrations/0002_remove_content_type_name.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/contenttypes/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/flatpages/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/flatpages/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/redirects/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/redirects/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/sessions/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/sessions/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/sites/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/sites/migrations/0002_alter_domain_unique.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/sites/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/autodetector.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/exceptions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/executor.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/graph.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/loader.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/migration.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/operations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/operations/base.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/operations/fields.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/operations/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/operations/special.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/optimizer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/questioner.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/recorder.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/state.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/topological_sort.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/utils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/migrations/writer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/guardian/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/guardian/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/guardian/testapp/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/guardian/testapp/migrations/0002_logentrywithgroup.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/guardian/testapp/migrations/0003_auto_20141124_0729.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/guardian/testapp/migrations/0004_auto_20151112_2209.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/guardian/testapp/migrations/0005_auto_20151217_2344.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/guardian/testapp/migrations/0006_auto_20160221_1054.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/guardian/testapp/migrations/0007_auto_20160309_0245.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/guardian/testapp/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/registration/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/registration/migrations/0002_registrationprofile_activated.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/registration/migrations/0003_migrate_activatedstatus.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/registration/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/test_app/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/test_app/migrations/0002_book1_location1.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/test_app/migrations/0003_auto_20160129_1531.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/test_app/migrations/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -132,8 +45,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            <state relative-caret-position="15">
+              <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -1414,9 +1327,9 @@
           <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
           <folding>
             <element signature="e#72#111#0" expanded="false" />
-            <marker date="1467852651511" expanded="true" signature="227:954" placeholder="..." />
-            <marker date="1467852651511" expanded="true" signature="333:953" placeholder="..." />
-            <marker date="1467852651511" expanded="true" signature="424:935" placeholder="..." />
+            <marker date="1467989513071" expanded="true" signature="815:943" placeholder="..." />
+            <marker date="1467989513071" expanded="true" signature="815:942" placeholder="..." />
+            <marker date="1467989513071" expanded="true" signature="815:924" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1746,8 +1659,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        <state relative-caret-position="15">
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
           <folding />
         </state>
       </provider>
