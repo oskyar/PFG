@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 {% load i18n %}
+{% load widget_tweaks %}
 {% block title %}Ponte a prueba - Creando Tema{% endblock title %}
 <!-- Wide card with share menu button -->
 {% block content %}
@@ -10,7 +11,8 @@
             <div class="icons-header">
                 {% if edit %}
                     <a href="{% url 'detail_subtopic' subject.id topic.id subtopic.id %}"
-                       class="right green btn-large btn-floating waves-effect waves-circle"><i
+                       class="right green btn-large btn-floating waves-effect waves-circle"
+                       data-tooltip="Ver detalles del subtema"><i
                             class="material-icons">visibility</i>
                     </a>
                     <h5 class="left teal-text header">{% trans 'Editar subtema' %}:
@@ -27,10 +29,24 @@
             </div>
             <div class="row">
                 <div class="col l8 m8 s12 ">
+                    <div class="row">
+                        <div class=" col l12 m12 s12">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="card-panel green lighten-1 card-panel-select" data-panel="null">
+                                <span class="white-text ">
+                                    <i class="material-icons left">info</i><i
+                                        class="material-icons right close">close</i>{{ message }}</span>
+                                        </span>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
                     <form method="POST" enctype="multipart/form-data" action="">
                         {% csrf_token %}
                         <div class="row">
-                            <div class="col l12 m12 s12">
+                            <div class="col l3 m4 s12">
 
                                 {{ form.gamificar.label_tag }}
                                 <div class="switch">
@@ -43,30 +59,52 @@
                                 </div>
 
                             </div>
+                            <div class="col l6 m6 s12" id="container_num_question">
+                                <div class="input-field">
+                                    {{ form.num_questions_gam|add_class:"validate"|add_error_class:"invalid" }}
+                                    <label class="validate tooltipped"
+                                           data-tooltip="{{ form.num_questions_gam.help_text }}"
+                                           for="{{ form.num_questions_gam.id_for_label }}"
+                                           data-error="{{ form.num_questions_gam.errors|striptags }}"
+                                           data-success="Correcto">{{ form.num_questions_gam.label }}</label>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="input-field col l2 m2 s3">
-                                {{ form.cardinality.label_tag }}
-                                {{ form.cardinality }}
-                                {{ form.cardinality.errors }}
+                                <label class="validate tooltipped"
+                                       data-tooltip="{{ form.cardinality.help_text }}"
+                                       for="{{ form.cardinality.id_for_label }}"
+                                       data-error="{{ form.cardinality.errors|striptags }}"
+                                       data-success="Correcto">{{ form.cardinality.label }}</label>
+
+                                {{ form.cardinality|add_class:"validate"|add_error_class:"invalid" }}
+
                             </div>
                             <div class="input-field col l8 m8 s6">
-                                {{ form.name.label_tag }}
-                                {{ form.name }}
-                                {{ form.name.errors }}
+                                {{ form.name|add_class:"validate"|add_error_class:"invalid" }}
+                                <label class="validate tooltipped"
+                                       data-tooltip="{{ form.name.help_text }}"
+                                       for="{{ form.name.id_for_label }}"
+                                       data-error="{{ form.name.errors|striptags }}"
+                                       data-success="Correcto">{{ form.name.label }}</label>
                             </div>
                             <div class="input-field col l2 m2 s3">
                                 {{ form.value.label_tag }}
-                                {{ form.value }}
+                                {{ form.value|add_class:"validate"|add_error_class:"invalid" }}
                                 {{ form.value.errors }}
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12">
-                                {{ form.description.label_tag }}
-                                {{ form.description }}
-                                {{ form.description.errors }}
+                                {{ form.description|add_class:"validate"|add_error_class:"invalid" }}
+                                <label class="validate tooltipped"
+                                       data-tooltip="{{ form.description.help_text }}"
+                                       for="{{ form.description.id_for_label }}"
+                                       data-error="{{ form.description.errors|striptags }}"
+                                       data-success="Correcto">{{ form.description.label }}</label>
+
                             </div>
                         </div>
                         {% if not edit %}
@@ -76,6 +114,9 @@
                         {% endif %}
 
                         {% if edit %}
+                            <button type="submit" name="edit_subtopic"
+                                    class="btn waves-effect blue waves-light">{% trans 'Actualizar' %}
+                            </button>
                             <button type="submit" name="create_question"
                                     class="btn orange waves-effect waves-light">{% trans 'Actualizar y crear preguntas' %}
                             </button>
@@ -111,5 +152,19 @@
     {% if edit %}
         $('textarea').val("{{ form.description.value }}");
     {% endif %}
+
+
+    var transitionDate = "slide";
+    $('#id_gamificar').change(function(){
+    if ($('#id_gamificar').prop('checked')) {
+    $('#container_num_question').show(transitionDate);
+    $('#id_num_questions_gam').val(0);
+    } else {
+    $('#container_num_question').hide(transitionDate);
+    $('#id_num_questions_gam').val(0);
+    }
+    });
+
+
 
 {% endblock %}

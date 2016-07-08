@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 {% load i18n %}
+{% load guardian_tags %}
 {% block title %}Ponte a prueba - Tema{% endblock title %}
 <!-- Wide card with share menu button -->
 {% block content %}
+    {% get_obj_perms user for topic as "perm_topic" %}
+    {% get_obj_perms user for topic.subject as "perm_subject" %}
     <div class="row">
     <div class="col l10 m9 s12">
         <div class="icons-header">
@@ -17,6 +20,13 @@
                    class="right blue btn-large btn-floating waves-effect waves-circle tooltipped"
                    data-tooltip="Editar asignatura"><i
                         class="material-icons">edit</i> </a>
+            {% endif %}
+            {% if "unregister_subject" in perm_subject %}
+                <a href="{% url 'do_test' topic.subject.id %}"
+                   class="right yellow darken-1 btn-large btn-floating waves-effect waves-circle tooltipped"
+                   data-tooltip="Hacer test del tema"><i
+                        class="material-icons">format_list_numbered</i> </a>
+
             {% endif %}
             <h3 class="orange-text header tooltipped" data-position="top" data-delay="50"
                 data-tooltip="Subtema">{{ topic.cardinality }}. {{ topic.name }}</h3>
@@ -62,28 +72,41 @@
 
         <div class="collection ">
             {% for subtopic in topic.subtopics.all %}
+                {% get_obj_perms user for subtopic as "perm_subtopic" %}
                 <div class="collection-item collection-subtopics">
                     <i class="material-icons deep-orange-text">filter_{{ subtopic.cardinality }}</i>
                     <span>{{ subtopic.name }} ({{ subtopic.questions.all.count }})</span>
-                    <a href="{% url 'delete_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}"
-                       class="waves-effect waves-circle btn-floating secondary-content red">
-                        <i class="material-icons delete"
-                           data-confirmed="{% trans "El subtema ha sido eliminado correctamente" %}"
-                           data-textconfirm="'{{ subtopic.name }}' {% trans "será eliminado. También se borrarán todas las preguntas asociadas" %}"
-                           data-attribute="subtopic"
-                           data-subtopic="subtopic_{{ subtopic.id }}"
-                           data-url="{% url 'delete_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}">delete</i></a>
-                    <a href="{% url 'edit_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}"
-                       class="waves-effect waves-circle btn-floating blue secondary-content"
-                       data-subtopic="subtopic_{{ subtopic.id }}"><i
-                            class="material-icons ">edit</i></a>
+                    {% if 'delete_subtopic' in perm_subtopic %}
+                        <a href="{% url 'delete_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}"
+                           class="waves-effect waves-circle btn-floating secondary-content red">
+                            <i class="material-icons delete"
+                               data-confirmed="{% trans "El subtema ha sido eliminado correctamente" %}"
+                               data-textconfirm="'{{ subtopic.name }}' {% trans "será eliminado. También se borrarán todas las preguntas asociadas" %}"
+                               data-attribute="subtopic"
+                               data-subtopic="subtopic_{{ subtopic.id }}"
+                               data-url="{% url 'delete_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}">delete</i></a>
+                    {% endif %}
+                    {% if 'change_subtopic' in perm_subtopic %}
+                        <a href="{% url 'edit_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}"
+                           class="waves-effect waves-circle btn-floating blue secondary-content"
+                           data-subtopic="subtopic_{{ subtopic.id }}"><i
+                                class="material-icons ">edit</i></a>
+                    {% endif %}
                     <a href="{% url 'detail_subtopic' subtopic.topic.subject.id subtopic.topic.id subtopic.id %}"
                        data-subtopic="subtopic_{{ subtopic.id }}"
-                       class="waves-effect waves-circle btn-floating secondary-content green"><i
+                       class="waves-effect waves-circle btn-floating secondary-content green tooltipped"
+                       data-position="top" data-tooltip="Ver detalles del subtema"><i
                             class="material-icons">visibility</i></a>
+                    {% if "unregister_subject" in perm_subject %}
+                        <a href="{% url 'do_test' topic.subject.id %}"
+                           class="right yellow darken-1 btn btn-floating waves-effect waves-circle tooltipped"
+                           data-tooltip="Hacer test del subtema" data-position="top"><i
+                                class="material-icons">format_list_numbered</i> </a>
+
+                    {% endif %}
                 </div>
             {% empty %}
-                {% if user.userProfile == topic.subject.teacher %}
+                {% if 'change_subject' in perm_topic %}
 
                     <a class="collection-item blue-text"
                        href="{% url 'create_subtopic' topic.subject.id topic.id %}"><i
@@ -92,7 +115,7 @@
                 {% endif %}
 
             {% endfor %}
-            {% if topic.subjects.all and user.userProfile == topic.subject.teacher %}
+            {% if topic.subjects.all and 'change_subject' in perm_topic %}
 
                 <a class="collection-item blue-text"
                    href="{% url 'create_subtopic' topic.subject.id topic.id %}"><i

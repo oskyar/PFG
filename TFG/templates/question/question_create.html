@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 {% load i18n %}
+{% load widget_tweaks %}
 {% block title %}Ponte a prueba - Creando Preguntas{% endblock title %}
 <!-- Wide card with share menu button -->
 {% block content %}
 
     <div class="row">
-        <div class=" col l8 m8 s12 subject-card">
+        <div class=" col l8 m12 s12 subject-card">
             <h3 class="deep-orange-text header center-align tooltipped"
                 data-tooltip="{% trans 'Asignatura' %}">{{ current_subtopic.topic.subject.name }}</h3>
             <h4 class="orange-text header center-align tooltipped"
@@ -22,22 +23,13 @@
                     <form method="POST" enctype="multipart/form-data" action="">
                         {% csrf_token %}
                         <div class="row">
-                            <div class="input-field col l3 m3 s12">
+                            <div class="input-field col l3 m4 s12">
 
                                 {{ form.type }}
 
-                                {% comment %}
-                                <select id="{{ form.type.id_for_label }}" class="select_choice browser-default"
-                                        name="{{ form.type.id_for_label }}">
-                                    {% for choice in form.type.field.choices %}
-                                        <option value={{ choice.0 }}>{{ choice.1 }}</option>
-                                    {% endfor %}
-                                </select>
-                                <label for="{{ form.type.id_for_label }}">{{ form.type.label }}</label>
-                                {% endcomment %}
                             </div>
 
-                            <div class="input-field col l9 m9 s12">
+                            <div class="input-field col l9 m8 s12">
                                 {{ form.statement }}
                                 <label for="{{ form.statement.id_for_label }}"
                                        data-error="{{ form.statement.errors|striptags }}"
@@ -62,7 +54,7 @@
                                             <label for="{{ question.valid.id_for_label }}"></label>
                                         </div>
                                         <div class="input-field col l9 m9 s7">
-                                            {{ question.reply }}
+                                            {{ question.reply|add_class:"replies" }}
                                             <label for="{{ question.reply.id_for_label }}"
                                                    data-error="{{ question.reply.errors|striptags }}"
                                                    data-success="Respuesta formulada correctamente">{{ question.reply.label }}</label>
@@ -103,14 +95,24 @@
                     <div class="divider"></div>
                     <ul class="collapsible" data-collapsible="accordion">
                         {% for question in questions %}
-                            <li id="question_{{ question.id }}">
+                            <li id="question_{{ question.id }}" data-question="question_{{ question.id }}">
                                 <div class="collapsible-header">
-                                    <i class="material-icons">filter_drama</i>
+                                    {% if question.type == 0 %}
+                                        <i class="material-icons blue-text tooltipped" data-tooltip="Respuesta única" >done</i>
+                                    {% elif question.type == 1%}
+                                        <i class="material-icons green-text tooltipped" data-tooltip="Multirespuesta">done_all</i>
+                                    {% endif %}
                                     {{ question.statement }}
                                     <div id="{{ question.id }}"
+
                                          data-url="{% url 'delete_question' pk=question.subtopic.topic.subject.id pk_topic=question.subtopic.topic.id pk_subtopic=question.subtopic.id pk_question=question.id %}"
                                          class="icon-edit delete_question waves-block waves-effect waves-button-input right waves-circle ">
-                                        <i class="material-icons red-text">delete</i>
+                                        <i class="material-icons delete red-text"
+                                           data-confirmed="{% trans "La pregunta ha sido eliminada correctamente" %}"
+                                           data-textconfirm="'{{ question.statement }}' {% trans "será eliminada." %}"
+                                           data-attribute="question"
+                                           data-question="question_{{ question.id }}"
+                                           data-url="{% url 'delete_question'  question.subtopic.topic.subject.id question.subtopic.topic.id question.subtopic.id question.id %}">delete</i></a>
                                     </div>
                                     <div class="icon-edit edit_button waves-block waves-effect waves-button-input right waves-circle ">
                                         <i class="material-icons blue-grey-text">edit</i>
@@ -156,6 +158,75 @@
         </div>
     </div>
 {% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('#check_all').on('click', function () {
+                if ($(this).prop('checked')) {
+                    $('.input-question').prop('checked', true);
+                } else {
+                    $('.input-question').prop('checked', false);
+
+                }
+            });
+
+            $(".delete").click(function () {
+                if (confirm($(this).data('textconfirm'))) {
+                    delete_model(this);
+
+                }
+                return false;
+            });
+
+
+            $('#button_delete_questions').click(function () {
+                if (confirm("{%  trans '¿Está seguro que desea borrar las preguntas seleccionadas?' %}")) {
+                    $('.input-question:checked').each(function (k, v) {
+
+                        delete_model(v);
+
+                    });
+                }
+            });
+
+            $('#submit_question').click(function (event) {
+                $('.replies').each(function (k, v) {
+                    if ($(v).val() == "") {
+                        alert("No puede haber una respuesta vacía")
+                        event.preventDefault();
+                        return false;
+                    }
+                });
+            });
+
+        });
+
+        function delete_model(obj) {
+            var attribute = $(obj).data('attribute');
+            var id = $(obj).data(attribute);
+            var text_confirmed = $(obj).data('confirmed');
+            $.ajax({
+                type: "POST",
+                url: $(obj).data('url'),
+                data: {},
+                success: function (response) {
+                    console.log(attribute)
+                    console.log(id)
+
+                    console.log($('[' + attribute + '=' + id + ']').length)
+                    $('[data-' + attribute + '=' + id + ']').remove();
+                    Materialize.toast(text_confirmed, 3000)
+                },
+                error: function (res) {
+                    alert("ERROR: No se puede borrar el registro");
+                }
+            });
+        }
+    </script>
+
+{% endblock %}
+
 
 {% block script_code %}
     initialize_question_view();

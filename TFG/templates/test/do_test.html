@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block title %}Ponte a prueba - Creando examen{% endblock title %}
+<!-- Wide card with share menu button -->
+{% block content %}
+    <div class="row">
+        <div class=" col l10 m12 s12">
+            <div>
+                <h2 class="left header orange-text ">{% trans 'Hacer TEST' %} </h2>
+                {% if subject %}
+                    <h2 class="header teal-text left">{% trans 'de' %} {{ subject.name }}</h2>
+                {% endif %}
+            </div>
+            <div class="row">
+                <div class=" col l12 m12 s12">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="card-panel red lighten-1 card-panel-select" data-panel="null">
+                                <span class="white-text ">
+                                    <i class="material-icons left">info</i><i
+                                        class="material-icons right close">close</i>{{ message }}</span>
+                                </span>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col l10 m12 s12 ">
+
+                    <form id="test_form" method="POST" enctype="multipart/form-data" action="">
+                        {% csrf_token %}
+                        {{ form.errors }}
+                        {{ form.non_field_errors }}
+                        <div class="row">
+                            <div class="col l6 m12 s12">
+                                {% if not subject %}
+                                    {{ form.subject.label_tag }}
+                                {% endif %}
+                                {{ form.owner }}
+                                {{ form.subject }}
+                            </div>
+                            <div class="col l12 m12 s12">
+                                {% if not subject %}
+                                    <div class="card-panel blue lighten-1 card-panel-select" data-panel="null">
+                                <span class="white-text ">
+                                    <i class="material-icons left">info</i><i
+                                        class="material-icons right close">close</i>{% trans 'Seleccione una ' %}<span
+                                        class="text-weight-sub">{% trans 'asignatura' %}</span>
+                                </span>
+                                    </div>
+                                {% endif %}
+                                <div class="card-panel deep-orange lighten-1 card-panel-select " data-panel="subject"
+                                     hidden>
+                                <span class="white-text ">
+                                    <i class="material-icons left">info</i><i
+                                        class="material-icons right close">close</i>{% trans 'Las preguntas serán de toda la ' %}<span
+                                        class="text-weight-sub">{% trans 'asignatura' %}</span> {% trans 'si no selecciona un tema ' %}
+                                </span>
+                                </div>
+                                <div class="card-panel orange lighten-1 card-panel-select" data-panel="topic" hidden>
+                                <span class="white-text ">
+                                    <i class="material-icons left">info</i><i
+                                        class="material-icons right close">close</i>{% trans 'Las preguntas sólo serán del ' %}<span
+                                        class="text-weight-sub">{% trans 'tema' %}</span> {% trans 'seleccionado' %}
+                                </span>
+                                </div>
+                                <div class="card-panel teal lighten-1 card-panel-select" data-panel="subtopic" hidden>
+                                <span class="white-text ">
+                                    <i class="material-icons left">info</i><i
+                                        class="material-icons right close">close</i>{% trans 'Las preguntas sólo serán del ' %}<span
+                                        class="text-weight-sub">{% trans 'subtema' %}</span> {% trans 'seleccionado' %}
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l6 m12 s12">
+                                {{ form.topic.label_tag }}
+                                {{ form.topic }}
+                            </div>
+                            <div class="col l6 m12 s12">
+                                {{ form.subtopic.label_tag }}
+                                {{ form.subtopic }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l3 m6 s12">
+                                <div class="input-field">
+                                    {{ form.name|add_class:"validate"|add_error_class:"invalid" }}
+                                    <label class="validate" for="{{ form.name.id_for_label }}"
+                                           data-error="{{ form.name.errors|striptags }}"
+                                           data-success="Nombre de test correcto">{{ form.name.label }}</label>
+                                </div>
+                            </div>
+                            <div class="col l2 m6 s12">
+                                <div class="input-field">
+                                    {{ form.num_question|add_class:"validate"|add_error_class:"invalid" }}
+                                    <label class="validate" for="{{ form.num_question.id_for_label }}"
+                                           data-error="{{ form.num_question.errors|striptags }}"
+                                           data-success="Correcto">{{ form.num_question.label }}</label>
+                                </div>
+                            </div>
+                            <div class="col l4 m6 s12">
+                                <div class="input-field">
+                                    {{ form.type }}
+                                    {{ form.type.label_tag }}
+                                </div>
+                            </div>
+                            <div class="col l3 m6 s12">
+                                <div class="input-field">
+                                    {{ form.type_question }}
+                                    {{ form.type_question.label_tag }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l3 m6 s12">
+                                <div>&nbsp;</div>
+                            </div>
+                            <div class="col l2 m6 s12">
+                                <div>&nbsp;</div>
+                            </div>
+                            <div class="col l4 m6 s12" id="container_duration">
+                                <div class="input-field">
+                                    {{ form.duration|add_class:"validate"|add_error_class:"invalid" }}
+                                    <label class="validate" for="{{ form.duration.id_for_label }}"
+                                           data-error="{{ form.duration.errors|striptags }}"
+                                           data-success="Correcto">{{ form.duration.label }}</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <button type="submit"
+                                class="btn orange waves-effect waves-light">{% trans 'Comenzar TEST' %}</button>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'smart-selects/admin/js/chainedfk.js' %}"></script>
+    <script>
+        //En caso de escribir valores y tener el switch como NO, se borrarán para enviar datos limpios.
+        $(function () {
+
+            $('#id_subject').change(function () {
+                if ($(this).val() != "") {
+
+                    $('.card-panel-select').hide();
+                    $('[data-panel=subject]').show();
+                } else {
+                    $('.card-panel-select').hide();
+                    $('[data-panel=null]').show();
+                }
+            });
+            $('#id_topic').change(function () {
+                if ($(this).val() != "") {
+                    $('.card-panel-select').hide();
+                    $('[data-panel=topic]').show();
+                } else {
+                    $('.card-panel-select').hide();
+                    $('[data-panel=subject]').show();
+                }
+            });
+            $('#id_subtopic').change(function () {
+                if ($(this).val() != "") {
+                    $('.card-panel-select').hide();
+                    $('[data-panel=subtopic]').show();
+                } else {
+                    $('.card-panel-select').hide();
+                    $('[data-panel=topic]').show();
+                }
+            });
+        });
+
+    </script>
+{% endblock %}
+
+{% block script_code %}
+
+    var transitionDate = "fold";
+    $('#id_type').change(function(){
+    if ($('#id_type').val() == "0") {
+    $('#container_duration').hide(transitionDate);
+    $('#id_duration').val("");
+    } else if ($('#id_type').val() == "1") {
+    $('#container_duration').show(transitionDate);
+    $('label[for=id_duration]').text("Duración (min)");
+    }
+    else if ($('#id_type').val() == "2") {
+    $('#container_duration').show(transitionDate);
+    $('label[for=id_duration]').text("Duración (seg)");
+    }
+    });
+
+    initialize_test_view();
+    $('select').change(function(){
+
+    $('select').material_select();
+    });
+{% endblock %}

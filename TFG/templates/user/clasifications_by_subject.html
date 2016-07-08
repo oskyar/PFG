@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}Clasificación{% endblock title %}
+
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col s12 m12 l12 form-register">
+            <h2 class="">Mi clasificación por asignatura</h2>
+
+
+            {% for subject in subjects %}
+                <h4 class="orange-text">Clasificación de {{ subject.name }}</h4>
+                <table class="striped centered">
+                    <thead>
+                    <tr>
+                        <th data-field="number">Nº</th>
+                        <th data-field="name">Name</th>
+                        <th data-field="tests">Nº Test realizados</th>
+                        <th data-field="percent">Nº Test realizados</th>
+                        <th data-field="pscore">Puntuación</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for student in subject.my_students  %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ student.user.first_name }} {{ student.user.last_name }}</td>
+                            <td>{{ student.num_test_done }}</td>
+                            <td>{{ student.average |floatformat:"2"}}</td>
+                            <td>{{ student.score_subject }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+
+    </script>
+{% endblock %}

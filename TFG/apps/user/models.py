@@ -20,22 +20,22 @@ class UserProfileManager(models.Manager):
         except UserProfile.DoesNotExist:
             return None
 
-    def num_test_by_user(self, *args, **kwargs):
-        return self.sub
+
+
 
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='userProfile')
-    tests_registered = models.ManyToManyField(
-        'test.Test',
-        related_name='students', blank=True)
 
     dni = models.CharField(max_length=9, blank=True, null=True)
     photo = S3DirectField(dest='profiles', blank=True, null=True)
     created_on = models.DateTimeField(blank=True, null=False)
     modify_on = models.DateTimeField(blank=True, null=False)
     level = models.PositiveIntegerField(default=0, blank=True, null=False)
+    prev_level = models.PositiveIntegerField(default=0, blank=True, null=False)
     score = models.PositiveIntegerField(default=0, blank=True, null=False)
+    next_level = models.PositiveIntegerField(default=0, blank=True, null=False)
+
 
     objects = UserProfileManager()
 

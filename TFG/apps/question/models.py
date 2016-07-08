@@ -2,8 +2,7 @@ __author__ = 'oskyar'
 
 from django.db import models
 from django.utils.translation import ugettext as _
-from TFG.apps.topic.models import Subtopic
-from TFG.apps.test.models import Test
+from s3direct.fields import S3DirectField
 
 
 # Preguntas
@@ -20,13 +19,14 @@ class Question(models.Model):
     )
 
     # id = Id generado por defecto por django
-    test = models.ManyToManyField(Test, related_name='questions', blank=False)
-    subtopic = models.ForeignKey(Subtopic, related_name='questions', on_delete=models.CASCADE)
+    subtopic = models.ForeignKey('topic.Subtopic', related_name='questions', on_delete=models.CASCADE)
     statement = models.CharField(max_length=150)
-    image = models.ImageField(upload_to='subtopic', blank=True, null=True)
+    image = S3DirectField(dest='questions', blank=True, null=True)
     type = models.IntegerField(choices=TYPES_CHOICES,
                                default=STANDARD)
 
     class Meta:
         ordering = ['statement']
 
+    def __str__(self):
+        return "%s(%s)" % (self.statement, self.subtopic.name)

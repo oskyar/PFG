@@ -99,6 +99,7 @@ $(document).ready(function () {
     $(".dial").knob({
         min: 0,
         max: 100,
+        value:23,
         angleOffset: 0, //30 me gusta
         angleArc: 360,     //300 me gusta
         readOnly: true,
@@ -107,7 +108,7 @@ $(document).ready(function () {
         displayInput: false,
         fgColor: '#a7ffeb',
         bgColor: '#4db6ac',
-        lineCap: 'round'
+        lineCap: 'round',
     }).hover(function () {
 
         $('.level').fadeToggle(200);
@@ -246,56 +247,11 @@ $(document).ready(function () {
     });
 
 
-    $(".delete_question").click(function () {
-        if (confirm("¿Quiere eliminar la pregunta? No habrá vuelta atrás")) {
-            var id = $(this).attr('id');
-            $.ajax({
-                type: "POST",
-                url: $(this).data('url'),
-                data: {id: id},
-                success: function (response) {
-                    $('#question_' + id).remove();
-                    Materialize.toast('Pregunta eliminada correctamente', 3000)
-                },
-                error: function (res) {
-                    alert("ERROR: No se puede borrar la pregunta");
-                }
-            });
-        }
-        return false;
-    });
-
     //Asignaturas
     $('.go-subject').hover(function (ev) {
         $(this).find('#buttons-card-hover').show('clip')
     }, function (ev) {
         $(this).find('#buttons-card-hover').hide('slide')
-    });
-
-    $(".delete").click(function () {
-        if (confirm($(this).data('textconfirm'))) {
-
-            var attribute = $(this).data('attribute');
-            var id = $(this).data(attribute);
-            var text_confirmed = $(this).data('confirmed');
-            $.ajax({
-                type: "POST",
-                url: $(this).data('url'),
-                data: {},
-                success: function (response) {
-                    console.log(attribute)
-                    console.log(id)
-
-                    console.log($('[' + attribute + '=' + id + ']').length)
-                    $('[data-' + attribute + '=' + id + ']').remove();
-                    Materialize.toast(text_confirmed, 3000)
-                },
-                error: function (res) {
-                    alert("ERROR: No se puede borrar el registro");
-                }
-            });
-        }
-        return false;
     });
 
 });

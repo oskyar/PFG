@@ -16,3 +16,4 @@ def change_photo_user(sender, user, request, **kwargs):
 
 update_user_profile.connect(change_photo_user)
 """
+

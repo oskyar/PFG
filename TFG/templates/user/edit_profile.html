@@ -17,7 +17,12 @@
                 {% csrf_token %}
                 {% if messages %}
                     {% for message in messages %}
-                        <div class="card-panel white-text green darken-1"> {{ message }}</div>
+                        <div class="card-panel green lighten-1 card-panel-select" data-panel="null">
+                                <span class="white-text ">
+                                    <i class="material-icons left">info</i><i
+                                        class="material-icons right close">close</i>{{ message }}</span>
+                            </span>
+                        </div>
                     {% endfor %}
                 {% endif %}
                 <div class="row">
@@ -89,7 +94,7 @@
                             <div class="col l4 m4 s12">
                                 <div class="file-field input-field">
                                     {{ form.photo }}
-                                    <div class="btn">
+                                    <div class="btn clear-both">
                                         <span>{{ form.photo.label }}</span>
                                     </div>
                                 </div>

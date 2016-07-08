@@ -22,7 +22,6 @@ class CreateQuestionForm(forms.ModelForm):
         fields = ['statement', 'type']
 
     def clean_type(self):
-        print("Entra en el puto type")
         type = self.cleaned_data['type']
         if not type:
             raise forms.ValidationError(

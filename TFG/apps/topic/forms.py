@@ -68,6 +68,7 @@ class CreateSubtopicForm(forms.ModelForm):
     template_name = "subject_create.html"
     error_messages = dict(
         field_required=_("Es obligatorio rellenar el campo"),
+        integer_positive=_("El número debe ser mayor de 0"),
     )
     name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'validate'}),
                            label=_("Nombre del tema"))
@@ -81,6 +82,9 @@ class CreateSubtopicForm(forms.ModelForm):
                                    "Este valor será definido automáticamente en caso de no asignarle uno, será la media de dividir 100 entre todos los temas creados."))
     gamificar = forms.BooleanField(required=False, label=_("¿Gamificar?"), help_text=_(
         "Al seleccionar que sí, el subtema se mostrará  en el sistema gamificado."), initial=True)
+    num_questions_gam = forms.IntegerField(required=True, initial=0, label=_("Nº preguntas gamificación"),
+                                           help_text=_(
+                                               "Número de preguntas que se seleccionarán al azar cuando se genere el test gamificado sobre el subtema"))
 
     class Meta:
         model = Subtopic
@@ -90,7 +94,7 @@ class CreateSubtopicForm(forms.ModelForm):
             'description': forms.TextInput(attrs={'class': 'validate'}),
             'value': forms.TextInput(attrs={'class': 'validate'}),
         }
-        fields = ['name', 'cardinality', 'description', 'value', 'gamificar']
+        fields = ['name', 'cardinality', 'description', 'value', 'gamificar','num_questions_gam']
 
     def clean_name(self):
         name = self.cleaned_data['name']
@@ -119,3 +123,10 @@ class CreateSubtopicForm(forms.ModelForm):
             raise forms.ValidationError(
                 self.error_messages['field_required'], code="field_required")
         return value
+
+    def clean_num_questions_gam(self):
+        num = self.cleaned_data['num_questions_gam']
+        if num < 0:
+            raise forms.ValidationError(
+                self.error_messages['integer_positive'], code="integer_positive")
+        return num

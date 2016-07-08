@@ -13,7 +13,7 @@ class Answer(models.Model):
     adjustment = models.IntegerField(blank=True, null=True, default=0)
 
     class Meta:
-        ordering = ['reply']
+        ordering = ['?']
 
     def __str__(self):
         return "%s - %s - %s" % (self.question.statement, self.reply, self.valid)

@@ -14,6 +14,30 @@ class SubjectManager(models.Manager):
     def by_owner(self, userProfile):
         return self.filter(teacher=userProfile)
 
+    def get_num_questions(self, subject, type=None):
+        num_questions = 0
+        for topic in subject.topics.all():
+            if type:
+                for subtopic in topic.subtopics.all():
+                    num_questions += subtopic.questions.filter(type=type).count()
+            else:
+                for subtopic in topic.subtopics.all():
+                    num_questions += subtopic.questions.all().count()
+
+        return num_questions
+
+    def get_all_questions(self, subject, type=None):
+        questions = list()
+        for topic in subject.topics.all():
+            if type:
+                for subtopic in topic.subtopics.all():
+                    questions += subtopic.questions.filter(type=type)
+            else:
+                for subtopic in topic.subtopics.all():
+                    questions += subtopic.questions.all()
+
+        return questions
+
 
 # Asignatura.
 class Subject(models.Model):
@@ -59,6 +83,12 @@ class Subject(models.Model):
 
     objects = SubjectManager()
 
+    class Meta:
+        permissions = (
+            ('view_subject', 'View detail Subject'),
+            ('register_subject', 'Student registers of subject'),
+            ('unregister_subject', 'Student unregisters of subject')
+        )
 
-def __str__(self):
-    return self.name + " (" + self.category + ")"
+    def __str__(self):
+        return self.name + " (" + self.category + ")"

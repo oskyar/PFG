@@ -85,6 +85,13 @@ header, main, footer {
     -ms-transform: rotateX(180deg);
 }*/
 
+.img-user {
+    width: 185px;
+    height: 185px;
+    border-radius: 50%;
+    clear: both;
+}
+
 .profile .circle {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -604,4 +611,35 @@ img {
 
 .overflow-hidden {
     overflow: hidden;
+}
+
+.clear-both {
+    clear: both;
+}
+
+#container_resultados {
+    border: 1px solid grey;
+    padding-bottom: 20px;
+}
+
+#container_resultados h3 {
+    margin-top: 0px;
+}
+
+#container_resultados .tag_resultado_final {
+    line-height: 65px;
+}
+
+#container_resultados .resultado_final {
+    font-size: 3rem;
+}
+
+.num-height {
+    font-size: 2rem;
+}
+
+.subitem-menu {
+    width: 100%;
+    padding-right: 0px;
+    margin-right: 0px;
 }

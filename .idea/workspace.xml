@@ -2,10 +2,62 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fbc4851-ab7c-4edc-8066-f4769d61bf2f" name="Default" comment="- Se actualizan dependencias del proyecto.&#10;- Se modifica diseño en preguntas.&#10;- Ya se traen preguntas y sus respuestas en las preguntas.&#10;">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TFG/local_settings.py" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/test/do_test.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/test/doing_test.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TFG/templates/user/clasifications_by_subject.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TFG/apps/index/admin.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TFG/apps/index/forms.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TFG/apps/index/models.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TFG/apps/index/signals.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TFG/apps/index/tests.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TFG/templates/registration/registration_form2.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/TFG/apps/index/__init__.py" afterPath="$PROJECT_DIR$/TFG/apps/handlererrors/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/TFG/apps/index/urls.py" afterPath="$PROJECT_DIR$/TFG/apps/handlererrors/urls.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/TFG/apps/index/views.py" afterPath="$PROJECT_DIR$/TFG/apps/handlererrors/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/answer/forms.py" afterPath="$PROJECT_DIR$/TFG/apps/answer/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/answer/models.py" afterPath="$PROJECT_DIR$/TFG/apps/answer/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/question/forms.py" afterPath="$PROJECT_DIR$/TFG/apps/question/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/question/models.py" afterPath="$PROJECT_DIR$/TFG/apps/question/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/question/views.py" afterPath="$PROJECT_DIR$/TFG/apps/question/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/statistic/models.py" afterPath="$PROJECT_DIR$/TFG/apps/statistic/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/subject/models.py" afterPath="$PROJECT_DIR$/TFG/apps/subject/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/subject/urls.py" afterPath="$PROJECT_DIR$/TFG/apps/subject/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/subject/views.py" afterPath="$PROJECT_DIR$/TFG/apps/subject/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/test/admin.py" afterPath="$PROJECT_DIR$/TFG/apps/test/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/test/forms.py" afterPath="$PROJECT_DIR$/TFG/apps/test/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/test/models.py" afterPath="$PROJECT_DIR$/TFG/apps/test/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/test/urls.py" afterPath="$PROJECT_DIR$/TFG/apps/test/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/test/views.py" afterPath="$PROJECT_DIR$/TFG/apps/test/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/topic/forms.py" afterPath="$PROJECT_DIR$/TFG/apps/topic/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/topic/models.py" afterPath="$PROJECT_DIR$/TFG/apps/topic/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/topic/views.py" afterPath="$PROJECT_DIR$/TFG/apps/topic/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/user/models.py" afterPath="$PROJECT_DIR$/TFG/apps/user/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/user/signals.py" afterPath="$PROJECT_DIR$/TFG/apps/user/signals.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/user/urls.py" afterPath="$PROJECT_DIR$/TFG/apps/user/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/apps/user/views.py" afterPath="$PROJECT_DIR$/TFG/apps/user/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/settings.py" afterPath="$PROJECT_DIR$/TFG/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/migrar modelos a base de datos" afterPath="$PROJECT_DIR$/migrar modelos a base de datos" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/static/css/myStyle.css" afterPath="$PROJECT_DIR$/TFG/static/css/myStyle.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/static/js/test_functions.js" afterPath="$PROJECT_DIR$/TFG/static/js/test_functions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/base.html" afterPath="$PROJECT_DIR$/TFG/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/menu.html" afterPath="$PROJECT_DIR$/TFG/templates/menu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/question/question_create.html" afterPath="$PROJECT_DIR$/TFG/templates/question/question_create.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/registration/activation_email.html" afterPath="$PROJECT_DIR$/TFG/templates/registration/activation_email.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/registration/registration_form.html" afterPath="$PROJECT_DIR$/TFG/templates/registration/registration_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/subject/subject_card.html" afterPath="$PROJECT_DIR$/TFG/templates/subject/subject_card.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/subject/subject_create.html" afterPath="$PROJECT_DIR$/TFG/templates/subject/subject_create.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/subject/subject_detail.html" afterPath="$PROJECT_DIR$/TFG/templates/subject/subject_detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/subject/subject_list.html" afterPath="$PROJECT_DIR$/TFG/templates/subject/subject_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/subtopic/subtopic_create.html" afterPath="$PROJECT_DIR$/TFG/templates/subtopic/subtopic_create.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/subtopic/subtopic_detail.html" afterPath="$PROJECT_DIR$/TFG/templates/subtopic/subtopic_detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/test/test_create.html" afterPath="$PROJECT_DIR$/TFG/templates/test/test_create.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/topic/topic_create.html" afterPath="$PROJECT_DIR$/TFG/templates/topic/topic_create.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/topic/topic_detail.html" afterPath="$PROJECT_DIR$/TFG/templates/topic/topic_detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/user/edit_profile.html" afterPath="$PROJECT_DIR$/TFG/templates/user/edit_profile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/user/index.html" afterPath="$PROJECT_DIR$/TFG/templates/user/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/urls.py" afterPath="$PROJECT_DIR$/TFG/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/referencias" afterPath="$PROJECT_DIR$/referencias" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <list id="ef1a7dfa-392c-40a5-8998-ddb61171f2f7" name="New changelist" comment="New changelist" />
     <ignored path="test_TFG.iws" />
@@ -31,76 +83,6 @@
     <option name="SORT_POSITIONED" value="false" />
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PostgreSQL - dbtfg@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="public" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PostgreSQL - dbtfg@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="public" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$GroupNode" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PostgreSQL - dbtfg@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="public" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$GroupNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="test_test" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PostgreSQL - dbtfg@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-    </PATH>
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
@@ -109,58 +91,27 @@
   <component name="FavoritesManager">
     <favorites_list name="test_TFG">
       <favorite_root url="file://$PROJECT_DIR$/TFG/static/css/myStyle.css" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+      <favorite_root url="file://$PROJECT_DIR$/TFG/static/js/test_functions.js" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
     </favorites_list>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TFG/apps/test/forms.py">
+      <file leaf-file-name="doing_test.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TFG/templates/test/doing_test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="576">
+              <caret line="190" column="68" selection-start-line="190" selection-start-column="68" selection-end-line="190" selection-end-column="68" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="local_settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TFG/local_settings.py">
+      <file leaf-file-name="menu.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TFG/templates/menu.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+            <state relative-caret-position="170">
+              <caret line="223" column="41" selection-start-line="223" selection-start-column="41" selection-end-line="223" selection-end-column="41" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="migrar modelos a base de datos" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/migrar modelos a base de datos">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="73" selection-start-line="19" selection-start-column="73" selection-end-line="19" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TFG/apps/answer/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TFG/apps/subject/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-              <folding>
-                <element signature="e#23#51#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -168,30 +119,72 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFG/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="360">
+              <caret line="264" column="23" selection-start-line="264" selection-start-column="23" selection-end-line="264" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signals.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TFG/apps/user/signals.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TFG/apps/subject/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="275" column="60" selection-start-line="275" selection-start-column="60" selection-end-line="275" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TFG/apps/test/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="326" column="0" selection-start-line="326" selection-start-column="0" selection-end-line="326" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_functions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TFG/static/js/test_functions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="110" column="25" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TFG/apps/test/models.py">
+        <entry file="file://$PROJECT_DIR$/TFG/apps/topic/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="40" column="29" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
+            <state relative-caret-position="180">
+              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding>
-                <element signature="e#23#51#0" expanded="true" />
+                <element signature="e#23#66#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TFG/apps/test/urls.py">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TFG/apps/user/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="330">
+              <caret line="34" column="79" selection-start-line="34" selection-start-column="79" selection-end-line="34" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -200,21 +193,11 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFG/apps/user/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-201">
-              <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+            <state relative-caret-position="224">
+              <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
               <folding>
-                <element signature="e#23#58#0" expanded="true" />
+                <element signature="e#23#80#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TFG/apps/test/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -238,8 +221,8 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="@oskyar" />
         <option value="Óscar Zafra &lt;oskyar@gmail.com&gt;" />
+        <option value="@oskyar" />
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -252,56 +235,56 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/TFG/templates/subtopic/create.html" />
-        <option value="$PROJECT_DIR$/TFG/templates/topic/create.html" />
-        <option value="$PROJECT_DIR$/TFG/templates/question/create.html" />
-        <option value="$PROJECT_DIR$/TFG/templates/subject/list.html" />
-        <option value="$PROJECT_DIR$/TFG/templates/test/create.html" />
-        <option value="$PROJECT_DIR$/TFG/templates/subtopic/detail.html" />
-        <option value="$PROJECT_DIR$/TFG/templates/subject/detail.html" />
-        <option value="$PROJECT_DIR$/TFG/templates/base.html" />
-        <option value="$PROJECT_DIR$/TFG/templates/topic/list.html" />
-        <option value="$PROJECT_DIR$/TFG/templates/topic/detail.html" />
-        <option value="$PROJECT_DIR$/TFG/templates/subtopic/subtopic_list.html" />
-        <option value="$PROJECT_DIR$/TFG/urls.py" />
-        <option value="$PROJECT_DIR$/TFG/apps/search/urls.py" />
-        <option value="$PROJECT_DIR$/TFG/templates/subject/subject_list.html" />
-        <option value="$PROJECT_DIR$/TFG/apps/question/urls.py" />
-        <option value="$PROJECT_DIR$/TFG/apps/subject/urls.py" />
-        <option value="$PROJECT_DIR$/TFG/templates/subject/subject_card.html" />
-        <option value="$PROJECT_DIR$/TFG/templates/menu.html" />
-        <option value="$PROJECT_DIR$/TFG/templates/search/search.html" />
-        <option value="$PROJECT_DIR$/TFG/apps/user/models.py" />
-        <option value="$PROJECT_DIR$/TFG/apps/topic/forms.py" />
-        <option value="$PROJECT_DIR$/TFG/apps/topic/models.py" />
+        <option value="$PROJECT_DIR$/TFG/decorators.py" />
         <option value="$PROJECT_DIR$/TFG/apps/topic/urls.py" />
-        <option value="$PROJECT_DIR$/TFG/apps/subject/forms.py" />
-        <option value="$PROJECT_DIR$/TFG/templates/breadcrumb.html" />
+        <option value="$PROJECT_DIR$/TFG/apps/test/admin.py" />
+        <option value="$PROJECT_DIR$/TFG/urls.py" />
+        <option value="$PROJECT_DIR$/TFG/templates/user/index.html" />
+        <option value="$PROJECT_DIR$/TFG/templates/403.html" />
+        <option value="$PROJECT_DIR$/TFG/templates/search/search.html" />
+        <option value="$PROJECT_DIR$/TFG/templates/subject/subject_card.html" />
+        <option value="$PROJECT_DIR$/TFG/templates/user/edit_profile.html" />
         <option value="$PROJECT_DIR$/TFG/apps/question/forms.py" />
-        <option value="$PROJECT_DIR$/TFG/apps/answer/models.py" />
-        <option value="$PROJECT_DIR$/TFG/apps/question/models.py" />
-        <option value="$PROJECT_DIR$/TFG/apps/statistic/models.py" />
+        <option value="$PROJECT_DIR$/TFG/templates/subject/subject_list.html" />
+        <option value="$PROJECT_DIR$/TFG/templates/subtopic/subtopic_detail.html" />
+        <option value="$PROJECT_DIR$/TFG/local_settings.py" />
         <option value="$PROJECT_DIR$/TFG/templates/question/question_create.html" />
-        <option value="$PROJECT_DIR$/TFG/static/js/test_functions.js" />
         <option value="$PROJECT_DIR$/TFG/templates/subject/subject_create.html" />
         <option value="$PROJECT_DIR$/TFG/templates/topic/topic_create.html" />
-        <option value="$PROJECT_DIR$/TFG/static/css/myStyle.css" />
-        <option value="$PROJECT_DIR$/TFG/templates/subtopic/subtopic_create.html" />
-        <option value="$PROJECT_DIR$/TFG/templates/subtopic/subtopic_detail.html" />
         <option value="$PROJECT_DIR$/TFG/templates/topic/topic_detail.html" />
-        <option value="$PROJECT_DIR$/TFG/apps/search/views.py" />
-        <option value="$PROJECT_DIR$/TFG/templates/subject/subject_detail.html" />
-        <option value="$PROJECT_DIR$/dependencias.txt" />
-        <option value="$PROJECT_DIR$/TFG/apps/subject/views.py" />
-        <option value="$PROJECT_DIR$/TFG/apps/user/views.py" />
-        <option value="$PROJECT_DIR$/TFG/apps/topic/views.py" />
+        <option value="dbtable:/aaf31428/b8c6e9c3-c28c-44da-8dac-e2a6713ad2a3/dbtfg.public.statistic_statisticquestion" />
+        <option value="dbtable:/aaf31428/b8c6e9c3-c28c-44da-8dac-e2a6713ad2a3/dbtfg.public.question_question" />
+        <option value="dbtable:/aaf31428/b8c6e9c3-c28c-44da-8dac-e2a6713ad2a3/dbtfg.public.subject_subject" />
+        <option value="$PROJECT_DIR$/TFG/apps/answer/forms.py" />
+        <option value="$PROJECT_DIR$/TFG/templates/test/test_create.html" />
         <option value="$PROJECT_DIR$/TFG/apps/question/views.py" />
-        <option value="$PROJECT_DIR$/TFG/apps/test/views.py" />
+        <option value="$PROJECT_DIR$/TFG/apps/statistic/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/TFG/apps/statistic/models.py" />
         <option value="$PROJECT_DIR$/TFG/apps/test/forms.py" />
+        <option value="$PROJECT_DIR$/TFG/templates/base.html" />
+        <option value="$PROJECT_DIR$/TFG/templates/test/do_test.html" />
+        <option value="$PROJECT_DIR$/TFG/apps/topic/views.py" />
+        <option value="$PROJECT_DIR$/TFG/apps/topic/forms.py" />
+        <option value="$PROJECT_DIR$/TFG/templates/subtopic/subtopic_create.html" />
+        <option value="$PROJECT_DIR$/TFG/apps/answer/models.py" />
+        <option value="$PROJECT_DIR$/TFG/apps/test/urls.py" />
+        <option value="$PROJECT_DIR$/TFG/apps/question/models.py" />
+        <option value="$PROJECT_DIR$/TFG/apps/topic/models.py" />
+        <option value="$PROJECT_DIR$/TFG/apps/user/urls.py" />
         <option value="$PROJECT_DIR$/TFG/apps/subject/models.py" />
+        <option value="$PROJECT_DIR$/TFG/static/css/myStyle.css" />
         <option value="$PROJECT_DIR$/TFG/apps/test/models.py" />
-        <option value="$PROJECT_DIR$/TFG/local_settings.py" />
-        <option value="$PROJECT_DIR$/migrar modelos a base de datos" />
+        <option value="$PROJECT_DIR$/TFG/templates/user/clasifications_by_subject.html" />
+        <option value="$PROJECT_DIR$/TFG/templates/subject/subject_detail.html" />
+        <option value="$PROJECT_DIR$/TFG/apps/subject/urls.py" />
+        <option value="$PROJECT_DIR$/TFG/apps/subject/views.py" />
+        <option value="$PROJECT_DIR$/TFG/apps/user/signals.py" />
+        <option value="$PROJECT_DIR$/TFG/apps/user/models.py" />
+        <option value="$PROJECT_DIR$/TFG/static/js/test_functions.js" />
+        <option value="$PROJECT_DIR$/TFG/templates/menu.html" />
+        <option value="$PROJECT_DIR$/TFG/apps/test/views.py" />
+        <option value="$PROJECT_DIR$/TFG/apps/user/views.py" />
+        <option value="$PROJECT_DIR$/TFG/templates/test/doing_test.html" />
         <option value="$PROJECT_DIR$/TFG/settings.py" />
       </list>
     </option>
@@ -362,9 +345,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Project Files" />
+      <pane id="Scratches">
+        <subPane />
       </pane>
       <pane id="ProjectPane">
         <subPane>
@@ -412,6 +394,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_TFG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test-TFG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TFG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_TFG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test-TFG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TFG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="apps" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -438,29 +460,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_TFG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test-TFG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TFG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="subject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files" />
       </pane>
     </panes>
   </component>
@@ -492,21 +495,22 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL&#10;DDL Data Source" />
+    <property name="Console.TableResult.DefaultCopyAction" value="SQL Insert Statements" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/TFG/templates/test" />
+      <recent name="$PROJECT_DIR$/TFG/templates" />
       <recent name="$PROJECT_DIR$/TFG" />
       <recent name="$PROJECT_DIR$/TFG/apps/search" />
       <recent name="$PROJECT_DIR$/TFG/templates/subtopic" />
-      <recent name="$PROJECT_DIR$/TFG/templates/topic" />
-      <recent name="$PROJECT_DIR$/TFG/templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/TFG/templates/user" />
       <recent name="$PROJECT_DIR$/TFG/templates" />
+      <recent name="$PROJECT_DIR$/TFG" />
       <recent name="$PROJECT_DIR$/TFG/templates/subject" />
       <recent name="$PROJECT_DIR$/TFG/core/templates" />
-      <recent name="$PROJECT_DIR$/TFG/profiles" />
-      <recent name="$PROJECT_DIR$/TFG" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.TFG">
@@ -916,7 +920,63 @@
       <option name="project" value="LOCAL" />
       <updated>1465508037484</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="- Se añade decorador para los permisos y se aplica a Asignatura">
+      <created>1467397361050</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1467397361050</updated>
+    </task>
+    <task id="LOCAL-00016" summary="- Se añaden permisos a las vistas&#10;- Index se añade a User.">
+      <created>1467400644360</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1467400644360</updated>
+    </task>
+    <task id="LOCAL-00017" summary="- Se añade index a User&#10;- Se modifica el formulario añadiéndole s3direct para poder subir las imágenes a Amazon">
+      <created>1467400894895</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1467400894895</updated>
+    </task>
+    <task id="LOCAL-00018" summary="- Se elimina código comentado">
+      <created>1467400921406</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1467400921406</updated>
+    </task>
+    <task id="LOCAL-00019" summary="- Se añaden páginas básicas para mostrar los errores.&#10;- Se modifica un poco la base y el menú para mejorar el diseño">
+      <created>1467401093962</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1467401093962</updated>
+    </task>
+    <task id="LOCAL-00020" summary="- Se corrigen errores en el diseño">
+      <created>1467507054007</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1467507054007</updated>
+    </task>
+    <task id="LOCAL-00021" summary="- Se mejora el diseño.&#10;- Se añaden permisos a Subject en el template">
+      <created>1467508650061</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1467508650061</updated>
+    </task>
+    <task id="LOCAL-00022" summary="- Se modifica el icono flotante">
+      <created>1467508685518</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1467508685518</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -935,18 +995,18 @@
     <frame x="1985" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1713654" sideWeight="0.49430895" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16252074" sideWeight="0.72195125" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Heroku" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.359375" sideWeight="0.50193477" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946378" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19181868" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2875" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2875" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1509121" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33125" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17412935" sideWeight="0.50569105" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24791667" sideWeight="0.49806523" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16252074" sideWeight="0.27804878" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.359375" sideWeight="0.49806523" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -958,27 +1018,6 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17345873" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1515625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39916405" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1006,7 +1045,15 @@
     <MESSAGE value="- Se añaden validaciones en el formulario de Question." />
     <MESSAGE value="- Se crea modelo de estadística para las preguntas." />
     <MESSAGE value="- Se cambia el nombre del modelo de Estadística para las preguntas." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Se cambia el nombre del modelo de Estadística para las preguntas." />
+    <MESSAGE value="- Se añade decorador para los permisos y se aplica a Asignatura" />
+    <MESSAGE value="- Se añaden permisos a las vistas&#10;- Index se añade a User." />
+    <MESSAGE value="- Se añade index a User&#10;- Se modifica el formulario añadiéndole s3direct para poder subir las imágenes a Amazon" />
+    <MESSAGE value="- Se elimina código comentado" />
+    <MESSAGE value="- Se añaden páginas básicas para mostrar los errores.&#10;- Se modifica un poco la base y el menú para mejorar el diseño" />
+    <MESSAGE value="- Se corrigen errores en el diseño" />
+    <MESSAGE value="- Se mejora el diseño.&#10;- Se añaden permisos a Subject en el template" />
+    <MESSAGE value="- Se modifica el icono flotante" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Se modifica el icono flotante" />
     <option name="PRESELECT_EXISTING_CHANGELIST" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1015,65 +1062,180 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
+        <line-breakpoint type="python-line">
           <url>file://$PROJECT_DIR$/TFG/apps/test/views.py</url>
-          <line>40</line>
+          <line>74</line>
           <option name="timeStamp" value="151" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
+        <line-breakpoint type="python-line">
           <url>file://$PROJECT_DIR$/TFG/apps/test/views.py</url>
-          <line>60</line>
+          <line>95</line>
           <option name="timeStamp" value="152" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/TFG/apps/test/forms.py</url>
-          <line>107</line>
-          <option name="timeStamp" value="155" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/TFG/apps/test/views.py</url>
-          <line>26</line>
-          <option name="timeStamp" value="176" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
+        <line-breakpoint type="python-line">
           <url>file://$PROJECT_DIR$/TFG/apps/subject/models.py</url>
           <line>13</line>
           <option name="timeStamp" value="177" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
+        <line-breakpoint type="python-line">
           <url>file://$PROJECT_DIR$/TFG/apps/subject/views.py</url>
-          <line>172</line>
+          <line>246</line>
           <option name="timeStamp" value="210" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
+        <line-breakpoint type="python-line">
           <url>file://$PROJECT_DIR$/TFG/apps/subject/views.py</url>
-          <line>170</line>
+          <line>238</line>
           <option name="timeStamp" value="212" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
+        <line-breakpoint type="python-line">
           <url>file://$PROJECT_DIR$/TFG/apps/subject/views.py</url>
-          <line>157</line>
+          <line>224</line>
           <option name="timeStamp" value="219" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
+        <line-breakpoint type="python-line">
           <url>file://$PROJECT_DIR$/TFG/apps/question/views.py</url>
-          <line>96</line>
+          <line>110</line>
           <option name="timeStamp" value="220" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
+        <line-breakpoint type="python-line">
           <url>file://$PROJECT_DIR$/TFG/apps/topic/views.py</url>
-          <line>385</line>
+          <line>395</line>
           <option name="timeStamp" value="221" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
+        <line-breakpoint type="python-line">
           <url>file://$PROJECT_DIR$/TFG/apps/topic/views.py</url>
-          <line>394</line>
+          <line>404</line>
           <option name="timeStamp" value="222" />
+        </line-breakpoint>
+        <line-breakpoint type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/settings.py</url>
+          <line>197</line>
+          <option name="timeStamp" value="227" />
+        </line-breakpoint>
+        <line-breakpoint type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/subject/views.py</url>
+          <line>44</line>
+          <option name="timeStamp" value="232" />
+        </line-breakpoint>
+        <line-breakpoint type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/test/views.py</url>
+          <line>66</line>
+          <option name="timeStamp" value="239" />
+        </line-breakpoint>
+        <line-breakpoint type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/test/forms.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="249" />
+        </line-breakpoint>
+        <line-breakpoint type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/subject/models.py</url>
+          <line>17</line>
+          <option name="timeStamp" value="256" />
+        </line-breakpoint>
+        <line-breakpoint type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/answer/forms.py</url>
+          <line>68</line>
+          <option name="timeStamp" value="263" />
+        </line-breakpoint>
+        <line-breakpoint type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/question/views.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="265" />
+        </line-breakpoint>
+        <line-breakpoint type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/question/views.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="267" />
+        </line-breakpoint>
+        <line-breakpoint type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/question/views.py</url>
+          <line>48</line>
+          <option name="timeStamp" value="268" />
+        </line-breakpoint>
+        <line-breakpoint type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/answer/forms.py</url>
+          <line>59</line>
+          <option name="timeStamp" value="269" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/TFG/apps/test/views.py</url>
-          <line>22</line>
-          <option name="timeStamp" value="224" />
+          <line>48</line>
+          <option name="timeStamp" value="275" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/test/views.py</url>
+          <line>207</line>
+          <option name="timeStamp" value="279" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/test/views.py</url>
+          <line>138</line>
+          <option name="timeStamp" value="288" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/test/views.py</url>
+          <line>131</line>
+          <option name="timeStamp" value="290" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/test/views.py</url>
+          <line>109</line>
+          <option name="timeStamp" value="291" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/test/views.py</url>
+          <line>176</line>
+          <option name="timeStamp" value="294" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/question/views.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="310" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/topic/views.py</url>
+          <line>242</line>
+          <option name="timeStamp" value="312" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/test/views.py</url>
+          <line>233</line>
+          <option name="timeStamp" value="319" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/topic/models.py</url>
+          <line>79</line>
+          <option name="timeStamp" value="320" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/topic/models.py</url>
+          <line>76</line>
+          <option name="timeStamp" value="324" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/topic/models.py</url>
+          <line>71</line>
+          <option name="timeStamp" value="325" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/user/views.py</url>
+          <line>165</line>
+          <option name="timeStamp" value="338" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/user/views.py</url>
+          <line>169</line>
+          <option name="timeStamp" value="341" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/user/views.py</url>
+          <line>176</line>
+          <option name="timeStamp" value="342" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/TFG/apps/test/views.py</url>
+          <line>323</line>
+          <option name="timeStamp" value="343" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1086,400 +1248,475 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="225" />
+      <option name="time" value="344" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Python.DjangoServer">
-        <watch expression="Subject.objects.get(pk=self.kwargs.get('pk'))" language="Python" />
+        <watch expression="TestDone.objects.filter(student=student,test__subject=subject).count()" language="Python" />
+        <watch expression="my_subjects[0].students.all()[0].score_subject__score_won_sum" language="Python" />
+        <watch expression="student.score_subject" language="Python" />
+        <watch expression="students[0].percent" language="Python" />
+        <watch expression="my_subjects[0].my_students[0]" language="Python" />
+        <watch expression="email_messages" language="Python" />
+        <watch expression="LEVELS.values()" language="Python" />
+        <watch expression="s" language="Python" />
+        <watch expression="loop.counter" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TFG/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/search/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/contrib/auth/decorators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/subject/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/templates/subject/subject_card.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/templates/menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b8c6e9c3-c28c-44da-8dac-e2a6713ad2a3/console_2.sql">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b8c6e9c3-c28c-44da-8dac-e2a6713ad2a3/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/templates/search/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="49" column="47" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
+    <entry file="dbDummy://dbtable:/aaf31428/b8c6e9c3-c28c-44da-8dac-e2a6713ad2a3/dbtfg.public.statistic_statisticquestion">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/topic/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" column="95" selection-start-line="16" selection-start-column="95" selection-end-line="16" selection-end-column="95" />
+    <entry file="dbDummy://dbtable:/aaf31428/b8c6e9c3-c28c-44da-8dac-e2a6713ad2a3/dbtfg.public.question_question">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/topic/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="79" column="43" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/templates/topic/topic_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-45">
-          <caret line="3" column="48" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/subject/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/question/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/apps/statistic/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/statistic/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/templates/question/question_create.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="117" column="64" selection-start-line="117" selection-start-column="64" selection-end-line="117" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/question/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="59" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/question/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/static/js/test_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4515">
-          <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/static/css/myStyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="571" column="0" selection-start-line="571" selection-start-column="0" selection-end-line="571" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/templates/subject/subject_create.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/templates/subject/subject_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="53" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/templates/topic/topic_create.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/templates/subtopic/subtopic_create.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/views/generic/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+        <state relative-caret-position="150">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/templates/breadcrumb.html">
+    <entry file="dbDummy://dbtable:/aaf31428/b8c6e9c3-c28c-44da-8dac-e2a6713ad2a3/dbtfg.public.subject_subject">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/aaf31428/b8c6e9c3-c28c-44da-8dac-e2a6713ad2a3/dbtfg.public.guardian_userobjectpermission">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/apps/answer/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+        <state relative-caret-position="480">
+          <caret line="84" column="33" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/templates/subtopic/subtopic_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/templates/topic/topic_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="44" column="22" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/topic/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="48" column="55" selection-start-line="48" selection-start-column="55" selection-end-line="48" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/search/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="29" column="69" selection-start-line="29" selection-start-column="69" selection-end-line="29" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/templates/subject/subject_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="115" column="48" selection-start-line="115" selection-start-column="48" selection-end-line="115" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dependencias.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/subject/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+        <state relative-caret-position="329">
+          <caret line="109" column="23" selection-start-line="109" selection-start-column="23" selection-end-line="109" selection-end-column="23" />
           <folding>
-            <element signature="e#23#67#0" expanded="false" />
+            <element signature="n#for#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/topic/views.py">
+    <entry file="file://$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/annoying/fields.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="53" column="67" selection-start-line="51" selection-start-column="6" selection-end-line="53" selection-end-column="67" />
-          <folding>
-            <element signature="e#23#66#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="-826">
+          <caret line="58" column="6" selection-start-line="58" selection-start-column="6" selection-end-line="58" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/answer/views.py">
+    <entry file="file://$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/db/models/query.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="269">
+          <caret line="397" column="11" selection-start-line="397" selection-start-column="11" selection-end-line="397" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/extra_views/advanced.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="114" column="7" selection-start-line="114" selection-start-column="7" selection-end-line="114" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/apps/question/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="81" selection-start-line="33" selection-start-column="7" selection-end-line="35" selection-end-column="81" />
+        <state relative-caret-position="360">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding>
             <element signature="e#23#90#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/user/signals.py">
+    <entry file="file://$PROJECT_DIR$/TFG/apps/statistic/migrations/0001_initial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="360">
+          <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
           <folding>
-            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#72#111#0" expanded="false" />
+            <marker date="1467852651511" expanded="true" signature="227:954" placeholder="..." />
+            <marker date="1467852651511" expanded="true" signature="333:953" placeholder="..." />
+            <marker date="1467852651511" expanded="true" signature="424:935" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/test/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/user/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="46" column="52" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/user/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/test/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/answer/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/apps/answer/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/apps/test/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="540">
+          <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/templates/topic/topic_create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="45" column="49" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/forms/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="404" column="11" selection-start-line="404" selection-start-column="11" selection-end-line="404" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/views/generic/edit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="228" column="41" selection-start-line="228" selection-start-column="41" selection-end-line="228" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/apps/topic/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="84" column="80" selection-start-line="84" selection-start-column="80" selection-end-line="84" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/templates/subtopic/subtopic_create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="102" column="78" selection-start-line="102" selection-start-column="78" selection-end-line="102" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/apps/topic/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="245" column="64" selection-start-line="245" selection-start-column="64" selection-end-line="245" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/templates/test/do_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="204" column="7" selection-start-line="204" selection-start-column="7" selection-end-line="204" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/apps/statistic/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#68#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/apps/answer/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="63" selection-start-line="9" selection-start-column="63" selection-end-line="9" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/apps/question/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="47" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="47" />
+          <folding>
+            <element signature="e#23#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/vanilla/model_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="250" column="0" selection-start-line="250" selection-start-column="0" selection-end-line="250" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/aaf31428/b8c6e9c3-c28c-44da-8dac-e2a6713ad2a3/dbtfg.public.test_testdone">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="81" column="57" selection-start-line="81" selection-start-column="57" selection-end-line="81" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/templates/test/test_create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1514">
+          <caret line="162" column="52" selection-start-line="162" selection-start-column="52" selection-end-line="162" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/static/css/myStyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="640" column="13" selection-start-line="640" selection-start-column="1" selection-end-line="640" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/templates/user/edit_profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/apps/subject/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-          <folding>
-            <element signature="e#23#51#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="435">
+          <caret line="47" column="12" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/apps/test/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="40" column="29" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
+        <state relative-caret-position="420">
+          <caret line="122" column="53" selection-start-line="122" selection-start-column="53" selection-end-line="122" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/vanilla/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/templates/user/clasifications_by_subject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="39" column="24" selection-start-line="14" selection-start-column="12" selection-end-line="39" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/apps/test/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="86" selection-start-line="9" selection-start-column="76" selection-end-line="9" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/apps/subject/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="16" column="84" selection-start-line="16" selection-start-column="84" selection-end-line="16" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/templates/subject/subject_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="355" column="34" selection-start-line="355" selection-start-column="34" selection-end-line="355" selection-end-column="34" />
           <folding>
-            <element signature="e#23#51#0" expanded="true" />
+            <element signature="e#4892#11699#0#HTML" expanded="false" />
+            <element signature="n#if#5;n#!!top" expanded="false" />
+            <element signature="e#11712#20390#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/local_settings.py">
+    <entry file="file://$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/core/mail/message.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+        <state relative-caret-position="195">
+          <caret line="291" column="0" selection-start-line="291" selection-start-column="0" selection-end-line="291" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/wsgi.py">
+    <entry file="file://$PROJECT_DIR$/TFG/apps/user/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/core/mail/backends/smtp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+          <caret line="99" column="26" selection-start-line="99" selection-start-column="26" selection-end-line="99" selection-end-column="26" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/apps/user/signals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/apps/user/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="34" column="79" selection-start-line="34" selection-start-column="79" selection-end-line="34" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/static/js/test_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="110" column="25" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/apps/subject/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="275" column="60" selection-start-line="275" selection-start-column="60" selection-end-line="275" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv3.5/lib/python3.5/site-packages/django/views/generic/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="75" column="40" selection-start-line="75" selection-start-column="40" selection-end-line="75" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/templates/menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="223" column="41" selection-start-line="223" selection-start-column="41" selection-end-line="223" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/templates/test/doing_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="190" column="68" selection-start-line="190" selection-start-column="68" selection-end-line="190" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/apps/topic/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#66#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/apps/user/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-201">
-          <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+        <state relative-caret-position="224">
+          <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
           <folding>
-            <element signature="e#23#58#0" expanded="true" />
+            <element signature="e#23#80#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/migrar modelos a base de datos">
+    <entry file="file://$PROJECT_DIR$/TFG/apps/test/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="73" selection-start-line="19" selection-start-column="73" selection-end-line="19" selection-end-column="73" />
+        <state relative-caret-position="345">
+          <caret line="326" column="0" selection-start-line="326" selection-start-column="0" selection-end-line="326" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state relative-caret-position="360">
+          <caret line="264" column="23" selection-start-line="264" selection-start-column="23" selection-end-line="264" selection-end-column="23" />
           <folding />
         </state>
       </provider>

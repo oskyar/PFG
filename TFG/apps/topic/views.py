@@ -12,8 +12,11 @@ from vanilla import DetailView, ListView, DeleteView, UpdateView
 from .forms import CreateTopicForm, CreateSubtopicForm
 from .models import Topic, Subtopic
 from guardian.shortcuts import assign_perm
+from TFG.decorators import cbv_permission_required_or_403
+from django.contrib import messages
 
 
+@cbv_permission_required_or_403('change_subject', (Subject, 'pk', 'pk'))
 class CreateTopicView(LoginRequiredMixin, CreateView):
     model = Topic
     form_class = CreateTopicForm
@@ -49,9 +52,9 @@ class CreateTopicView(LoginRequiredMixin, CreateView):
         else:
             topic.subject = Subject.objects.get(pk=self.kwargs['pk'])
         topic.save()
-        assign_perm('topic.add_topic', self.request.user, topic)
-        assign_perm('topic.change_topic', self.request.user, topic)
-        assign_perm('topic.delete_topic', self.request.user, topic)
+        assign_perm('add_topic', self.request.user, topic)
+        assign_perm('change_topic', self.request.user, topic)
+        assign_perm('delete_topic', self.request.user, topic)
         # Comprobamos a qué botón de submit le hemos dado
         if 'create_subtopic' in self.request.POST:
             kwargs = self.kwargs
@@ -85,6 +88,7 @@ class CreateTopicView(LoginRequiredMixin, CreateView):
             return 1
 
 
+@cbv_permission_required_or_403('change_topic', (Topic, 'pk', 'pk_topic'))
 class UpdateTopicView(UpdateView):
     form_class = CreateTopicForm
     fields = "__all__"
@@ -187,6 +191,7 @@ class ListTopicView(ListView):
         return breadcrumbs
 
 
+@cbv_permission_required_or_403('delete_topic', (Topic, 'pk', 'pk_topic'))
 class DeleteTopicView(LoginRequiredMixin, DeleteView):
     model = Topic
     success_url = reverse_lazy('/')
@@ -208,6 +213,7 @@ class DeleteTopicView(LoginRequiredMixin, DeleteView):
             return JsonResponse(result)
 
 
+@cbv_permission_required_or_403('change_topic', (Topic, 'pk', 'pk_topic'))
 class CreateSubtopicView(LoginRequiredMixin, CreateView):
     template_name = 'subtopic/subtopic_create.html'
     model = Subtopic
@@ -234,15 +240,16 @@ class CreateSubtopicView(LoginRequiredMixin, CreateView):
         subtopic = form.save(commit=False)
         # Como se comparte form y vista para topic y subtopic, hay que tenerlos en cuenta.
         subtopic.topic = Topic.objects.get(pk=self.kwargs.get('pk_topic'))
+        if subtopic.gamificar is False:
+            subtopic.num_questions_gami = 0
         subtopic.save()
-        assign_perm('topic.add_subtopic', self.request.user, subtopic)
-        assign_perm('topic.change_subtopic', self.request.user, subtopic)
-        assign_perm('topic.delete_subtopic', self.request.user, subtopic)
+        assign_perm('add_subtopic', self.request.user, subtopic)
+        assign_perm('change_subtopic', self.request.user, subtopic)
+        assign_perm('delete_subtopic', self.request.user, subtopic)
         # Comprobamos a qué botón de submit le hemos dado
         if 'create_subtopic' in self.request.POST:
             return redirect("create_subtopic", pk=subtopic.topic.subject.pk, pk_topic=subtopic.topic.pk)
         else:
-
             return redirect("create_question", pk=subtopic.topic.subject.pk, pk_topic=subtopic.topic.pk,
                             pk_subtopic=subtopic.pk)
 
@@ -279,6 +286,7 @@ class CreateSubtopicView(LoginRequiredMixin, CreateView):
         return breadcrumbs
 
 
+@cbv_permission_required_or_403('change_subtopic', (Subtopic, 'pk', 'pk_subtopic'))
 class UpdateSubtopicView(UpdateView):
     form_class = CreateSubtopicForm
     fields = "__all__"
@@ -307,10 +315,11 @@ class UpdateSubtopicView(UpdateView):
         subtopic.save()
 
         # Comprobamos a qué botón de submit le hemos dado
-        if 'create_subtopic' in self.request.POST:
-            return redirect("create_subtopic", pk=subtopic.topic.subject.pk, pk_topic=subtopic.topic.pk)
+        if 'edit_subtopic' in self.request.POST:
+            messages.success(self.request, _("Subtema actualizado correctamente"))
+            return redirect("edit_subtopic", pk=subtopic.topic.subject.pk, pk_topic=subtopic.topic.pk,
+                            pk_subtopic=subtopic.id)
         else:
-
             return redirect("create_question", pk=subtopic.topic.subject.pk, pk_topic=subtopic.topic.pk,
                             pk_subtopic=subtopic.pk)
 
@@ -378,6 +387,7 @@ class DetailSubtopicView(DetailView):
         return breadcrumbs
 
 
+@cbv_permission_required_or_403('delete_subtopic', (Subtopic, 'pk', 'pk_subtopic'))
 class DeleteSubtopicView(LoginRequiredMixin, DeleteView):
     model = Subtopic
     success_url = "/"

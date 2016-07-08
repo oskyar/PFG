@@ -3,8 +3,8 @@ __author__ = 'oskyar'
 from TFG.decorators import cbv_permission_required_or_403
 from TFG.mixins import LoginRequiredMixin
 from django.contrib import messages
-from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.utils import timezone
 from django.utils.translation import ugettext as _
@@ -15,10 +15,15 @@ from vanilla import TemplateView
 from . import signals
 from .forms import UserProfileForm
 from .models import UserProfile
+from TFG.apps.subject.models import Subject
+from TFG.apps.test.models import TestDone, Test
+from django.db.models import Sum, Avg
 
 
 class Index(TemplateView):
     template_name = "user/index.html"
+
+
 
 
 class UserProfileView(RegistrationView):
@@ -126,10 +131,6 @@ class UserProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView)
         storage = messages.get_messages(self.request)
         storage.used = True
 
-        signals.update_user_profile.send(sender=self.__class__,
-                                         user=userProfile,
-                                         request=self.request)
-
         return response
 
     def form_invalid(self, form):
@@ -143,3 +144,43 @@ class UserProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView)
 
 class ClientViewErrors(TemplateView):
     template_name = "403.html"
+
+
+class ClasificationSubject(LoginRequiredMixin, TemplateView):
+    template_name = "user/clasifications_by_subject.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ClasificationSubject, self).get_context_data(**kwargs)
+
+        my_subjects = list(self.request.user.userProfile.my_subjects.all())
+        for subject in my_subjects:
+            subject.my_students = list(subject.students.all())
+            for student in subject.my_students:
+                student.score_subject = TestDone.objects.filter(student=student, test__subject=subject).aggregate(
+                    Sum('score_won'))['score_won__sum']
+                student.average = TestDone.objects.filter(student=student, test__subject=subject).aggregate(
+                    Avg('percent'))['percent__avg']
+                student.num_test_done = TestDone.objects.filter(student=student, test__subject=subject).count()
+            subject.students.order_by('score_subject')
+
+        context['subjects'] = my_subjects
+        return context
+
+
+def get_level(score):
+    LEVELS = [ 50, 150, 275, 425, 600, 800, 1025, 1275, 1550, 1850, 2175, 2525, 2900, 3300, 3350]
+    for l, s in enumerate(LEVELS):
+        if score < s:
+            return l
+
+
+def get_min_max(score):
+    LEVELS = [ 50, 150, 275, 425, 600, 800, 1025, 1275, 1550, 1850, 2175, 2525, 2900, 3300, 3350]
+    min = 0
+    max = 0
+    for level in LEVELS:
+        if (level < score):
+            min = level
+        if (level > score):
+            max = level
+            return min, max

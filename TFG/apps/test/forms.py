@@ -3,12 +3,15 @@ __author__ = 'oskyar'
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from .models import Test
+from TFG.apps.question.models import Question
 from TFG.apps.subject.models import Subject
 import datetime
 
 
 class TestForm(forms.ModelForm):
     template_name = "subject_create.html"
+
+    random_value = ('15', "Aleatorio")
 
     error_messages = dict(select_required=_("Debe seleccionar un modelo de examen"),
                           field_required=_("Es obligatorio rellenar el campo"),
@@ -20,7 +23,11 @@ class TestForm(forms.ModelForm):
     name = forms.CharField(required=True, label="Nombre del test")
     type = forms.ChoiceField(choices=Test.TYPES_CHOICES, initial=Test.STANDARD, label=_("Tipo de examen"),
                              required=True)
-    num_question = forms.IntegerField(max_value=256, min_value=1, required=True, label=_("Número de preguntas"))
+    type_question = forms.ChoiceField(choices=Question.TYPES_CHOICES, initial=Question.STANDARD,
+                                      label=_("Tipo de preguntas"),
+                                      required=True)
+    autogenerate_questions = forms.BooleanField(required=True, initial=True,label=_("¿Preguntas aleatorias?"))
+    num_question = forms.IntegerField(max_value=256, min_value=1, initial=1, required=True, label=_("Nº preguntas"))
     start_date = forms.DateField(required=False, label=_("Fecha de activación"),
                                  input_formats=['%d/%m/%Y', '%m/%d/%Y', '%Y/%m/%d'],
                                  widget=forms.DateInput(format='%d/%m/%Y'))
@@ -32,13 +39,21 @@ class TestForm(forms.ModelForm):
     activation_code = forms.CharField(required=False, label=_("Código de activación"))
     qr_code = forms.ImageField(required=False)
     visibility = forms.ChoiceField(choices=Test.VISIBILITY_CHOICES, required=True, label=_("Visibilidad"))
-    active = forms.BooleanField(required=False, initial=False, label=_("¿Activar Test?"))
-
+    active = forms.BooleanField(required=False, initial=True, label=_("¿Activar Test?"))
+    created_on = forms.DateTimeField(required=False)
 
     class Meta:
         model = Test
         fields = "__all__"
-        exclude = ['owner','subject','created_on']
+        exclude = ()
+
+    def __init__(self, *args, **kwargs):
+        super(TestForm, self).__init__(*args, **kwargs)
+        self.fields['subject'].empty_label = _("Seleccione una asignatura (obligatorio)")
+        self.fields['topic'].empty_label = _("Todos")
+        self.fields['subtopic'].empty_label = _("Todos")
+        option_random = ('-1', _("Aleatorio"))
+        # choices = self.fields['type_question'].insert(-1, (option_random))
 
     def clean_name(self):
         name = self.cleaned_data['name']

@@ -8,6 +8,21 @@
 <!-- Wide card with share menu button -->
 {% block content %}
     {% get_obj_perms user for subject as "perm_subject" %}
+
+    <div class="row">
+        <div class=" col l12 m12 s12">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="card-panel blue lighten-1 card-panel-select" data-panel="null">
+                                <span class="white-text ">
+                                    <i class="material-icons left">info</i><i
+                                        class="material-icons right close">close</i>{{ message }}</span>
+                        </span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
     <div class="row">
         <div class="col l10 m9 s12">
 
@@ -24,10 +39,18 @@
                        class="right blue btn-large btn-floating waves-effect waves-circle"><i
                             class="material-icons">edit</i> </a>
                 {% endif %}
+                {% if subject not in user.userProfile.my_subjects.all and user.userProfile != subject.teacher %}
+                    <a href="{% url 'register_subject' subject.id %}"
+                       class="btn-large  waves-effect blue right waves-light">Matricularme</a>
+                {% endif %}
                 {% if "unregister_subject" in perm_subject %}
-                    <a href="{% url 'create_test' subject.id %}"
+                    <a href="{% url 'unregister_subject' subject.id %}"
+                       class="right red btn-floating waves-effect waves-circle"><i
+                            class="material-icons">delete</i></a>
+                    <a href="{% url 'do_test' subject.id %}"
                        class="right yellow darken-1 btn-large btn-floating waves-effect waves-circle"><i
                             class="material-icons">format_list_numbered</i> </a>
+
                 {% endif %}
                 <h3 class="orange-text header tooltipped" data-position="top" data-delay="50"
                     data-tooltip="Asignatura">{{ subject.name }}</h3>
@@ -174,46 +197,192 @@
             <div class="section">
                 <h5 class="teal-text header" id="test_subject" data-scrollspy="true">{% trans 'Test gamificado' %}</h5>
                 <div class="divider"></div>
-            </div>
-            <div class="section">
-                {% if subject.topics.gamificado %}
+
+                {% if topics %}
                     <div class="col l12 m12 s12">
                         <ul class="tabs">
-                            {% for topic in subject.topics.gamificado %}
-                                <li class="tab col s3" data-topic="topic_{{ topic.id }}">
-                                    <a class="active tooltipped" data-position="top"
-                                       data-delay="50"
-                                       data-tooltip="Introducción a las plataformas con sistema de gamificación"
-                                       href="#tab_{{ topic.id }}">{{ topic.name }}
-                                        <i class="material-icons green-text ">done</i></a>
+                            {% for topic in topics %}
+                                {% if topic.prev_topic and topic.passed or 'change_subject' in perm_subject %}
+                                    <li class="tab col s3" data-topic="topic_{{ topic.id }}">
+                                        <a class="active tooltipped" data-position="top"
+                                           data-delay="50"
+                                           data-tooltip="{{ topic.name }}"
+                                           href="#tab_{{ topic.id }}">{{ topic.name|truncatechars:17 }}
+                                            <i class="material-icons green-text ">done</i></a>
+                                    </li>
+                                {% elif topic.prev_topic and not topic.passed %}
+                                    <li class="tab col s3" data-topic="topic_{{ topic.id }}">
+                                        <a class="active tooltipped" data-position="top"
+                                           data-delay="50"
+                                           data-tooltip="{{ topic.name }}"
+                                           href="#tab_{{ topic.id }}">{{ topic.name|truncatechars:17 }}
+                                            <i class="material-icons blue-text ">lock_open</i></a>
+                                    </li>
+                                {% else %}
+                                    <li class="tab col s3 disabled" data-topic="topic_{{ topic.id }}">
+                                        <a class="active tooltipped" data-position="top"
+                                           data-delay="50"
+                                           data-tooltip="{{ topic.name }}"
+                                           href="#tab_{{ topic.id }}">{{ topic.name |truncatechars:17 }}
+                                            <i class="material-icons red-text ">lock</i></a>
+                                    </li>
+                                {% endif %}
                                 </li>
                             {% empty %}
                             {% endfor %}
 
                         </ul>
                     </div>
-                    {% for topic in subject.topics.gamificado %}
+                    {% for topic in topics %}
                         <div id="tab_{{ topic.id }}" class="col s12 tabla-test" data-topic="topic_{{ topic.id }}">
-
                             <ul class="collapsible" data-collapsible="accordion">
-                                {% for subtopic in topic.subtopics.gamificado %}
+                                {% for subtopic in topic.subtopics_gamificados %}
+                                    {% regroup subtopic.testsdone.all by passed as test_passed %}
+                                    {% if test_passed or 'change_subject' in perm_subject %}
+                                        <li class="grid-topics" data-subtopic="subtopic_{{ subtopic.id }}">
+                                            <div class="collapsible-header">
+                                                <i class="material-icons green-text">done</i>
+                                                {{ subtopic.name }}
+                                                {% if 'unregister_subject' in perm_subject %}
+                                                    <a class="waves-effect waves-circle btn-floating waves yellow darken-1 right icon-action"
+                                                       href="{% url 'doanddoing_test' subtopic.id %}">
+                                                        <i class="material-icons right icon-action">format_list_numbered</i>
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                            <div class="collapsible-body">
+                                                <p><i class="left material-icons red-text">info</i>Información y
+                                                    detalles sobre el test todavía no disponible</p>
+                                            </div>
+                                        </li>
+                                    {% elif subtopic.prev_passed == True %}
+                                        <li class="grid-topics" data-subtopic="subtopic_{{ subtopic.id }}">
+                                            <div class="collapsible-header">
+                                                <i class="material-icons blue-text">lock_open</i>
+                                                {{ subtopic.name }}
+                                                {% if 'unregister_subject' in perm_subject %}
+                                                    <a class="waves-effect waves-circle btn-floating waves yellow darken-1 right icon-action"
+                                                       href="{% url 'doanddoing_test' subtopic.id %}">
+                                                        <i class="material-icons right icon-action">format_list_numbered</i>
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                            <div class="collapsible-body deep-purple">
+                                                Información referente a los test realizados
+                                            </div>
+                                        </li>
+                                    {% else %}
+                                        <li class="grid-topics disabled" data-subtopic="subtopic_{{ subtopic.id }}"
+                                            disabled>
+                                            <div class="collapsible-header">
+                                                <i class="material-icons red-text">lock</i>
+                                                {{ subtopic.name }}
+                                            </div>
+                                            <div class="collapsible-body ">
+                                                <p><i class="left material-icons red-text">info</i>Información y
+                                                    detalles sobre el test todavía no disponible</p>
+                                            </div>
+                                        </li>
+                                    {% endif %}
+                                    {% for i in subtopic.testsdone.all|dictsort:'cardinality' %}
+                                        {{ i.passed }}
 
-                                    <li data-subtopic="subtopic_{{ subtopic.id }}">
-                                        <a class="collapsible-header green-text"><i
-                                                class="material-icons left ">input</i> {{ subtopic.name }}
-                                            <i class="material-icons green-text right">done</i></a>
-                                    </li>
+                                    {% endfor %}
+
+                                    {% comment %}{% for testpassed in subtopic.testsdone.all %}
+                                                {% if testpassed.passed == True %}
+                                                    <i class="material-icons">done</i>
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% endcomment %}
+
+
                                 {% empty %}
-                                    {% if user == topic.subject.teacher %}
-                                        <li><a class="collapsible-header"
-                                               href="{% url 'create_subtopic' topic.subject.id topic.id %}">{% trans 'Este tema no tiene subtemas. ¡Pinche aquí para crear un subtema ahora!' %}</a>
+                                    {% if user != subject.teacher.user %}
+                                        <li class="grid-topics">
+                                            <a class="collapsible-header red-text"
+                                               href="">{% trans 'Esta asignatura no contiene ningún tema aún' %}
+                                                <i class="material-icons red-text">do_not_disturbe</i>
+                                            </a>
                                         </li>
                                     {% endif %}
                                 {% endfor %}
+                                {% if user == subject.teacher.user %}
+                                    <li class="grid-topics">
+                                        <a class="collapsible-header"
+                                           href="{% url 'create_topic' subject.id %}">{% trans 'Pinche aquí para crear un tema' %}
+                                            <i class="material-icons green-text">add</i>
+                                        </a>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </div>
                     {% endfor %}
                 {% endif %}
+            </div>
+            <div class="section">
+                {% if 'change_subject' in perm_subject %}
+                    <h5 class="teal-text header" id="tests_generales"
+                        data-scrollspy="true">{% trans 'Tests generales sin gamificar' %}
+                        ({{ tests_generales.count }})</h5>
+                {% else %}
+                    <h5 class="teal-text header" id="tests_generales"
+                        data-scrollspy="true">{% trans 'Tests realizados sin gamificar' %}
+                        ({{ tests_generales.count }})</h5>
+                {% endif %}
+                <div class="divider"></div>
+
+
+                <ul class="collapsible" data-collapsible="accordion">
+                    {% for test in tests_generales %}
+                        <li class="grid-topics" data-topic="topic_{{ test.id }}">
+                            <div class="collapsible-header">{{ test.name }}
+
+
+                                <i class="material-icons blue-text">lock_open</i>
+                                {{ subtopic.name }}
+                                {% if 'unregister_subject' in perm_subject %}
+                                    <a class="waves-effect waves-circle btn-floating waves blue-text darken-1 right icon-action"
+                                       href="{% url 'doing_test' subject.id test.id %}">
+                                        <i class="material-icons right icon-action">format_list_numbered</i>
+                                    </a>
+                                {% endif %}
+                                {% if 'change_subject' in perm_subject %}
+                                    <a class="waves-effect waves-circle btn-floating waves yellow darken-1 right icon-action"
+                                       href="{% url 'send_test_students' test.subject.id test.id %}">
+                                        <i class="material-icons right icon-action">email</i>
+                                    </a>
+                                {% endif %}
+                            </div>
+                            <div class="collapsible-body">
+
+
+                                <p><i class="left material-icons red-text">info</i>Información y detalles sobre el test
+                                    todavía no disponible</p>
+                            </div>
+                        </li>
+                    {% empty %}
+                        {% comment %}
+                            {% if user != subject.teacher.user %}
+                                <li class="grid-topics">
+                                    <a class="collapsible-header red-text"
+                                       href="">{% trans 'Esta asignatura no contiene ningún tema aún' %}
+                                        <i class="material-icons red-text">do_not_disturbe</i>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% endcomment %}
+                    {% endfor %}
+                    {% if user == subject.teacher.user %}
+                        <li class="grid-topics">
+                            <a class="collapsible-header"
+                               href="{% url 'create_test' subject.id %}">{% trans 'Pinche aquí para crear un test' %}
+                                <i class="material-icons green-text">add</i>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+
             </div>
             <div class="section">
                 <h5 class="teal-text header" id="registered_users"
@@ -232,9 +401,35 @@
                         </li>
                     {% endfor %}
                 </ul>
-                <h5 class="teal-text header" id="table_clasification"
-                    data-scrollspy="true">{% trans 'Clasificación' %}</h5>
-                <div class="divider"></div>
+                <div class="section">
+                    <h5 class="teal-text header" id="table_clasification"
+                        data-scrollspy="true">{% trans 'Clasificación' %}</h5>
+                    <div class="divider"></div>
+
+                    <table class="striped centered">
+                        <thead>
+                        <tr>
+                            <th data-field="number">Nº</th>
+                            <th data-field="name">Name</th>
+                            <th data-field="tests">Nº Test realizados</th>
+                            <th data-field="percent">Nº Test realizados</th>
+                            <th data-field="pscore">Puntuación</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for student in clasification %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ student.user.first_name }} {{ student.user.last_name }}</td>
+                                <td>{{ student.num_test_done }}</td>
+                                <td>{{ student.average |floatformat:"2" }}</td>
+                                <td>{{ student.score_subject }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="col hide-on-small-only m3 l2">

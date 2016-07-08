@@ -2,6 +2,7 @@
 {% load static from staticfiles %}
 {% load widget_tweaks %}
 {% load i18n %}
+
 {% block title %}Ponte a prueba - Creando examen{% endblock title %}
 <!-- Wide card with share menu button -->
 {% block content %}
@@ -10,7 +11,7 @@
         <div>
             <h2 class="left header orange-text ">{% trans 'Creando TEST' %} </h2>
             {% if subject %}
-                <h2 class="header teal-text left">{% trans 'para' %} {{ subject.name }}</h2>
+                <h2 class="header teal-text left">{% trans 'de' %} {{ subject.name }}</h2>
             {% endif %}
         </div>
         <div class="row">
@@ -92,6 +93,26 @@
                                 {{ form.visibility }}
                                 <label class="validate"
                                        for="{{ form.visibility.id_for_label }}">{{ form.visibility.label }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l6 m6 s12">
+                            <div class="input-field">
+                                {{ form.type_question }}
+                                {{ form.type_question.label_tag }}
+                            </div>
+                        </div>
+                        <div class="col l6 m6 s12">
+                            <label class="validate"
+                                   for="{{ form.autogenerate_questions.id_for_label }}">{{ form.autogenerate_questions.label }}</label>
+                            <div class="switch">
+                                <label>
+                                    {% trans 'No' %}
+                                    {{ form.autogenerate_questions }}
+                                    <span class="lever"></span>
+                                    {% trans 'Sí' %}
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -197,7 +218,7 @@
                             <div>&nbsp;</div>
                         </div>
                     </div>
-                    <button type="submit" class="btn orange waves-effect waves-light">Añadir preguntas ahora</button>
+                    <button type="submit" class="btn orange waves-effect waves-light">Crear TEST</button>
 
 
                 </form>
@@ -241,12 +262,18 @@
                 if ($(this).val() != "") {
                     $('.card-panel-select').hide();
                     $('[data-panel=topic]').show();
+                } else {
+                    $('.card-panel-select').hide();
+                    $('[data-panel=subject]').show();
                 }
             });
             $('#id_subtopic').change(function () {
                 if ($(this).val() != "") {
                     $('.card-panel-select').hide();
                     $('[data-panel=subtopic]').show();
+                } else {
+                    $('.card-panel-select').hide();
+                    $('[data-panel=topic]').show();
                 }
             });
         });

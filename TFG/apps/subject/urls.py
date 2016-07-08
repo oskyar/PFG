@@ -15,5 +15,7 @@ urlpatterns = [
     url(r'^(?P<pk>\w+)/delete$', views.DeleteSubjectView.as_view(), name='delete_subject'),
     url(r'^(?P<pk>\w+)/edit$', views.UpdateSubjectView.as_view(), name='edit_subject'),
     url(r'^(?P<pk>\w+)$', views.DetailSubjectView.as_view(), name='detail_subject'),
+    url(r'^(?P<pk>\w+)/send_test/(?P<pk_test>\w+)$', views.SendTestSubjectView.as_view(), name='send_test_students'),
+
     # url(r'thanks/(?P<username>[\w]+)/$', ThanksView.as_view(), name="thanks"),
 ]

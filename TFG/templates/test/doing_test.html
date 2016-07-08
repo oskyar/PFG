@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block title %}Ponte a prueba - Haciendo un examen{% endblock title %}
+<!-- Wide card with share menu button -->
+{% block content %}
+
+    <div class="row col l12 m12 s12" id="test_exam">
+        <div class="header">
+            <h2 class="left header orange-text ">{% trans 'Saber cuánto sé' %} </h2>
+            {% if subject %}
+                <h2 class="header teal-text left">{% trans 'de' %} {{ subject.name }}</h2>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col l10 m12 s12 ">
+                <div id="container_resultados" class="hoverable" hidden>
+                    <h3 class="blue darken-1 white-text center-align">{% trans 'RESULTADOS' %}</h3>
+                    <div class="resultados center-align center">
+                        <table class="center">
+                            <tr class="center-align">
+                                <td class="right-align col s6">
+                                    <span class="orange-text deep-orange-text">{% trans 'Respuestas correctas' %}:</span>
+                                </td>
+                                <td class="left-align col s6">
+                                    <span id="res_valids" class="green-text">2</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right-align col s6">
+                                    <span class="orange-text deep-orange-text">{% trans 'Respuestas incorrectas' %}:</span>
+                                </td>
+                                <td class="left-align col s6">
+                                    <span id="res_invalids" class="red-text">4</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right-align col s6">
+                                    <span class="orange-text deep-orange-text">{% trans 'Porcentaje de acierto' %}:</span>
+                                </td>
+                                <td class="left-align col s6">
+                                    <span id="res_percent" class="green-text">25%</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right-align col s6">
+                                    <span class="orange-text deep-orange-text">{% trans 'Sobre 10' %}:</span>
+                                </td>
+                                <td class="left-align col s6">
+                                    <span id="over_10" class="green-text">25%</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right-align col s6 ">
+                                    <span class="orange-text deep-orange-text ">{% trans 'Puntos ganados' %}:</span>
+                                </td>
+                                <td class="left-align col s6">
+                                    <span id="total_score" class="green-text">0</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right-align col s6 ">
+                                    <span class="orange-text deep-orange-text tag_resultado_final">{% trans 'Resultado' %}:</span>
+                                </td>
+                                <td class="left-align col s6">
+                                    <span id="res_pass" class="green-text resultado_final">PASS</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <a href="{% url 'detail_subject' subject.id %}" name="go_to_subject" id="go_to_subject"
+                   class="btn orange btn-large" style="display:none">Volver a la
+                    asignatura</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l10 m12 s12 ">
+                {% for question in test.question.all %}
+
+                    <ul class="collection with-header" id="question_{{ question.id }}"
+                        data-num="num_question_{{ forloop.counter }}">
+                        <li class="collection-header blue lighten-5"><h5><span
+                                class="header orange-text question num-height">{{ forloop.counter }}.</span> {{ question.statement }}
+                        </h5>
+                        </li>
+                        {% for answer in question.answer.all %}
+                            <li class="collection-item"><input name="{{ question.id }}"
+                                                               data-answer_id="{{ answer.id }}"
+                                                               data-num_question="{{ forloop.parentloop.counter }}"
+                                                               type="radio"
+                                                               id="answer_{{ answer.id }}"/><label
+                                    for="answer_{{ answer.id }}">{{ answer.reply }}</label></li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            </div>
+
+
+        </div>
+        <a data-url="{% url 'correct_test' subject.id test.id %}" name="correct_test" id="correct_test"
+           class="btn btn-large">Terminar</a>
+
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(function () {
+            $("#correct_test").on('click', function (ev) {
+                //ev.preventDefault();
+                url = $(this).data('url');
+
+                questions = {}
+                for (var i = 1; i <= {{ test.question.all.count }}; i++) {
+                    //for (var j = 0; j < $('[data-num_question="' + i + '"]:checked').length; j++) {
+                    element_question = $('[data-num=num_question_' + i + ']').find('input:checked');
+                    if (element_question.attr('id') != undefined) {
+                        questions["reply_" + i] = {
+                            answer_id: element_question.attr('id').split("_")[1],
+                            question_id: $('[data-num=num_question_' + i + ']').attr('id').split("_")[1]
+                        }
+                    } else {
+                        questions["reply_" + i] = {
+                            answer_id: null,
+                            question_id: $('[data-num=num_question_' + i + ']').attr('id').split("_")[1] //Me quedo con el número del id
+                        }
+
+                    }
+                    //questions["reply_" + i] = $('[data-num_question=' + i + ']:checked').data('answer_id')
+
+                    //}
+                }
+                console.log(questions);
+                $.ajax({
+                    url: url,
+                    data: JSON.stringify(questions),
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    //processData: false,
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        $('#res_valids').text(data['valids']);
+                        $('#res_invalids').text(data['invalids']);
+                        $('#res_percent').text(data['percent']);
+                        $('#res_pass').text(data['text_pass']);
+                        $('#total_score').text(data['total_score']);
+                        if (data['pass']) {
+                            $('#res_pass').addClass('green-text');
+                        } else {
+                            $('#res_pass').addClass('red-text').removeClass('green-text');
+
+                        }
+                        $('#over_10').text(data['over_10']);
+                        $('#correct_test').remove()
+                        $('#test_exam input').attr('disabled', true)
+                        $('#test_exam input:checked').parent().addClass('red lighten-5')
+                        for (var i = 0; i < data['correct_replies'].length; i++) {
+                            $('#' + data['correct_replies'][i]).parent().removeClass('red lighten-4').addClass('green lighten-4');
+                        }
+                        $('#container_resultados').show();
+                        $('#go_to_subject').show();
+                        window.location.href = "#container_resultados"
+                    }
+                })
+
+
+            });
+        })
+    </script>
+{% endblock %}
+
+{% block script_code %}
+    {% if user.is_authenticated %}
+        $('.dial').knob({
+        min:{{ user.userProfile.prev_level }},
+        max:{{ user.userProfile.next_level }},
+        angleOffset: 0, //30 me gusta
+        angleArc: 360,     //300 me gusta
+        readOnly: true,
+        width: 195,
+        thickness: 0.14,
+        displayInput: false,
+        fgColor: '#a7ffeb',
+        bgColor: '#4db6ac',
+        lineCap: 'round',
+        })
+        $('.dial').val({{ user.userProfile.score }}).trigger('change');
+    {% endif %}
+{% endblock %}

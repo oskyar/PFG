@@ -9,27 +9,27 @@
 <body>
 <p>
     {% blocktrans with site_name=site.name %}
-    You (or someone pretending to be you) have asked to register an account at
-    {{ site_name }}.  If this wasn't you, please ignore this email
-    and your address will be removed from our records.
+        Tú (o alguien pretendiendo ser tú) ha registrado una cuenta en
+        {{ site_name }}.  Si este no fuiste tú, por favor ignora este correo, tu correo será eliminado de nuestro
+        registro.
     {% endblocktrans %}
 </p>
 <p>
     {% blocktrans %}
-    To activate this account, please click the following link within the next
-    {{ expiration_days }} days:
+        Para activar esta cuenta, por favor, haz click en el siguiente enlace antes de los siguientes
+        {{ expiration_days }} días:
     {% endblocktrans %}
 </p>
 
 <p>
-    <a href="http://{{site.domain}}{% url 'registration_activate' activation_key %}">
-        {{site.domain}}{% url 'registration_activate' activation_key %}
+    <a href="http://{{ site.domain }}{% url 'registration_activate' activation_key %}">
+        {{ site.domain }}{% url 'registration_activate' activation_key %}
     </a>
 </p>
 <p>
     {% blocktrans with site_name=site.name %}
-    Sincerely,
-    {{ site_name }} Management
+        Sinceramente,
+        {{ site_name }} Administración
     {% endblocktrans %}
 </p>
 </body>

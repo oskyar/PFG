@@ -2,6 +2,10 @@
 
 {% block title %}Registro de usuario{% endblock title %}
 
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col s12 m10 l8 form-register">
@@ -97,8 +101,8 @@
                         <div class="file-field input-field">
                             <div class="btn">
                                 <span>{{ form.photo.label }}</span>
-                                <input id="{{ form.photo.id_for_label }}" type="file" name="photo">
                             </div>
+                            {{ form.photo }}
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text">
                             </div>
@@ -127,3 +131,11 @@
     </div>
 
 {% endblock content %}
+
+{% block script_code %}
+    $('.img-user').hide();
+    $('.file-link').hide();
+    $('.file-remove').click(function(){
+    $('.file-path').val("");
+    });
+{% endblock %}

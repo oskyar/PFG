@@ -3,7 +3,6 @@ __author__ = 'oskyar'
 from TFG.apps.question.models import Question
 from django.db import models
 
-
 # Asignatura.
 class StatisticQuestion(models.Model):
     # id = Id creada por defecto por django

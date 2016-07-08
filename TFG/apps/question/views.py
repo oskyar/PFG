@@ -2,24 +2,34 @@ __author__ = 'oskyar'
 
 from TFG.apps.answer.forms import InlineAnswerFormSet, AnswerInline
 from TFG.apps.topic.models import Topic, Subtopic
+from TFG.decorators import cbv_permission_required_or_403
 from TFG.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse_lazy
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
 from django.utils.translation import ugettext as _
 from django.views.generic import DeleteView
 from extra_views import CreateWithInlinesView
+from guardian.shortcuts import assign_perm
 from .forms import CreateQuestionForm
 from .models import Question
-from guardian.shortcuts import assign_perm
+from TFG.apps.statistic.models import StatisticQuestion
 
 
+@cbv_permission_required_or_403('change_subtopic', (Subtopic, 'pk', 'pk_subtopic'))
 class CreateQuestionView(LoginRequiredMixin, CreateWithInlinesView):
     model = Question
     inlines = [AnswerInline]
     form_class = CreateQuestionForm
     success_url = '/'
     template_name = "question/question_create.html"
+
+    def get_initial(self):
+        initial = super(CreateQuestionView, self).get_initial()
+        subtopic = Subtopic.objects.get(pk=self.kwargs.get('pk_subtopic'))
+        initial['statement'] = "%s %d (%s) " % ("Pregunta ",subtopic.questions.all().count() + 1, subtopic.name)
+        return initial
 
     def forms_valid(self, form, inlines):
         # response = super(CreateQuestionView, self).forms_valid(form, inlines)
@@ -29,11 +39,14 @@ class CreateQuestionView(LoginRequiredMixin, CreateWithInlinesView):
         inline_answer_form = InlineAnswerFormSet(self.request.POST, instance=question_form)
         if inline_answer_form.is_valid():
             question_form.save()
-            inline_answer_form.save()
+            # inline_answer_form.save()
 
-        assign_perm('question.add_question', self.request.user, question_form)
-        assign_perm('question.change_question', self.request.user, question_form)
-        assign_perm('question.delete_question', self.request.user, question_form)
+            assign_perm('add_question', self.request.user, question_form)
+            assign_perm('change_question', self.request.user, question_form)
+            assign_perm('delete_question', self.request.user, question_form)
+            StatisticQuestion.objects.create(question=question_form)
+        else:
+            redirect(reverse_lazy('create_question', args=self.args, kwargs=self.kwargs))
         # inlineAnswer = InlineAnswerFormSet(parent_model=Question, request=self.request, instance=question)
         # questionFormSet = inlineAnswer.get_formset()
 
@@ -89,6 +102,7 @@ class CreateQuestionView(LoginRequiredMixin, CreateWithInlinesView):
         return breadcrumbs
 
 
+@cbv_permission_required_or_403('delete_question', (Question, 'pk', 'pk_question'))
 class DeleteQuestionView(LoginRequiredMixin, DeleteView):
     model = Question
     success_url = reverse_lazy('/')

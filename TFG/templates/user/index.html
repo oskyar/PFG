@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %}Ponte a prueba (BODY){% endblock title %}
 
 
@@ -10,13 +10,13 @@
         <div class="col s12">
             <div class="section">
                 <div class="card-panel teal lighten-3">
-                        <span class="white-text"><i class="material-icons left">info</i>Navegue por el panel tabulado para saber un poco más sobre la plataforma <i
-                                class="material-icons right close">close</i>
+                        <span class="white-text"><i class="material-icons left">info</i><i
+                                class="material-icons right close">close</i>{% trans 'Navegue por el panel tabulado para saber un poco más sobre la plataforma' %}
                         </span>
                 </div>
             </div>
             <div class="col s12">
-                <ul class="tabs">
+                <ul class="tabs overflow-hidden">
                     <li class="tab col truncate"><a class="blue-text active" href="#tab_platform">Plataforma</a>
                     </li>
                     <li class="tab col truncate"><a class="" href="#tab_gamification">Gamificación</a></li>
@@ -90,7 +90,7 @@
                             </ul>
                         </div>
                         <div class="card-action">
-                            <a class="#">
+                            <a class="#" href="{% url 'create_subject' %}">
                                 Quiero crear una nueva asignatura
                             </a>
                         </div>
@@ -113,7 +113,7 @@
                         </div>
                         <div class="card-action">
                             <a class="#">
-                                ¡¡ Quiero matricularme en una asginatura !!
+                                ¡¡ Quiero matricularme en una asignatura !!
                             </a>
                         </div>
                     </div>
@@ -168,7 +168,7 @@
             <div id="tab_tests" class="col s12">
                 <div class="col s4">
                     <div class="card hoverable">
-                        <div class="card-title green lighten-1 padding-10 center-align">
+                        <div class="card-title green lighten-1 padding-10 center-align white-text">
                             <h5 class="">Crea </h5>
                         </div>
                         <div class="card-content padding-10">

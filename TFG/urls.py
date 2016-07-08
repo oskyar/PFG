@@ -7,7 +7,11 @@ import logging
 from importlib import import_module
 from django.conf import settings
 
-# from TFG.apps.user.forms import UserProfileForm
+from TFG.apps.handlererrors.views import Error403, Error404, Error500
+
+from TFG.apps.user.views import Index
+from django.core import exceptions
+from TFG.apps.user.views import ClientViewErrors
 # from registration.views import RegistrationView
 
 admin.autodiscover()
@@ -16,25 +20,27 @@ urlpatterns = [
     # Examples:
     # url(r'^$', 'TFG.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
-    url(r'^$', login, {'template_name': 'index/index.html'},
+    url(r'^$', Index.as_view(), name='index'),
+    url(r'^$', login, {'template_name': 'user/login.html'},
         name='login'),
     url(r'^logout/$', logout_then_login, name='logout'),
 
-    url(r'^', include('TFG.apps.index.urls')),
+    # url(r'^', include('TFG.apps.handlererrors.urls')),
     # url(r'^db', TFG.apps.index.views.db, name='db'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^chaining/', include('smart_selects.urls')),
     url(r'^user/', include('TFG.apps.user.urls')),
+    url(r'^test/', include('TFG.apps.test.urls')),
     url(r'^subject/', include('TFG.apps.subject.urls')),
-    url(r'^search/',include('TFG.apps.search.urls')),
+    url(r'^search/', include('TFG.apps.search.urls')),
+    url(r'^s3direct/', include('s3direct.urls')),
     # url(r'^test/', include('TFG.apps.test.urls')),
 
     url(r'^media/(?P<path>.*)$', serve,
         {'document_root': settings.MEDIA_ROOT,}),
 ]
 
-import_module("TFG.apps.index.signals")
+# import_module("TFG.apps.index.signals")
 
 # Este código sirve para buscar todos los signals añadidos a las apps
 """logger = logging.getLogger(__name__)

@@ -45,6 +45,12 @@ DATABASES['default'].update(dj_database_url.config())
 ALLOWED_HOSTS = ['*']
 DEBUG = False
 
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+GUARDIAN_RAISE_403 = "TFG.apps.user.views"
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -90,7 +96,6 @@ STATIC_URL = '/static/'
 # Additional locations of static files
 STATICFILES_DIRS = [
     RUTA_PROYECTO.child('static'),
-
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -120,8 +125,8 @@ MIDDLEWARE_CLASSES = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',  # this is default
     'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',  # this is default
 )
 
 ROOT_URLCONF = 'TFG.urls'
@@ -160,7 +165,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'TFG.apps.index',
+    'TFG.apps.handlererrors',
     'TFG.apps.user',
     'TFG.apps.subject',
     'TFG.apps.topic',
@@ -172,14 +177,52 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'vanilla',
     'guardian',
-    # 'TFG.apps.statistic',
+    'ipware',
     #    'TFG.apps.test',
+    's3direct',
     'registration',
-    'ajaxuploader',
     'braces',
     'extra_views',
     'smart_selects'
 )
+
+# AWS keys, configurado en consola con HEROKU
+AWS_ACCESS_KEY_ID = 'AKIAIC6CESUMFZDQANEQ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'test-tfg'
+
+S3DIRECT_REGION = 'us-west-2'
+
+
+def create_filename(filename):
+    import uuid
+    ext = filename.split('.')[-1]
+    filename = '%s.%s' % (uuid.uuid4().hex, ext)
+    return os.path.join('custom', filename)
+
+
+S3DIRECT_DESTINATIONS = {
+    'profiles': {
+        'key': 'media/profiles',
+        'allowed': ['image/jpeg', 'image/png'],
+        'custom_filename': (create_filename),
+    },
+    'subject': {
+        'key': 'media/subjects',
+        'auth': lambda u: u.is_authenticated(),
+        'allowed': ['image/jpeg', 'image/png'],
+    },
+    'question': {
+        'key': 'media/question',
+        'auth': lambda u: u.is_authenticated(),
+        'allowed': ['image/jpeg', 'image/png'],
+    },
+    'uploads': {
+        'key': 'media/uploads',
+        'auth': lambda u: u.is_authenticated(),
+        'allowed': ['image/jpeg', 'image/png'],
+    },
+}
 
 from django.core.urlresolvers import reverse_lazy
 
@@ -216,8 +259,15 @@ LOGGING = {
     }
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'test.tfg.ozafra@gmail.com'
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = 'test.tfg.ozafra@gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 # Días para poder activar la cuenta
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 # REGISTRATION_FORM = "user/register"
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
