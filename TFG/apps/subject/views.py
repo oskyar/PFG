@@ -129,9 +129,9 @@ class DetailSubjectView(DetailView):
 
         prev_passed = True
         prev_topic = True
-        subtopic_pass = 0
         pass_topic = False
         for topic in topics_gamificados:
+            subtopic_pass = 0
             topic.subtopics_gamificados = topic.subtopics.filter(gamificar=True)
             topic.prev_topic = prev_topic
             for subtopic in topic.subtopics_gamificados:
@@ -148,7 +148,7 @@ class DetailSubjectView(DetailView):
                         subtopic_pass += 1
                     prev_passed = False
                     # subtopic.passed = False
-            if subtopic_pass == len(topics_gamificados):
+            if subtopic_pass == len(topic.subtopics_gamificados):
                 prev_topic = True
                 topic.passed = True
             else:

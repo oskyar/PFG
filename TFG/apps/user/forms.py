@@ -46,7 +46,7 @@ class UserProfileForm(RegistrationFormNoFreeEmail, RegistrationForm):
     created_on = forms.DateTimeField(required=False, initial=datetime.datetime.today())
     modify_on = forms.DateTimeField(required=False, initial=datetime.datetime.today())
 
-    bad_domains = []
+    # bad_domains = []
 
     class Meta:
         model = User

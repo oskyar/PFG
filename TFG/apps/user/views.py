@@ -10,7 +10,7 @@ from django.utils import timezone
 from django.utils.translation import ugettext as _
 from django.views.generic import UpdateView
 from guardian.shortcuts import assign_perm
-from registration.backends.default.views import RegistrationView
+from registration.backends.simple.views import RegistrationView
 from vanilla import TemplateView
 from . import signals
 from .forms import UserProfileForm
@@ -24,13 +24,11 @@ class Index(TemplateView):
     template_name = "user/index.html"
 
 
-
-
 class UserProfileView(RegistrationView):
     # template_name = 'user/register.html'
-    disallowed_url = 'registration_disallowed'
+    #disallowed_url = 'registration_disallowed'
     # http_method_names = ['get', 'post', 'head', 'options', 'trace']
-    success_url = 'registration_complete'
+    success_url = 'index'
 
     # success_url = reverse_lazy('thanks')
     form_class = UserProfileForm
@@ -168,14 +166,14 @@ class ClasificationSubject(LoginRequiredMixin, TemplateView):
 
 
 def get_level(score):
-    LEVELS = [ 50, 150, 275, 425, 600, 800, 1025, 1275, 1550, 1850, 2175, 2525, 2900, 3300, 3350]
+    LEVELS = [50, 150, 275, 425, 600, 800, 1025, 1275, 1550, 1850, 2175, 2525, 2900, 3300, 3350]
     for l, s in enumerate(LEVELS):
         if score < s:
             return l
 
 
 def get_min_max(score):
-    LEVELS = [ 50, 150, 275, 425, 600, 800, 1025, 1275, 1550, 1850, 2175, 2525, 2900, 3300, 3350]
+    LEVELS = [50, 150, 275, 425, 600, 800, 1025, 1275, 1550, 1850, 2175, 2525, 2900, 3300, 3350]
     min = 0
     max = 0
     for level in LEVELS:
