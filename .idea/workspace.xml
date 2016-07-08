@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fbc4851-ab7c-4edc-8066-f4769d61bf2f" name="Default" comment="- Se actualizan dependencias del proyecto.&#10;- Se modifica diseño en preguntas.&#10;- Ya se traen preguntas y sus respuestas en las preguntas.&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/user/index.html" afterPath="$PROJECT_DIR$/TFG/templates/user/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TFG/templates/menu.html" afterPath="$PROJECT_DIR$/TFG/templates/menu.html" />
     </list>
     <list id="ef1a7dfa-392c-40a5-8998-ddb61171f2f7" name="New changelist" comment="New changelist" />
     <ignored path="test_TFG.iws" />
@@ -71,21 +71,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TFG/templates/user/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+            <state relative-caret-position="225">
+              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="menu.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TFG/templates/menu.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="120" column="52" selection-start-line="120" selection-start-column="48" selection-end-line="120" selection-end-column="52" />
+            <state relative-caret-position="425">
+              <caret line="221" column="3" selection-start-line="221" selection-start-column="3" selection-end-line="221" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -222,13 +222,13 @@
         <option value="$PROJECT_DIR$/TFG/apps/user/signals.py" />
         <option value="$PROJECT_DIR$/TFG/apps/user/models.py" />
         <option value="$PROJECT_DIR$/TFG/static/js/test_functions.js" />
-        <option value="$PROJECT_DIR$/TFG/templates/menu.html" />
         <option value="$PROJECT_DIR$/TFG/apps/test/views.py" />
         <option value="$PROJECT_DIR$/TFG/apps/user/views.py" />
         <option value="$PROJECT_DIR$/TFG/templates/test/doing_test.html" />
         <option value="$PROJECT_DIR$/TFG/settings.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/TFG/templates/user/index.html" />
+        <option value="$PROJECT_DIR$/TFG/templates/menu.html" />
       </list>
     </option>
   </component>
@@ -1546,7 +1546,7 @@
         <state relative-caret-position="255">
           <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
           <folding>
-            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#0#34#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1635,14 +1635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TFG/templates/menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="120" column="52" selection-start-line="120" selection-start-column="48" selection-end-line="120" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TFG/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
@@ -1653,8 +1645,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TFG/templates/user/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+        <state relative-caret-position="225">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TFG/templates/menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="221" column="3" selection-start-line="221" selection-start-column="3" selection-end-line="221" selection-end-column="3" />
           <folding />
         </state>
       </provider>

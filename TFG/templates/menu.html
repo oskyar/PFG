@@ -219,24 +219,5 @@
 {% endif %}
 
 {% block script_code %}
-    <script>
-        $(function () {
-            {% if user.is_authenticated %}
-                $('.dial').knob({
-                    min:{{ user.userProfile.prev_level }},
-                    max:{{ user.userProfile.next_level }},
-                    angleOffset: 0, //30 me gusta
-                    angleArc: 360,     //300 me gusta
-                    readOnly: true,
-                    width: 195,
-                    thickness: 0.14,
-                    displayInput: false,
-                    fgColor: '#a7ffeb',
-                    bgColor: '#4db6ac',
-                    lineCap: 'round',
-                })
-                $('.dial').val({{ user.userProfile.score }}).trigger('change');
-            {% endif %}
-        })
-    </script>
+   
 {% endblock %}
