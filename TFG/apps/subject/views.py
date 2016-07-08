@@ -21,7 +21,7 @@ from django.core.mail import send_mass_mail, EmailMessage
 from django.core import mail
 
 
-@cbv_permission_required_or_403('add_subject')
+@cbv_permission_required_or_403('subject.add_subject')
 class CreateSubjectView(LoginRequiredMixin, CreateView):
     template_name = 'subject/subject_create.html'
     form_class = CreateSubjectForm

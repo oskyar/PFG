@@ -241,7 +241,7 @@ class CreateSubtopicView(LoginRequiredMixin, CreateView):
         # Como se comparte form y vista para topic y subtopic, hay que tenerlos en cuenta.
         subtopic.topic = Topic.objects.get(pk=self.kwargs.get('pk_topic'))
         if subtopic.gamificar is False:
-            subtopic.num_questions_gami = 0
+            subtopic.num_questions_gam = 0
         subtopic.save()
         assign_perm('add_subtopic', self.request.user, subtopic)
         assign_perm('change_subtopic', self.request.user, subtopic)

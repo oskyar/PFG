@@ -87,7 +87,7 @@ class Subtopic(models.Model):
     description = models.CharField(max_length=512)
     value = models.IntegerField(blank=True, null=False)
     gamificar = models.BooleanField(blank=False, null=False, default=True)
-    num_questions_gami = models.IntegerField(blank=False, null=False)
+    num_questions_gam = models.IntegerField(blank=False, null=False)
     objects = SubtopicManager()
 
     class Meta:
