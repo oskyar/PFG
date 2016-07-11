@@ -107,7 +107,7 @@
                         {% for topic in topics %}
                             <li>
                                 <a type="submit" href="{% url 'create_subtopic' topic.subject.id topic.id %}"
-                                   class="btn waves-effect waves-light">{{ topic.name }}
+                                   class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="{{ topic.name }}">{{ topic.name }}
                                     largo</a>
                             </li>
                         {% endfor %}

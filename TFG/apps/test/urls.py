@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     # url(r'^(?P<pk>\w+)/doit/', include('TFG.apps.topic.urls')),
     url(r'^create$', views.CreateTestView.as_view(), name='create_test'),
+    url(r'^(?P<pk_test>\w+)/delete$', views.DeleteTestView.as_view(), name='delete_test'),
     url(r'^doit$', views.DoTestView.as_view(), name='do_test'),
     url(r'^doingit/(?P<pk_test>\w+)$', views.DoingTestView.as_view(), name='doing_test'),
     url(r'^doingit/(?P<pk_test>\w+)/correct_test$', views.DoneTestView.as_view(), name='correct_test'),

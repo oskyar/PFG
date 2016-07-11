@@ -2,7 +2,7 @@ __author__ = 'oskyar'
 
 from TFG.mixins import LoginRequiredMixin
 # from django.views.generic import CreateView
-from vanilla import CreateView, TemplateView, RedirectView
+from vanilla import CreateView, TemplateView, RedirectView, DeleteView
 from .forms import TestForm
 from .models import Test, TestDone
 from TFG.apps.subject.models import Subject
@@ -18,13 +18,14 @@ import uuid
 from guardian.shortcuts import get_perms
 from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
-from django.shortcuts import redirect
 from django.utils.translation import ugettext as _
 import random
 from django.http import JsonResponse
 import json
 from django.utils.timezone import now
 from ipware.ip import get_real_ip
+from django.shortcuts import redirect
+from TFG.decorators import cbv_permission_required_or_403
 
 
 class CreateTestView(LoginRequiredMixin, CreateView):
@@ -68,7 +69,9 @@ class CreateTestView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         test = form.save(commit=False)
         test.owner = self.request.user.userProfile
-        test.subject = Subject.objects.get(pk=self.kwargs['pk'])
+        if 'pk' in self.kwargs:
+            test.subject = Subject.objects.get(pk=self.kwargs['pk'])
+
         if test.type is Test.STANDARD:
             test.duration = None
         elif test.type is Test.CHRONO_TEST:
@@ -91,12 +94,25 @@ class CreateTestView(LoginRequiredMixin, CreateView):
 
         # return redirect("create_topic", pk=self.kwargs['pk'])
 
-        return redirect("detail_subject", pk=subject.id)
+        return redirect("detail_subject", pk=test.subject.id)
         # return super(CreateTestView, self).form_valid(form)
 
     def form_invalid(self, form):
         print("Invalid")
         return super(CreateTestView, self).form_invalid(form)
+
+@cbv_permission_required_or_403('change_test', (Test, 'pk', 'pk_test'))
+class DeleteTestView(LoginRequiredMixin, DeleteView):
+    lookup_field = 'pk_test'
+    model = Test
+    success_url = "/"
+
+    def get(self, request, *args, **kwargs):
+        test = Test.objects.get(pk=self.kwargs.pop('pk_test'))
+        subject = test.subject.id
+        test.delete()
+        messages.success(self.request, _("Test eliminado correctamente"))
+        return redirect(reverse_lazy('detail_subject',kwargs={'pk':subject}))
 
 
 class DoTestView(LoginRequiredMixin, CreateView):
@@ -225,7 +241,10 @@ class DoTestRedirectDoingTest(RedirectView):
         test.topic = subtopic.topic
         test.subject = subtopic.topic.subject
         test.gamificado = True
-        test.num_question = subtopic.num_questions_gami
+        if subtopic.num_questions_gam is not None:
+            test.num_question = subtopic.num_questions_gam
+        else:
+            test.num_question = 10 if subtopic.questions.all().count() > 10 else subtopic.questions.all().count()
         test.active = True
         test.autogenerate_questions = True
         test.created_on = now()

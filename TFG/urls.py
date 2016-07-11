@@ -10,6 +10,7 @@ from django.conf import settings
 from TFG.apps.handlererrors.views import Error403, Error404, Error500
 
 from TFG.apps.user.views import Index
+from vanilla import TemplateView
 from django.core import exceptions
 from TFG.apps.user.views import ClientViewErrors
 # from registration.views import RegistrationView
@@ -21,6 +22,7 @@ urlpatterns = [
     # url(r'^$', 'TFG.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', Index.as_view(), name='index'),
+    url(r'^cookies$', TemplateView.as_view(template_name="cookies.html"), name='cookies'),
     url(r'^$', login, {'template_name': 'user/login.html'},
         name='login'),
     url(r'^logout/$', logout_then_login, name='logout'),

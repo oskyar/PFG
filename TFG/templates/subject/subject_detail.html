@@ -352,6 +352,17 @@
                                        href="{% url 'send_test_students' test.subject.id test.id %}">
                                         <i class="material-icons right icon-action">email</i>
                                     </a>
+                                    <a href="{% url 'delete_test' test.id %}"
+                                       class="right red btn-floating waves-effect waves-circle right icon-action">
+                                        <i data-test="test_{{ test.id }}"
+                                           data-attribute="test"
+                                           class="material-icons right delete"
+                                           data-textconfirm="'{{ test.name }}' {% trans "será el test que va a borrar." %}"
+                                           data-confirmed="{% trans "El test ha sido eliminado correctamente" %}"
+                                           data-url="{% url 'delete_test' test.id %}">delete</i>
+                                    </a>
+
+
                                 {% endif %}
                             </div>
                             <div class="collapsible-body">
